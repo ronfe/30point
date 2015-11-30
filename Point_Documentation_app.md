@@ -368,6 +368,28 @@ Last Modified: 15NOV30
 * 必传字段：
   - 专题ID ```problemSetId: ObjectId```
 
+**挑战失败**  
+
+---
+
+挑战页，用户未通过挑战。
+
+* ```eventKey: challengeFailure```
+* ```category: course```
+* 必传字段：
+  - 知识点ID ```topicId: ObjectId```
+
+**挑战通过**  
+
+---
+
+挑战页，用户通过挑战。
+
+* ```eventKey: challengeSuccess```
+* ```category: course```
+* 必传字段：
+  - 知识点ID ```topicId: ObjectId```
+
 **完成练习模块**  
 
 ---
