@@ -214,17 +214,28 @@ Last Modified: 15NOV30
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
 
-**开始专题或挑战**  
+**开始专题**  
 
 ---
 
-练习模块页，点击“开始专题”。
+专题引导页，点击“开始专题”。
 
 * ```eventKey: startProblemSet```
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
+
+**开始挑战**  
+
+---
+
+挑战引导页，点击“开始挑战”。
+
+* ```eventKey: startChallenge```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
 
 **退出专题**  
 
@@ -237,7 +248,17 @@ Last Modified: 15NOV30
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
+ 
+**退出挑战**  
 
+---
+
+挑战页，点击左上角退出按钮。
+
+* ```eventKey: quitChallenge```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
 
 **进入题目**  
 
