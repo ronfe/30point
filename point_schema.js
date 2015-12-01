@@ -26,7 +26,7 @@ var point = new Schema({
             "version": String
         }
     },
-    "user": ObjectId, //Required, userId for login user, tempId for non-login user
+    "user": ObjectId, //Required when user logged in, its user id
     "userAttr": {
         "isBatch": Boolean, //Conditional optional, required for login user, True if user is batchly made
         "isRegistered": Boolean, //Required, True for login user
