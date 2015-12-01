@@ -186,7 +186,7 @@ Last Modified: 15DEC01
 * ```category: site```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
-  - 缓存视频列表 ```videoList: [ObjectId]```
+  - 缓存视频列表 ```videoId: ObjectId```
 
 **缓存失败**  
 
@@ -198,7 +198,7 @@ Last Modified: 15DEC01
 * ```category: site```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
-  - 缓存视频列表 ```videoList: [ObjectId]```
+  - 缓存视频列表 ```videoId: ObjectId```
   - 缓存失败原因 ```errorMessage: String```
 
 ## 练习模块
@@ -213,6 +213,7 @@ Last Modified: 15DEC01
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
+  - 进入状态 state: ```String, enum: ['success', 'fail']```
 
 **开始专题**  
 
