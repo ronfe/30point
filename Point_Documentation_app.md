@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (APP)
 
 by ronfe  
-Last Modified: 15NOV30  
+Last Modified: 15DEC01  
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 Mobile App端埋点。  
 
@@ -400,6 +400,18 @@ Last Modified: 15NOV30
 * ```category: course```
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
+
+**弹窗后选择专题**  
+
+---
+
+（适用于用户完成练习模块）知识点滑动页，点击“进入练习模块”，弹出选择专题页面，用户选择某一专题。
+
+* ```eventKey: chooseFinishedProblemSet```
+* ```category: site```
+* 必传字段：
+  - 知识ID ```topicId: ObjectId```
+  - 所选择的专题ID ```problemSetId: ObjectId```
 
 ## 外循环
 
