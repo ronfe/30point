@@ -46,7 +46,6 @@ var point = new Schema({
         }
     },
     "url": String, //only for pc, the full url
-    "state": {"type": String, enum: ["normal", "lagged"]}, // lagged for app until mobile send points in real time
     "platform": {"type": String, enum: ["web", "app", "share", "landing", "promotion", "vs"]}, //Required
     "platform2": {"type": String, enum: ["PC", "android", "iOS"]}, //Required
     "q": String
