@@ -17,6 +17,7 @@ Last Modified: 15DEC01
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
+  - 进入状态 ```state: String, enum: ['success', 'fail']```
 
 **开始播放视频**  
 
