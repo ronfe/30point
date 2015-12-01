@@ -28,7 +28,7 @@ var point = new Schema({
     },
     "user": ObjectId, //Required when user logged in, its user id
     "userAttr": {
-        "isBatch": Boolean, //Conditional optional, required for login user, True if user is batchly made
+        "type": {type: String, enum: ['signup', 'batch', 'qq']}, //Conditional optional, required for login user, True if user is batchly made
         "isRegistered": Boolean, //Required, True for login user
         "registDate": ISODate, //Conditional optional, required if "isRegistered" is true, user's date of registration
         "activateDate": ISODate, //Conditional
