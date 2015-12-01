@@ -32,7 +32,7 @@ var point = new Schema({
         "isRegistered": Boolean, //Required, True for login user
         "registDate": ISODate, //Conditional optional, required if "isRegistered" is true, user's date of registration
         "activateDate": ISODate, //Conditional
-        "from": String, // Be the same as the user's from (incl. QQ/Weibo/Wechat...)
+        "from": String, // Conditional optional, required if "isRegistered" is true, user's from attr
         "role": {"type": String, "enum": ["teacher", "student"]},
         "ip": String,
         "ipLocation": { // same as header.location in 2.5
