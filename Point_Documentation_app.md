@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (APP)
 
 by ronfe  
-Last Modified: 15NOV30  
+Last Modified: 15DEC02  
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 Mobile App端埋点。  
 
@@ -17,6 +17,7 @@ Last Modified: 15NOV30
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
+  - 进入状态 ```state: String, enum: ['success', 'fail']```
 
 **开始播放视频**  
 
@@ -186,7 +187,7 @@ Last Modified: 15NOV30
 * ```category: site```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
-  - 缓存视频列表 ```videoList: [ObjectId]```
+  - 缓存视频列表 ```videoId: ObjectId```
 
 **缓存失败**  
 
@@ -198,7 +199,7 @@ Last Modified: 15NOV30
 * ```category: site```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
-  - 缓存视频列表 ```videoList: [ObjectId]```
+  - 缓存视频列表 ```videoId: ObjectId```
   - 缓存失败原因 ```errorMessage: String```
 
 ## 练习模块
@@ -213,18 +214,30 @@ Last Modified: 15NOV30
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
+  - 进入状态 state: ```String, enum: ['success', 'fail']```
 
-**开始专题或挑战**  
+**开始专题**  
 
 ---
 
-练习模块页，点击“开始专题”。
+专题引导页，点击“开始专题”。
 
 * ```eventKey: startProblemSet```
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
+
+**开始挑战**  
+
+---
+
+挑战引导页，点击“开始挑战”。
+
+* ```eventKey: startChallenge```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
 
 **退出专题**  
 
@@ -237,7 +250,17 @@ Last Modified: 15NOV30
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
+ 
+**退出挑战**  
 
+---
+
+挑战页，点击左上角退出按钮。
+
+* ```eventKey: quitChallenge```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
 
 **进入题目**  
 
@@ -347,6 +370,28 @@ Last Modified: 15NOV30
 * 必传字段：
   - 专题ID ```problemSetId: ObjectId```
 
+**挑战失败**  
+
+---
+
+挑战页，用户未通过挑战。
+
+* ```eventKey: challengeFailure```
+* ```category: course```
+* 必传字段：
+  - 知识点ID ```topicId: ObjectId```
+
+**挑战通过**  
+
+---
+
+挑战页，用户通过挑战。
+
+* ```eventKey: challengeSuccess```
+* ```category: course```
+* 必传字段：
+  - 知识点ID ```topicId: ObjectId```
+
 **完成练习模块**  
 
 ---
@@ -357,6 +402,18 @@ Last Modified: 15NOV30
 * ```category: course```
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
+
+**弹窗后选择专题**  
+
+---
+
+（适用于用户完成练习模块）知识点滑动页，点击“进入练习模块”，弹出选择专题页面，用户选择某一专题。
+
+* ```eventKey: chooseFinishedProblemSet```
+* ```category: site```
+* 必传字段：
+  - 知识ID ```topicId: ObjectId```
+  - 所选择的专题ID ```problemSetId: ObjectId```
 
 ## 外循环
 
@@ -720,6 +777,61 @@ Last Modified: 15NOV30
 
 * ```eventKey: clickBufferDel```
 * ```category: site```
+
+**缓存管理-点击“正在下载”**  
+
+---
+
+缓存管理页，用户点击“正在下载视频”。
+
+* ```eventKey: clickBufferingZone```
+* ```category: site```
+
+**下载中缓存管理-点击暂停**  
+
+---
+
+下载中缓存管理页，点击”暂停“。
+
+* ```eventKey: clickBufferingPause```
+* ```category: site```
+
+**下载中缓存管理-点击恢复**  
+
+---
+
+下载中缓存管理页，点击”恢复“。
+
+* ```eventKey: clickBufferingResume```
+* ```category: site```
+
+**下载中缓存管理-点击编辑**  
+
+---
+
+下载中缓存管理页，点击”编辑“。
+
+* ```eventKey: clickEditBuffering```
+* ```category: site```
+
+**下载中缓存管理-点击全选**  
+
+---
+
+下载中缓存管理页，点击编辑，再点击”全选“。
+
+* ```eventKey: clickBufferingSelectAll```
+* ```category: site```
+
+**下载中缓存管理-点击删除**  
+
+---
+
+下载中缓存管理页，点击编辑，再点击”删除“。
+
+* ```eventKey: clickBufferingDel```
+* ```category: site```
+
 
 **退出登录**  
 

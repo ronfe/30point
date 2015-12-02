@@ -26,13 +26,13 @@ var point = new Schema({
             "version": String
         }
     },
-    "user": ObjectId, //Required, userId for login user, tempId for non-login user
+    "user": ObjectId, //Required when user logged in, its user id
     "userAttr": {
-        "isBatch": Boolean, //Conditional optional, required for login user, True if user is batchly made
+        "type": {type: String, enum: ['signup', 'batch', 'qq']}, //Conditional optional, required for login user, True if user is batchly made
         "isRegistered": Boolean, //Required, True for login user
         "registDate": ISODate, //Conditional optional, required if "isRegistered" is true, user's date of registration
         "activateDate": ISODate, //Conditional
-        "from": String, // Be the same as the user's from (incl. QQ/Weibo/Wechat...)
+        "from": String, // Conditional optional, required if "isRegistered" is true, user's from attr
         "role": {"type": String, "enum": ["teacher", "student"]},
         "ip": String,
         "ipLocation": { // same as header.location in 2.5
@@ -46,7 +46,6 @@ var point = new Schema({
         }
     },
     "url": String, //only for pc, the full url
-    "state": {"type": String, enum: ["normal", "lagged"]}, // lagged for app until mobile send points in real time
     "platform": {"type": String, enum: ["web", "app", "share", "landing", "promotion", "vs"]}, //Required
     "platform2": {"type": String, enum: ["PC", "android", "iOS"]}, //Required
     "q": String
