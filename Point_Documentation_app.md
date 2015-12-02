@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (APP)
 
 by ronfe  
-Last Modified: 15DEC01  
+Last Modified: 15DEC02  
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 Mobile App端埋点。  
 
@@ -777,6 +777,61 @@ Last Modified: 15DEC01
 
 * ```eventKey: clickBufferDel```
 * ```category: site```
+
+**缓存管理-点击“正在下载”**  
+
+---
+
+缓存管理页，用户点击“正在下载视频”。
+
+* ```eventKey: clickBufferingZone```
+* ```category: site```
+
+**下载中缓存管理-点击暂停**  
+
+---
+
+下载中缓存管理页，点击”暂停“。
+
+* ```eventKey: clickBufferingPause```
+* ```category: site```
+
+**下载中缓存管理-点击恢复**  
+
+---
+
+下载中缓存管理页，点击”恢复“。
+
+* ```eventKey: clickBufferingResume```
+* ```category: site```
+
+**下载中缓存管理-点击编辑**  
+
+---
+
+下载中缓存管理页，点击”编辑“。
+
+* ```eventKey: clickEditBuffering```
+* ```category: site```
+
+**下载中缓存管理-点击全选**  
+
+---
+
+下载中缓存管理页，点击编辑，再点击”全选“。
+
+* ```eventKey: clickBufferingSelectAll```
+* ```category: site```
+
+**下载中缓存管理-点击删除**  
+
+---
+
+下载中缓存管理页，点击编辑，再点击”删除“。
+
+* ```eventKey: clickBufferingDel```
+* ```category: site```
+
 
 **退出登录**  
 
