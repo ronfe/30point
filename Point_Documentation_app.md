@@ -407,13 +407,24 @@ Last Modified: 15DEC02
 
 ---
 
-（适用于用户完成练习模块）知识点滑动页，点击“进入练习模块”，弹出选择专题页面，用户选择某一专题。
+（适用于用户完成练习模块专题）知识点滑动页，点击“进入练习模块”，弹出选择专题页面，用户选择某一专题。
 
 * ```eventKey: chooseFinishedProblemSet```
 * ```category: site```
 * 必传字段：
   - 知识ID ```topicId: ObjectId```
   - 所选择的专题ID ```problemSetId: ObjectId```
+
+**弹窗后选择挑战**  
+
+---
+
+（适用于用户完成练习模块专题）知识点滑动页，点击“进入练习模块”，弹出选择专题页面，用户选择挑战。
+
+* ```eventKey: chooseFinishedChallenge```
+* ```category: site```
+* 必传字段：
+  - 知识ID ```topicId: ObjectId```
 
 ## 外循环
 
