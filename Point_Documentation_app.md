@@ -530,7 +530,7 @@ Last Modified: 15DEC03
 * ```eventKey: clickLoginBtn```
 * ```category: site```
 
-**登录-登录成功**  
+**登录-登录成功**[tested]  
 
 ---
 
@@ -559,7 +559,7 @@ Last Modified: 15DEC03
 * ```eventKey: loginQQ```
 * ```category: site```
 
-**登录-QQ登录成功**  
+**登录-QQ登录成功**[tested]  
 
 ---
 
@@ -579,7 +579,7 @@ Last Modified: 15DEC03
 * 必传字段：
   - 失败原因 ```errorMessage: String```
 
-**登录-切换至注册**  
+**登录-切换至注册**[tested]  
 
 ---
 
@@ -607,7 +607,7 @@ Last Modified: 15DEC03
 * ```eventKey: enterLoginPage```
 * ```category: site```
 
-**注册-切换至登录**  
+**注册-切换至登录**[tested]  
 
 ---
 
@@ -620,12 +620,13 @@ Last Modified: 15DEC03
 
 ---
 
-注册页，用户点选同意洋葱数学用户协议并点选“完成注册”。
+注册页，用户点选同意洋葱数学用户协议并点选“完成注册”。  
+测试Mark: 逐点测试中,此埋点晚于注册成功埋点发送.  
 
 * ```eventKey: clickSignupBtn```
 * ```category: site```
 
-**注册-注册成功**  
+**注册-注册成功**[tested]  
 
 ---
 
@@ -634,7 +635,7 @@ Last Modified: 15DEC03
 * ```eventKey: registSuccess```
 * ```category: site```
 
-**注册-注册失败**  
+**注册-注册失败**[tested]  
 
 ---
 
