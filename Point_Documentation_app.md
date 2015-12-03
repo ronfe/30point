@@ -646,7 +646,7 @@ Last Modified: 15DEC03
 * 必传字段：
   - 失败原因 ```errorMessage: String```
 
-**未登录完成-以后再说**  
+**未登录完成-以后再说**[tested]  
 
 ---
 
@@ -658,7 +658,7 @@ Last Modified: 15DEC03
   - 知识点ID ```topicId: ObjectId```
   - 模块类型 ```type: String, enum: ['learning', 'practice']```
 
-**未登录完成-登录**  
+**未登录完成-登录**[tested]  
 
 ---
 
