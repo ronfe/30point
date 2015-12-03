@@ -485,7 +485,7 @@ Last Modified: 15DEC03
 
 ## 新用户、登录相关
 
-**进入引导页**  
+**进入引导页** [tested] 
 
 ---
 
@@ -507,12 +507,12 @@ Last Modified: 15DEC03
 
 ---
 
-引导页，选择‘注册或登录’[tested]
+引导页，选择‘注册或登录’
 
 * ```eventKey: clickUserLogBtn```
 * ```category: site```
 
-**登录-点击忘记密码**  
+**登录-点击忘记密码**[tested]  
 
 ---
 
@@ -521,7 +521,7 @@ Last Modified: 15DEC03
 * ```eventKey: clickForgetPassword```
 * ```category: site```
 
-**登录-登录**  
+**登录-登录**[tested]  
 
 ---
 
@@ -602,7 +602,7 @@ Last Modified: 15DEC03
 
 ---
 
-注册页，注册页面打开。
+登录页，登录页面打开。
 
 * ```eventKey: enterLoginPage```
 * ```category: site```
@@ -616,11 +616,11 @@ Last Modified: 15DEC03
 * ```eventKey: switchLogin```
 * ```category: site```
 
-**注册-完成注册**  
+**注册-完成注册**[tested]  
 
 ---
 
-注册页，用户点选“完成注册”。
+注册页，用户点选同意洋葱数学用户协议并点选“完成注册”。
 
 * ```eventKey: clickSignupBtn```
 * ```category: site```
