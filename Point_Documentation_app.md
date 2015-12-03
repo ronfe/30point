@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (APP)
 
 by ronfe  
-Last Modified: 15DEC02  
+Last Modified: 15DEC03  
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 Mobile App端埋点。  
 
