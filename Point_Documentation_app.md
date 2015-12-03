@@ -494,7 +494,7 @@ Last Modified: 15DEC02
 * ```eventKey: enterGuidePage```
 * ```category: site```
 
-**立即使用**  
+**立即使用**[tested]  
 
 ---
 
@@ -503,13 +503,13 @@ Last Modified: 15DEC02
 * ```eventKey: clickExperience```
 * ```category: site```
 
-**登录-进登录页面**  
+**引导页-点击"注册或登录"**  
 
 ---
 
-引导页，选择‘注册或登录’
+引导页，选择‘注册或登录’[tested]
 
-* ```eventKey: enterSignupPage```
+* ```eventKey: clickUserLogBtn```
 * ```category: site```
 
 **登录-点击忘记密码**  
@@ -550,7 +550,7 @@ Last Modified: 15DEC02
 * 必传字段：
   - 失败原因 ```errorMessage: String```
 
-**登录-QQ登录**  
+**登录-QQ登录**  [tested]
 
 ---
 
@@ -595,7 +595,16 @@ Last Modified: 15DEC02
 
 注册页，注册页面打开。
 
-* ```eventKey: enterSigninPage```
+* ```eventKey: enterSignupPage```
+* ```category: site```
+
+**登录-进入登录页面**  
+
+---
+
+注册页，注册页面打开。
+
+* ```eventKey: enterLoginPage```
 * ```category: site```
 
 **注册-切换至登录**  
