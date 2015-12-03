@@ -463,7 +463,7 @@ Last Modified: 15DEC03
 	- 章节ID `chapterId: Object`
 	- 进入状态 ```state: String, enum: ['success', 'fail']```
 
-**进入个人中心**
+**进入个人中心**[tested]
 
 ---
 
@@ -473,11 +473,12 @@ Last Modified: 15DEC03
 * ```category: site```
 
 
-**进入设置**
+**进入设置**[pending]
 
 ---
 
-任意位置，用户点击”设置“。
+任意位置，用户点击”设置“。  
+逐点测试Mark: enterSetting 事件重复发,原因是设置页面打开时也会发同样的点,已告知继成删除设置页打开时的埋点.  
 
 * ```eventKey: enterSetting```
 * ```category: site```
