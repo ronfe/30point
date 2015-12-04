@@ -7,7 +7,7 @@ Last Modified: 15DEC04
 
 ## 学习模块    
 
-**点击学习模块**  
+**点击学习模块**[tested]  
 
 ---
 
@@ -19,18 +19,19 @@ Last Modified: 15DEC04
   - 所在知识点ID ```topicId: ObjectId```
   - 进入状态 ```state: String, enum: ['success', 'fail']```
 
-**开始播放视频**  
+**开始播放视频**[pending]  
 
 ---
 
-视频页，视频加载并开始播放。
+视频页，视频加载并开始播放。   
+逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: startVideo```
 * ```category: video```
 * 必传字段：
   - 视频ID ```videoId: ObjectId```
 
-**暂停视频**  
+**暂停视频**[tested]  
 
 ---
 
@@ -43,7 +44,7 @@ Last Modified: 15DEC04
   - 视频ID ```videoId: ObjectId```
   - 用户暂停时的时间戳 ```pauseTime: Number```
 
-**恢复播放视频**  
+**恢复播放视频**[tested]  
 
 ---
 
@@ -55,7 +56,7 @@ Last Modified: 15DEC04
   - 视频ID ```videoId: ObjectId```
   - 用户点击播放按钮时的时间戳 ```resumeTime: ISODate```
 
-**分享视频**  
+**分享视频**[tested]  
 
 ---
 
@@ -67,7 +68,7 @@ Last Modified: 15DEC04
   - 视频ID ```videoId: ObjectId```
   - （未载于埋点文档）用户分享平台 ```sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencentWeibo']```
 
-**视频交互**  
+**视频交互**[tested]  
 
 ---
 
@@ -80,11 +81,12 @@ Last Modified: 15DEC04
   - 交互ID ```interactionId: ObjectId```
   - 用户答案 ```answer: String```
 
-**拖动视频**  
+**拖动视频**[pending]  
 
 ---
 
-视频播放页面，用户拖动视频进度条。
+视频播放页面，用户拖动视频进度条。 
+逐点测试Mark: dragDirection方向发错,由前向后应为forward,由后向前应为backward
 
 * ```eventKey: dragVideo```
 * ```category: video```
@@ -94,11 +96,12 @@ Last Modified: 15DEC04
   - 拖动时视频时间戳 ```fromTimeStamp: TimeStamp```
   - 拖动至视频时间戳 ```toTimeStamp: TimeStamp```
 
-**完成视频**  
+**完成视频**[tested]  
 
 ---
 
-用户完成观看视频。
+用户完成观看视频。  
+逐点测试Mark: 实际在片尾开始的时候就发送了本埋点.  
 
 * ```eventKey: finishVideo```
 * ```category: video```
@@ -118,7 +121,7 @@ Last Modified: 15DEC04
   - 退出视频模块前所完成的视频ID ```videoId: ObjectId```
   - 所退出的学习模块知识点ID ```topicId: ObjectId```
 
-**弹窗后选择视频**  
+**弹窗后选择视频**[tested]  
 
 ---
 
@@ -130,18 +133,19 @@ Last Modified: 15DEC04
   - 知识ID ```topicId: ObjectId```
   - 所选择的视频ID ```videoId: ObjectId```
 
-**完成学习模块**  
+**完成学习模块**[pending]  
 
 ---
 
-用户完成视频，弹出视频完成页面。
+用户完成视频，弹出视频完成页面。  
+逐点测试Mark: 多视频学习模块,一次性完成到最后一个视频,视频结束后无法弹出学习完成页.其他情形已测.  
 
 * ```eventKey: completeLearning```
 * ```category: course```
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
 
-**退出视频**  
+**退出视频**[tested]  
 
 ---
 
@@ -153,7 +157,7 @@ Last Modified: 15DEC04
   - 视频ID ```videoId: ObjectId```
   - 退出时的视频时间戳 ```quitTimeStamp: TimeStamp```
 
-**点击缓存**  
+**点击缓存**[tested]  
 
 ---
 
@@ -164,11 +168,11 @@ Last Modified: 15DEC04
 * 必传字段：
   - 视频ID ```videoId: ObjectId```
 
-**点击开始缓存**  
+**点击开始缓存**[tested]  
 
 ---
 
-知识点滑动页，点击右上角缓存按钮。
+知识点滑动页，点击右上角缓存按钮,再点击"缓存"。
 
 * ```eventKey: startBuffer```
 * ```category: site```
@@ -177,7 +181,7 @@ Last Modified: 15DEC04
   - 缓存视频数量 ```bufferVideos: Number```
   - 缓存视频ID列表 ```videoList: [ObjectId]```
 
-**缓存成功**  
+**缓存成功**[tested]  
 
 ---
 
@@ -204,7 +208,7 @@ Last Modified: 15DEC04
 
 ## 练习模块
 
-**点击练习模块**  
+**点击练习模块**[tested]  
 
 ---
 
@@ -216,7 +220,7 @@ Last Modified: 15DEC04
   - 所在知识点ID ```topicId: ObjectId```
   - 进入状态 state: ```String, enum: ['success', 'fail']```
 
-**开始专题**  
+**开始专题**[tested]  
 
 ---
 
@@ -428,18 +432,19 @@ Last Modified: 15DEC04
 
 ## 外循环
 
-**点击打开某章节**
+**点击打开某章节**[pending]
 
 ---
 
-外循环页，用户点击打开某章节按钮。
+外循环页，用户点击打开某章节按钮。  
+逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: startChapter```
 * ```category: site```
 * 必传字段：
 	- 章节ID ```chapterId: ObjectId```
 
-**点击进入知识点**
+**点击进入知识点**[tested]
 
 ---
 
@@ -451,7 +456,7 @@ Last Modified: 15DEC04
 	- 知识点ID `topicId: ObjectId`
 	- 进入状态 ```state: String, enum: ['success', 'fail']```
 
-**点击进入观看引入视频**
+**点击进入观看引入视频**[tested]
 
 ---
 
