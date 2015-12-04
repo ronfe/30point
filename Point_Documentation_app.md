@@ -699,14 +699,22 @@ Last Modified: 15DEC04
 * 必传字段：
   - 用户所选的教材ID ```newBookId: ObjectId```
 
-**切换年级**[pending]  
+**点击切换年级**  
 
 ---
 
-设置页，用户选择”年级“，并选择其一。  
-逐点测试Mark: 此点埋错位置,应是设置中心点击"年级",实际是点击年级后点击某个年级发送.  
+设置页，用户选择”年级“。
 
-* ```eventKey: switchGrade```
+* ```eventKey: clickSwitchGrade```
+* ```category: site```
+
+**切换年级成功** 
+
+---
+
+设置页，用户选择”年级“并选择后切换成功。
+
+* ```eventKey: switchGradeSuccess```
 * ```category: site```
 * 必传字段：
   - 用户所选的年级ID ```newGradeId: ObjectId```
