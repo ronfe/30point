@@ -19,12 +19,11 @@ Last Modified: 15DEC04
   - 所在知识点ID ```topicId: ObjectId```
   - 进入状态 ```state: String, enum: ['success', 'fail']```
 
-**开始播放视频**[pending]  
+**开始播放视频**[tested]  
 
 ---
 
 视频页，视频加载并开始播放。   
-逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: startVideo```
 * ```category: video```
