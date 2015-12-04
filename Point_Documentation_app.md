@@ -387,12 +387,11 @@ Last Modified: 15DEC04
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
 
-**挑战通过**[pending]  
+**挑战通过**[tested]  
 
 ---
 
 挑战页，用户通过挑战。   
-逐点测试Mark: 未触此埋点．　　
 
 * ```eventKey: challengeSuccess```
 * ```category: course```
