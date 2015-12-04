@@ -84,8 +84,8 @@ Last Modified: 15DEC04
 
 ---
 
-视频播放页面，用户拖动视频进度条。 
-逐点测试Mark: dragDirection方向发错,由前向后应为forward,由后向前应为backward
+视频播放页面，用户拖动视频进度条。由左向右为forward，由右向左为backward． 
+逐点测试Mark: dragDirection方向发错,由向后应为forward,由后向前应为backward
 
 * ```eventKey: dragVideo```
 * ```category: video```
