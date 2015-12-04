@@ -80,12 +80,11 @@ Last Modified: 15DEC04
   - 交互ID ```interactionId: ObjectId```
   - 用户答案 ```answer: String```
 
-**拖动视频**[pending]  
+**拖动视频**[tested]  
 
 ---
 
 视频播放页面，用户拖动视频进度条。由左向右为forward，由右向左为backward． 
-逐点测试Mark: dragDirection方向发错,由向后应为forward,由后向前应为backward
 
 * ```eventKey: dragVideo```
 * ```category: video```
@@ -431,12 +430,11 @@ Last Modified: 15DEC04
 
 ## 外循环
 
-**点击打开某章节**[pending]
+**点击打开某章节**[tested]
 
 ---
 
 外循环页，用户点击打开某章节按钮。  
-逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: startChapter```
 * ```category: site```
@@ -544,11 +542,11 @@ Last Modified: 15DEC04
 * ```eventKey: loginSuccess```
 * ```category: site```
 
-**登录-登录失败**  
+**登录-登录失败**[tested]  
 
 ---
 
-登录页，用户登录失败。
+登录页，用户登录失败，发请求后登录失败。
 
 * ```eventKey: loginFailure```
 * ```category: site```
@@ -573,7 +571,7 @@ Last Modified: 15DEC04
 * ```eventKey: qqLoginSuccess```
 * ```category: site```
 
-**登录-QQ登录失败**  
+**登录-QQ登录失败**[tested]  
 
 ---
 
@@ -594,7 +592,7 @@ Last Modified: 15DEC04
 * ```category: site```
 
 
-**注册-进入注册页面**  
+**注册-进入注册页面**[tested]  
 
 ---
 
@@ -603,7 +601,7 @@ Last Modified: 15DEC04
 * ```eventKey: enterSignupPage```
 * ```category: site```
 
-**登录-进入登录页面**  
+**登录-进入登录页面**[tested]  
 
 ---
 
@@ -886,7 +884,6 @@ Last Modified: 15DEC04
 ---
 
 我的页，选择”我的目标“并成功变更。  
-逐点测试Mark: 只有在用户**更改**每周目标时才会触发,用户初设置目标时不会触发.  
 
 * ```eventKey: changePersonalGoal```
 * ```category: site```
