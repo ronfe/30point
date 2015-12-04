@@ -230,7 +230,7 @@ Last Modified: 15DEC04
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
 
-**开始挑战**  
+**开始挑战**[tested]  
 
 ---
 
@@ -241,7 +241,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
 
-**退出专题**  
+**退出专题**[tested]  
 
 ---
 
@@ -264,7 +264,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
 
-**进入题目**  
+**进入题目**[tested]  
 
 ---
 
@@ -275,11 +275,12 @@ Last Modified: 15DEC04
 * 必传字段：
   - 问题ID ```problemId: ObjectId```
 
-**答题**  
+**答题**[pending]  
 
 ---
 
-专题或挑战页，开始选择选项（选择）或开始输入第一个字符（填空）。
+专题或挑战页，开始选择选项（选择）或开始输入第一个字符（填空）。  
+逐点测试Mark：eventValue里没有传用户选择．　　
 
 * ```eventKey: answerProblem```
 * ```category: problem```
@@ -287,11 +288,12 @@ Last Modified: 15DEC04
   - 问题ID ```problemId: ObjectId```
   - 用户选择选项 ```userChoice: String```
 
-**修改选项**  
+**修改选项**[pending]  
 
 ---
 
-（仅用于选择题）题目页，用户重新选择选项。
+（仅用于选择题）题目页，用户重新选择选项。  
+逐点测试Mark：在用户第一次答题时不触发此事件．　　
 
 * ```eventKey: modifyChoice```
 * ```category: problem```
@@ -299,7 +301,7 @@ Last Modified: 15DEC04
   - 问题ID ```problemId: ObjectId```
   - 用户新选择选项 ```userChoice: String```
 
-**提交答案**  
+**提交答案**[tested]  
 
 ---
 
@@ -325,7 +327,7 @@ Last Modified: 15DEC04
   - 问题ID ```problemId: ObjectId```
   - 题目状态 ```problemState: String enum: ['answering', 'correct', 'incorrect']```
 
-**进入下一题**  
+**进入下一题**[tested]  
 
 ---
 
@@ -336,11 +338,12 @@ Last Modified: 15DEC04
 * 必传字段：
   - 当前问题ID ```problemId: ObjectId```
 
-**退出题目**  
+**退出题目**[pending]  
 
 ---
 
-题目页，点击左上角退出按钮。
+题目页，点击左上角退出按钮。  
+逐点测试Mark: 退出按钮点击后，会有一个弹窗，目前都埋了点．
 
 * ```eventKey: quitProblem```
 * ```category: problem```
@@ -350,7 +353,7 @@ Last Modified: 15DEC04
   - 所在层数 ```layer: String```
   - 所在题目ID ```problemId: ObjectId```
 
-**专题失败**  
+**专题失败**[tested]  
 
 ---
 
@@ -361,7 +364,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 专题ID ```problemSetId: ObjectId```
 
-**专题通过**  
+**专题通过**[tested]  
 
 ---
 
@@ -372,7 +375,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 专题ID ```problemSetId: ObjectId```
 
-**挑战失败**  
+**挑战失败**[tested]  
 
 ---
 
@@ -383,18 +386,19 @@ Last Modified: 15DEC04
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
 
-**挑战通过**  
+**挑战通过**[pending]  
 
 ---
 
-挑战页，用户通过挑战。
+挑战页，用户通过挑战。   
+逐点测试Mark: 未触此埋点．　　
 
 * ```eventKey: challengeSuccess```
 * ```category: course```
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
 
-**完成练习模块**  
+**完成练习模块**[tested]  
 
 ---
 
@@ -405,7 +409,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 知识点ID ```topicId: ObjectId```
 
-**弹窗后选择专题**  
+**弹窗后选择专题**[tested]  
 
 ---
 
@@ -417,7 +421,7 @@ Last Modified: 15DEC04
   - 知识ID ```topicId: ObjectId```
   - 所选择的专题ID ```problemSetId: ObjectId```
 
-**弹窗后选择挑战**  
+**弹窗后选择挑战**[tested]  
 
 ---
 
