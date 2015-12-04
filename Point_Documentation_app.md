@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (APP)
 
 by ronfe  
-Last Modified: 15DEC03  
+Last Modified: 15DEC04  
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 Mobile App端埋点。  
 
@@ -673,16 +673,17 @@ Last Modified: 15DEC03
 
 ## 设置
 
-**点击切换教材**  
+**点击切换教材**[pending]  
 
 ---
 
 设置页，用户选择”教材“。
+逐点测试Mark: 此点埋错位置,应是设置中心点击"教材",实际是点击教材后点击某个教材版本发送.
 
 * ```eventKey: clickSwitchBook```
 * ```category: site```
 
-**切换教材成功**  
+**切换教材成功**[tested]  
 
 ---
 
@@ -693,13 +694,14 @@ Last Modified: 15DEC03
 * 必传字段：
   - 用户所选的教材ID ```newBookId: ObjectId```
 
-**切换年级**  
+**切换年级**[pending]  
 
 ---
 
-设置页，用户选择”年级“，并选择其一。
+设置页，用户选择”年级“，并选择其一。  
+逐点测试Mark: 此点埋错位置,应是设置中心点击"年级",实际是点击年级后点击某个年级发送.  
 
-* ```eventKey: switchGrage```
+* ```eventKey: switchGrade```
 * ```category: site```
 * 必传字段：
   - 用户所选的年级ID ```newGradeId: ObjectId```
