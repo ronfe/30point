@@ -107,11 +107,11 @@ Last Modified: 15DEC04
   - 视频ID ```videoId: ObjectId```
 
 
-**退出学习模块**  
+**退出学习模块**[tested]  
 
 ---
 
-（适用于多视频学习模块）视频完成页，用户中途退出视频。
+（适用于多视频学习模块）视频完成页，用户选择退出学习。
 
 * ```eventKey: quitLearning```
 * ```category: course```
