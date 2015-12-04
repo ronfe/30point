@@ -684,7 +684,6 @@ Last Modified: 15DEC04
 ---
 
 设置页，用户选择”教材“。
-逐点测试Mark: 此点埋错位置,应是设置中心点击"教材",实际是点击教材后点击某个教材版本发送.
 
 * ```eventKey: clickSwitchBook```
 * ```category: site```
