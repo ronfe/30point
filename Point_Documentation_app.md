@@ -706,49 +706,53 @@ Last Modified: 15DEC04
 * 必传字段：
   - 用户所选的年级ID ```newGradeId: ObjectId```
 
-**更改网络环境设置**  
+**更改网络环境设置**[tested] 
 
 ---
 
-设置页，用户更改”使用2G/3G/4G网络“开关。
+设置页，用户更改”使用2G/3G/4G网络“开关。  
+逐点测试Mark: 此点在用户更改开关时不会立即生成,当用户返回设置页面后再生成.  
 
 * ```eventKey: switchNetworkConfig```
 * ```category: site```
 * 必传字段：
   - 用户更改后的开关状态 ```networkConfig: Boolean```
 
-**分享**  
+**分享**[pending]  
 
 ---
 
-设置页，用户选择”分享“。
+设置页，用户选择”分享“。  
+逐点测试Mark: 分享到微信好友与分享到微信朋友圈eventValue混淆, 微信好友为wechatIM, 微信朋友圈为wechatShare. 
 
 * ```eventKey: clickShareApp```
 * ```category: site```
 * 必传字段：
-  - （未载于埋点文档）用户分享平台 sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencentWeibo']
+  - （未载于埋点文档）用户分享平台 sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencent']
 
-**评分**  
+**评分**[pending]  
 
 ---
 
-（适用于iOS应用）设置页，用户选择”给洋葱数学评分“。
+（适用于iOS应用）设置页，用户选择”给洋葱数学评分“。  
+逐点测试Mark: 该埋点一次发2个.
 
 * ```eventKey: clickRateApp```
 * ```category: site```
 
-**消息推送**  
+**消息推送**[tested]  
 
 ---
 
-设置页，用户更改”消息推送“开关。
+设置页，用户更改”消息推送“开关。  
+逐点测试Mark: 此点在用户更改开关时不会立即生成,当用户返回设置页面后再生成.  
 
 * ```eventKey: switchNotification```
 * ```category: site```
 * 必传字段：
   - 用户更改后的开关状态 ```notificationConfig: Boolean```
 
-**用户反馈**  
+**用户反馈**[tested]  
 
 ---
 
@@ -757,7 +761,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickFeedback```
 * ```category: site```
 
-**用户发送反馈**  
+**用户发送反馈**[tested]  
 
 ---
 
@@ -766,7 +770,7 @@ Last Modified: 15DEC04
 * ```eventKey: sendFeedback```
 * ```category: site```
 
-**缓存管理**  
+**缓存管理**[tested]  
 
 ---
 
@@ -775,7 +779,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferManagement```
 * ```category: site```
 
-**缓存管理-点击编辑**  
+**缓存管理-点击编辑**[tested]  
 
 ---
 
@@ -784,7 +788,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickEditBuffer```
 * ```category: site```
 
-**缓存管理-点击全选**  
+**缓存管理-点击全选**[tested]  
 
 ---
 
@@ -793,7 +797,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferSelectAll```
 * ```category: site```
 
-**缓存管理-点击删除**  
+**缓存管理-点击删除**[tested]  
 
 ---
 
@@ -802,7 +806,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferDel```
 * ```category: site```
 
-**缓存管理-点击“正在下载”**  
+**缓存管理-点击“正在下载”**[tested]  
 
 ---
 
@@ -811,25 +815,27 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferingZone```
 * ```category: site```
 
-**下载中缓存管理-点击暂停**  
+**下载中缓存管理-点击暂停**[pending]  
 
 ---
 
-下载中缓存管理页，点击”暂停“。
+下载中缓存管理页，点击”暂停“。 
+逐点测试Mark: 测试无法触发.
 
 * ```eventKey: clickBufferingPause```
 * ```category: site```
 
-**下载中缓存管理-点击恢复**  
+**下载中缓存管理-点击恢复**[pending]  
 
 ---
 
-下载中缓存管理页，点击”恢复“。
+下载中缓存管理页，点击”恢复“。  
+逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: clickBufferingResume```
 * ```category: site```
 
-**下载中缓存管理-点击编辑**  
+**下载中缓存管理-点击编辑**[tested]  
 
 ---
 
@@ -838,7 +844,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickEditBuffering```
 * ```category: site```
 
-**下载中缓存管理-点击全选**  
+**下载中缓存管理-点击全选**[tested]  
 
 ---
 
@@ -847,7 +853,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferingSelectAll```
 * ```category: site```
 
-**下载中缓存管理-点击删除**  
+**下载中缓存管理-点击删除**[tested]  
 
 ---
 
@@ -857,7 +863,7 @@ Last Modified: 15DEC04
 * ```category: site```
 
 
-**退出登录**  
+**退出登录**[tested]  
 
 ---
 
@@ -866,18 +872,19 @@ Last Modified: 15DEC04
 * ```eventKey: clickLogout```
 * ```category: site```
 
-**变更目标**  
+**变更目标**[tested]  
 
 ---
 
-我的页，选择”我的目标“并成功变更。
+我的页，选择”我的目标“并成功变更。  
+逐点测试Mark: 只有在用户**更改**每周目标时才会触发,用户初设置目标时不会触发.  
 
 * ```eventKey: changePersonalGoal```
 * ```category: site```
 * 必传字段
   - 用户变更后的目标 ```newGoal: String, enum: ['standard', 'advanced']```
  
-**进入商店**  
+**进入商店**[tested]  
 
 ---
 
@@ -886,18 +893,18 @@ Last Modified: 15DEC04
 * ```eventKey: enterShop```
 * ```category: site```
 
-**兑换头像**  
+**兑换头像**[tested]  
 
 ---
 
-我的页，用户进入洋葱商店，兑换任一头像。
+我的页，用户进入洋葱商店，点击兑换任一头像。
 
 * ```eventKey: changeProfileAvatar```
 * ```category: site```
 * 必传字段：
-  - 用户兑换之头像ID ```newAvatarId: ObjectId```
+  - 用户兑换之头像ID ```newAvatarId: String```
 
-**兑换头像成功**  
+**兑换头像成功**[tested]  
 
 ---
 
