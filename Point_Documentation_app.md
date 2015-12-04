@@ -677,7 +677,7 @@ Last Modified: 15DEC04
 
 ## 设置
 
-**点击切换教材**[pending]  
+**点击切换教材**[tested]  
 
 ---
 
@@ -698,7 +698,7 @@ Last Modified: 15DEC04
 * 必传字段：
   - 用户所选的教材ID ```newBookId: ObjectId```
 
-**点击切换年级**  
+**点击切换年级**[tested]  
 
 ---
 
@@ -707,7 +707,7 @@ Last Modified: 15DEC04
 * ```eventKey: clickSwitchGrade```
 * ```category: site```
 
-**切换年级成功** 
+**切换年级成功**[tested] 
 
 ---
 
@@ -730,12 +730,11 @@ Last Modified: 15DEC04
 * 必传字段：
   - 用户更改后的开关状态 ```networkConfig: Boolean```
 
-**分享**[pending]  
+**分享**[tested]  
 
 ---
 
 设置页，用户选择”分享“。  
-逐点测试Mark: 分享到微信好友与分享到微信朋友圈eventValue混淆, 微信好友为wechatIM, 微信朋友圈为wechatShare. 
 
 * ```eventKey: clickShareApp```
 * ```category: site```
@@ -827,22 +826,20 @@ Last Modified: 15DEC04
 * ```eventKey: clickBufferingZone```
 * ```category: site```
 
-**下载中缓存管理-点击暂停**[pending]  
+**下载中缓存管理-点击暂停**[tested]  
 
 ---
 
 下载中缓存管理页，点击”暂停“。 
-逐点测试Mark: 测试无法触发.
 
 * ```eventKey: clickBufferingPause```
 * ```category: site```
 
-**下载中缓存管理-点击恢复**[pending]  
+**下载中缓存管理-点击恢复**[tested]  
 
 ---
 
 下载中缓存管理页，点击”恢复“。  
-逐点测试Mark: 测试无法触发.  
 
 * ```eventKey: clickBufferingResume```
 * ```category: site```
