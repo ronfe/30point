@@ -315,7 +315,7 @@ Last Modified: 15DEC04
   - 用户选择选项 ```answer: String```
   - 用户选择正误 ```correctness: Boolean```
 
-**视频讲解**  
+**视频讲解**[tested]  
 
 ---
 
