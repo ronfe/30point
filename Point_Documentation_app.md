@@ -253,11 +253,12 @@ Last Modified: 15DEC04
   - 所在知识点ID ```topicId: ObjectId```
   - 所在专题ID ```problemSetId: ObjectId```
  
-**退出挑战**  
+**退出挑战**[pending]  
 
 ---
 
-挑战页，点击左上角退出按钮。
+挑战页，点击左上角退出按钮。  
+逐点测试Mark: 未触发．　　
 
 * ```eventKey: quitChallenge```
 * ```category: course```
