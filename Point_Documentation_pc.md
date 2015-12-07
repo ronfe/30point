@@ -241,7 +241,7 @@ Last Modified: 15NOV24
 * ```eventKey: loginFailure```
 * ```category: site```
 * 必传字段：
-  - 登录失败原因  ```String```
+  - 登录失败原因  ```errorMessage: String```
 
 **注册页-进入注册页面**
 
