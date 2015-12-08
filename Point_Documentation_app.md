@@ -265,6 +265,30 @@ Last Modified: 15DEC04
 * 必传字段：
   - 所在知识点ID ```topicId: ObjectId```
 
+**退出专题题目**[tested]  
+
+---
+
+专题题目页，点击左上角退出按钮。
+
+* ```eventKey: terminateProblemSet```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
+  - 所在专题ID ```problemSetId: ObjectId```
+ 
+**退出挑战题目**[pending]  
+
+---
+
+挑战题目页，点击左上角退出按钮。  
+逐点测试Mark: 未触发．　　
+
+* ```eventKey: terminateChallenge```
+* ```category: course```
+* 必传字段：
+  - 所在知识点ID ```topicId: ObjectId```
+
 **进入题目**[tested]  
 
 ---
