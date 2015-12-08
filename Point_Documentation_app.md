@@ -105,6 +105,7 @@ Last Modified: 15DEC08
 * ```category: video```
 * 必传字段：
   - 视频ID ```videoId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
 
 **退出学习模块**[tested]  
@@ -398,6 +399,7 @@ Last Modified: 15DEC08
 * ```category: course```
 * 必传字段：
   - 专题ID ```problemSetId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
 **挑战失败**[tested]  
 
