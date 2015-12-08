@@ -339,12 +339,11 @@ Last Modified: 15DEC04
 * 必传字段：
   - 当前问题ID ```problemId: ObjectId```
 
-**退出题目**[pending]  
+**退出题目**[tested]  
 
 ---
 
 题目页，点击左上角退出按钮。  
-逐点测试Mark: 退出按钮点击后，会有一个弹窗，目前都埋了点．
 
 * ```eventKey: quitProblem```
 * ```category: problem```
