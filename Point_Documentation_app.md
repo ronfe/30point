@@ -59,7 +59,8 @@ Last Modified: 15DEC08
 
 ---
 
-视频播放时，用户点击右上角视频按钮。
+视频播放时，用户点击右上角视频按钮。  
+注：安卓app埋点```sharePlatform```值为```"unknown"```。  
 
 * ```eventKey: shareVideo```
 * ```category: site```
@@ -801,7 +802,8 @@ Last Modified: 15DEC08
 
 ---
 
-设置页，用户选择”用户反馈“后点击“发送”。
+设置页，用户选择”用户反馈“后点击“发送”。  
+注：安卓端app无此埋点  
 
 * ```eventKey: sendFeedback```
 * ```category: site```
