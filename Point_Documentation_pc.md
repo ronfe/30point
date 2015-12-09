@@ -1089,7 +1089,7 @@ Last Modified: 15DEC09
 
 专题页，用户未通过挑战
 
-* ```eventKey: problemSetFailure```
+* ```eventKey: challengeFailure```
 * ```category: course```
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
