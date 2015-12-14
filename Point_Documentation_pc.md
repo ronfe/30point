@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (PC)
 
 by ronfe  
-Last Modified: 15DEC09  
+Last Modified: 15DEC14 
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 PC端埋点。  
 
@@ -227,9 +227,27 @@ Last Modified: 15DEC09
 
 ---
 
-登录页，用户登录成功
+登录页，用户登录成功 (此埋点发送GA)
 
 * ```eventKey: loginSuccess```
+* ```category: site```
+
+**登录页-未登录活跃**
+
+---
+
+用户无需登录即进入循环。(此埋点发送GA)
+
+* ```eventKey: userVigoured```
+* ```category: site```
+
+**登录页-批量创建用户激活**
+
+---
+
+登录页，批量创建用户首次登录。（此埋点发送GA）
+
+* ```eventKey: userActivate```
 * ```category: site```
 
 **登录页-登录失败**
@@ -274,7 +292,7 @@ Last Modified: 15DEC09
 
 ---
 
-注册页，用户注册成功
+注册页，用户注册成功 （此埋点发送GA）
 
 * ```eventKey: signupSuccess```
 * ```category: site```
