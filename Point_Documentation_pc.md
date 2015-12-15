@@ -404,7 +404,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickMistackLog```
 * ```category: site```
 
-**外循环页-打开章节**
+**外循环页-打开章节**[tested]
 
 ---
 
@@ -415,7 +415,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 章节ID  ```chapterId: ObjectId```
 
-**外循环页-进入知识点**
+**外循环页-进入知识点**[tested]
 
 ---
 
@@ -426,7 +426,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
 
-**外循环页-引入视频**
+**外循环页-引入视频**[tested]
 
 ---
 
@@ -437,7 +437,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 章节ID  ```chapterId: ObjectId```
 
-**外循环页-商店**
+**外循环页-商店**[tested]
 
 ---
 
@@ -446,7 +446,7 @@ Last Modified: 15DEC14
 * ```eventKey: enterShop```
 * ```category: site```
 
-**外循环页-兑换头像**
+**外循环页-兑换头像**[tested]
 
 ---
 
@@ -457,7 +457,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户兑换之头像ID  ```newAvatarId: ObjectId```
 
-**外循环页-兑换头像成功**
+**外循环页-兑换头像成功**[tested]
 
 ---
 
@@ -468,7 +468,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户兑换之头像ID  ```newAvatarId: ObjectId```
 
-**外循环页-关注我们**
+**外循环页-关注我们**[tested]
 
 ---
 
@@ -479,7 +479,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户所关注的社交媒体  ```followPlatform: String, enum: ['qqGroup', 'wechat', 'weibo']```
 
-**外循环页-目标**
+**外循环页-目标**[tested]
 
 ---
 
@@ -490,7 +490,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户变更后的目标  ```newGoal: String, enum: ['standard', 'advanced']```
 
-**设置-外循环切换教材**
+**设置-外循环切换教材**[tested]
 
 ---
 
@@ -499,7 +499,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickSwitchBook```
 * ```category: site```
 
-**外循环-切换教材成功**
+**外循环-切换教材成功**[tested]
 
 ---
 
@@ -510,16 +510,16 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户所选的教材ID ```newBookId: ObjectId```
 
-**设置-外循环切换年级**
+**设置-外循环切换年级**[tested]
 
 ---
 
 设置页，用户选择”年级“，并选择其一
 
-* ```eventKey: clickSwitchGrage```
+* ```eventKey: clickSwitchGrade```
 * ```category: site```
 
-**设置-切换年级成功**
+**设置-切换年级成功**[tested]
 
 ---
 
@@ -530,7 +530,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 用户选择年级ID  ```newGradeId: ObjectId```
 
-**设置-进入个人中心**
+**设置-进入个人中心**[tested]
 
 ---
 
@@ -539,7 +539,7 @@ Last Modified: 15DEC14
 * ```eventKey: enterMyProfile```
 * ```category: site```
 
-**设置-退出登录**
+**设置-退出登录**[tested]
 
 ---
 
@@ -548,7 +548,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickLogout```
 * ```category: site```
 
-**设置-进入密码修改**
+**设置-进入密码修改**[tested]
 
 ---
 
@@ -557,7 +557,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickModifyPassword```
 * ```category: site```
 
-**设置-成功修改密码**
+**设置-成功修改密码**[tested]
 
 ---
 
@@ -566,7 +566,7 @@ Last Modified: 15DEC14
 * ```eventKey: modifyPasswordSuccess```
 * ```category: site```
 
-**设置-进入我的班级**
+**设置-进入我的班级**[tested]
 
 ---
 
@@ -595,7 +595,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 失败原因  ```joinClassFailedReason: String```
 
-**设置-进入社交账户绑定**
+**设置-进入社交账户绑定**[tested]
 
 ---
 
@@ -615,7 +615,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickBindSuccess```
 * ```category: site```
 
-**设置-邮箱添加或变更**
+**设置-邮箱添加或变更**[tested]
 
 ---
 
@@ -624,7 +624,7 @@ Last Modified: 15DEC14
 * ```eventKey: changeMailAddress```
 * ```category: site```
 
-**设置-手机号添加或变更**
+**设置-手机号添加或变更**[tested]
 
 ---
 
@@ -633,7 +633,7 @@ Last Modified: 15DEC14
 * ```eventKey: changePhoneNum```
 * ```category: site```
 
-**设置-姓名添加或变更**
+**设置-姓名添加或变更**[tested]
 
 ---
 
@@ -642,7 +642,7 @@ Last Modified: 15DEC14
 * ```eventKey: changeUserName```
 * ```category: site```
 
-**设置-性别添加或变更**
+**设置-性别添加或变更**[tested]
 
 ---
 
@@ -653,7 +653,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 更改后的性别  ```newGender: String enum:['male','female']```
 
-**设置-点击查找学校**
+**设置-点击查找学校**[tested]
 
 ---
 
@@ -662,7 +662,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickFindSchool```
 * ```category: site```
 
-**设置-选中一个学校**
+**设置-选中一个学校**[tested]
 
 ---
 
@@ -673,7 +673,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 选中学校ID  ```newSchoolId: ObjectId```
 
-**设置-点击“没有我的学校”**
+**设置-点击“没有我的学校”**[tested]
 
 ---
 
@@ -682,18 +682,19 @@ Last Modified: 15DEC14
 * ```eventKey: mySchoolNotExist```
 * ```category: site```
 
-**设置-输入学校名称**
+**设置-输入学校名称**[tested]
 
 ---
 
 没有学校用户自己新建的学校
+埋点测试Mark: 点击保存后触发
 
 * ```eventKey: enterSchoolName```
 * ```category: site```
 * 必传字段：
   - 新的学校ID  ```newSchoolId: ObjectId```
 
-**设置-保存更改**
+**设置-保存更改**[tested]
 
 ---
 
@@ -704,7 +705,7 @@ Last Modified: 15DEC14
 
 ## 知识点页
 
-**知识点页-点击学习模块**
+**知识点页-点击学习模块**[pending]
 
 ---
 
@@ -715,7 +716,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所在知识点ID  ```topicId: ObjectId```
 
-**练习模块-点击练习模块**
+**练习模块-点击练习模块**[pending]
 
 ---
 
@@ -728,7 +729,7 @@ Last Modified: 15DEC14
 
 ## 学习模块
 
-**视频页-开始**
+**视频页-开始**[tested]
 
 ---
 
@@ -739,7 +740,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 视频ID  ```videoId: ObjectId```
 
-**视频页-暂停**
+**视频页-暂停**[tested]
 
 ---
 
@@ -751,7 +752,7 @@ Last Modified: 15DEC14
   - 视频ID  ```videoId: ObjectId```
   - 用户暂停时的视频时间戳（毫秒单位，下同）  ```pauseTime: Number```
 
-**视频页-恢复**
+**视频页-恢复**[tested]
 
 ---
 
@@ -763,7 +764,7 @@ Last Modified: 15DEC14
   - 视频ID  ```videoId: ObjectId```
   - 用户点击播放时的视频时间戳  ```resumeTime: Number```
 
-**视频页-回退**
+**视频页-回退**[tested]
 
 ---
 
@@ -775,7 +776,7 @@ Last Modified: 15DEC14
   - 视频ID  ```videoId: ObjectId```
   - 用户回退前所在的视频时间戳  ```fromTimeStamp: Number```
 
-**视频页-全屏**
+**视频页-全屏**[tested]
 
 ---
 
@@ -800,7 +801,7 @@ Last Modified: 15DEC14
   - 视频ID  ```videoId: ObjectId```
   - 用户分享平台(QQ/QQ空间/微博/微信/微信朋友圈/腾讯微博)  ```sharePlatform: String, enum: ['qq', 'qzone', "weibo", "wechatIM", "wechatShare", 'tencentWeibo']```
 
-**视频页-交互**
+**视频页-交互**[tested]
 
 ---
 
@@ -814,7 +815,7 @@ Last Modified: 15DEC14
   - 交互点弹出时刻  ```startTime: ISODate```
   - 用户答案  ```answer: String```
 
-**视频页-拖动**
+**视频页-拖动**[pending]
 
 ---
 
@@ -828,7 +829,7 @@ Last Modified: 15DEC14
   - 拖动时视频时间戳  ```fromTimeStamp: Number```
   - 拖动至视频时间戳  ```toTimeStamp: Number```
 
-**视频页-开始巩固**
+**视频页-开始巩固**[tested]
 
 ---
 
@@ -839,7 +840,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 视频ID  ```videoId: ObjectId```
 
-**视频页-巩固题开始**
+**视频页-巩固题开始**[tested]
 
 ---
 
@@ -851,7 +852,7 @@ Last Modified: 15DEC14
   - 视频ID ```videoId: ObjectId```
   - 巩固题ID ```problemId: ObjectId```
 
-**视频页-回答巩固题**
+**视频页-回答巩固题**[tested]
 
 ---
 
@@ -865,7 +866,7 @@ Last Modified: 15DEC14
   - 用户选择  ```choice: String```
   - 正误  ```correctness: Boolean```
 
-**视频页-完成**
+**视频页-完成**[pending]
 
 ---
 
@@ -876,7 +877,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 视频ID  ```videoId: ObjectId```
 
-**视频页-退出**
+**视频页-退出**[pending]
 
 ---
 
@@ -888,7 +889,7 @@ Last Modified: 15DEC14
   - 视频ID  ```videoId: ObjectId```
   - 退出时的视频时间戳  ```quitTimeStamp: Number```
 
-**学习模块-中断学习**
+**学习模块-中断学习**[tested]
 
 ---
 
@@ -901,17 +902,6 @@ Last Modified: 15DEC14
   - 最后完成视频ID  ```videoId: ObjectId```
 
 ## 练习模块
-
-**练习模块-点击练习模块**
-
----
-
-进入某个练习模块
-
-* ```eventKey: startMaster```
-* ```category: course```
-* 必传字段：
-  - 所在知识点ID  ```topicId: ObjectId```
 
 **练习模块-开始专题**
 
