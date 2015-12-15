@@ -7,7 +7,7 @@ Last Modified: 15DEC14
 
 ## 首页、登录、注册、新手引导
 
-**进入首页**
+**进入首页**[tested]
 
 ---
 
@@ -16,7 +16,7 @@ Last Modified: 15DEC14
 * ```eventKey: enterHome```
 * ```category: site```
 
-**切换教师版**
+**切换教师版**[tested]
 
 ---
 
@@ -25,7 +25,7 @@ Last Modified: 15DEC14
 * ```eventKey: switchTeacherHome```
 * ```category: site```
 
-**切换学生版**
+**切换学生版**[tested]
 
 ---
 
@@ -34,7 +34,7 @@ Last Modified: 15DEC14
 * ```eventKey: switchStudentHome```
 * ```category: site```
 
-**首页-点击登录**
+**首页-点击登录**[tested]
 
 ---
 
@@ -43,7 +43,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickLoginBtn```
 * ```category: site```
 
-**首页-点击注册**
+**首页-点击注册**[tested]
 
 ---
 
@@ -52,7 +52,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickSignupBtn```
 * ```category: site```
 
-**学生首页-免费使用**
+**学生首页-免费使用**[tested]
 
 ---
 
@@ -61,7 +61,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickFreeForUseSS```
 * ```category: site```
 
-**学生首页-应用下载**
+**学生首页-应用下载**[tested]
 
 ---
 
@@ -70,7 +70,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadApp```
 * ```category: site```
 
-**学生首页-观看视频**
+**学生首页-观看视频**[tested]
 
 ---
 
@@ -79,7 +79,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickWatchingVideoSample```
 * ```category: site```
 
-**学生首页-iOS下载**
+**学生首页-iOS下载**[tested]
 
 ---
 
@@ -88,7 +88,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadIosSS```
 * ```category: site```
 
-**学生首页-安卓下载**
+**学生首页-安卓下载**[tested]
 
 ---
 
@@ -97,7 +97,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadAndoridSS```
 * ```category: site```
 
-**学生首页-Windows下载**
+**学生首页-Windows下载**[tested]
 
 ---
 
@@ -106,7 +106,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadWindowsSS```
 * ```category: site```
 
-**教师首页-看看微课**
+**教师首页-看看微课**[tested]
 
 ---
 
@@ -115,7 +115,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickHaveALook```
 * ```category: site```
 
-**教师首页-免费使用**
+**教师首页-免费使用**[tested]
 
 ---
 
@@ -124,7 +124,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickFreeForUseTC```
 * ```category: site```
 
-**教师首页-引入视频**
+**教师首页-引入视频**[tested]
 
 ---
 
@@ -133,7 +133,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickWatchGuideVideo```
 * ```category: site```
 
-**教师首页-基础视频**
+**教师首页-基础视频**[tested]
 
 ---
 
@@ -142,7 +142,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickWatchElementaryVideo```
 * ```category: site```
 
-**教师首页-提高食品**
+**教师首页-提高视频**[tested]
 
 ---
 
@@ -151,7 +151,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickWatchAdvancedVideo```
 * ```category: site```
 
-**教师首页-详情点击**
+**教师首页-详情点击**[pending]
 
 ---
 
@@ -160,7 +160,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickLearnMoreLink```
 * ```category: site```
 
-**教师首页-请戳**
+**教师首页-请戳**[pending]
 
 ---
 
@@ -169,7 +169,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickClickMe```
 * ```category: site```
 
-**教师首页-iOS下载**
+**教师首页-iOS下载**[tested]
 
 ---
 
@@ -178,7 +178,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadIosTC```
 * ```category: site```
 
-**教师首页-安卓下载**
+**教师首页-安卓下载**[tested]
 
 ---
 
@@ -187,7 +187,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadAndroidTC```
 * ```category: site```
 
-**教师首页-Windows下载**
+**教师首页-Windows下载**[tested]
 
 ---
 
@@ -196,7 +196,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickDownloadWindowsTC```
 * ```category: site```
 
-**登录页-进入登录页**
+**登录页-进入登录页**[tested]
 
 ---
 
@@ -205,7 +205,7 @@ Last Modified: 15DEC14
 * ```eventKey: enterLoginPage```
 * ```category: site```
 
-**登录页-忘记密码**
+**登录页-忘记密码**[tested]
 
 ---
 
@@ -214,7 +214,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickForgetPasswd```
 * ```category: site```
 
-**登录页-QQ登录**
+**登录页-QQ登录**[tested]
 
 ---
 
@@ -223,7 +223,7 @@ Last Modified: 15DEC14
 * ```eventKey: clickQQLogin```
 * ```category: site```
 
-**登录页-登录成功**
+**登录页-登录成功**[tested]
 
 ---
 
@@ -241,7 +241,7 @@ Last Modified: 15DEC14
 * ```eventKey: userVigoured```
 * ```category: site```
 
-**登录页-批量创建用户激活**
+**登录页-批量创建用户激活**[tested]
 
 ---
 
@@ -250,7 +250,7 @@ Last Modified: 15DEC14
 * ```eventKey: userActivate```
 * ```category: site```
 
-**登录页-登录失败**
+**登录页-登录失败**[tested]
 
 ---
 
@@ -261,7 +261,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 登录失败原因  ```errorMessage: String```
 
-**注册页-进入注册页面**
+**注册页-进入注册页面**[tested]
 
 ---
 
@@ -270,7 +270,7 @@ Last Modified: 15DEC14
 * ```eventKey: enterSignupPage```
 * ```category: site```
 
-**注册页-选择学生**
+**注册页-选择学生**[tested]
 
 ---
 
@@ -279,7 +279,7 @@ Last Modified: 15DEC14
 * ```eventKey: chooseStudentRole```
 * ```category: site```
 
-**注册页-选择老师**
+**注册页-选择老师**[pending]
 
 ---
 
@@ -288,7 +288,7 @@ Last Modified: 15DEC14
 * ```eventKey: chooseTeacherRole```
 * ```category: site```
 
-**注册页-注册成功**
+**注册页-注册成功**[tested]
 
 ---
 
@@ -297,7 +297,7 @@ Last Modified: 15DEC14
 * ```eventKey: signupSuccess```
 * ```category: site```
 
-**注册页-注册失败**
+**注册页-注册失败**[tested]
 
 ---
 
@@ -306,7 +306,7 @@ Last Modified: 15DEC14
 * ```eventKey: signupFailure```
 * ```category: site```
 
-**新手引导页-跳过**
+**新手引导页-跳过**[tested]
 
 ---
 
@@ -315,7 +315,7 @@ Last Modified: 15DEC14
 * ```eventKey: chooseSkipNewbieGuide```
 * ```category: site```
 
-**新手引导页-开始**
+**新手引导页-开始**[tested]
 
 ---
 
@@ -324,7 +324,7 @@ Last Modified: 15DEC14
 * ```eventKey: chooseStartNewbieGuide```
 * ```category: site```
 
-**新手引导页-观看视频**
+**新手引导页-观看视频**[tested]
 
 ---
 
@@ -333,7 +333,7 @@ Last Modified: 15DEC14
 * ```eventKey: startNewbieGuideVideo```
 * ```category: site```
 
-**新手引导页-提交答案**
+**新手引导页-提交答案**[tested]
 
 ---
 
@@ -342,7 +342,7 @@ Last Modified: 15DEC14
 * ```eventKey: submitNewbieGuideAnswer```
 * ```category: site```
 
-**新手引导页-选择教材**
+**新手引导页-选择教材**[tested]
 
 ---
 
@@ -353,7 +353,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所选择的教材版本ID  ```bookId: ObjectId```
 
-**新手引导页-选择年级**
+**新手引导页-选择年级**[tested]
 
 ---
 
@@ -364,7 +364,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所选择的的年级ID  ```gradeId: ObjectId```
 
-**新手引导页-选择目标**
+**新手引导页-选择目标**[pending]
 
 ---
 
@@ -375,7 +375,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所选择的的目标  ```target: String, enum: ['standard', 'advanced']```
 
-**新手引导页-完成**
+**新手引导页-完成**[tested]
 
 ---
 
@@ -386,7 +386,7 @@ Last Modified: 15DEC14
 
 ## 外循环
 
-**外循环页-我的学习**
+**外循环页-我的学习**[tested]
 
 ---
 
@@ -903,7 +903,7 @@ Last Modified: 15DEC14
 
 ## 练习模块
 
-**练习模块-开始专题**
+**练习模块-开始专题**[tested]
 
 ---
 
@@ -915,7 +915,7 @@ Last Modified: 15DEC14
   - 所在知识点ID  ```topicId: ObjectId```
   - 所在专题ID  ```problemSetId: ObjectId```
 
-**练习模块-开始挑战**
+**练习模块-开始挑战**[tested]
 
 ---
 
@@ -926,7 +926,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所在知识点ID  ```topicId: ObjectId```
 
-**练习模块-退出专题**
+**练习模块-退出专题**[tested]
 
 ---
 
@@ -938,7 +938,7 @@ Last Modified: 15DEC14
   - 所在知识点ID  ```topicId: ObjectId```
   - 所在专题ID  ```problemSetId: ObjectId```
 
-**练习模块-退出挑战**
+**练习模块-退出挑战**[tested]
 
 ---
 
@@ -949,7 +949,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所在知识点ID  ```topicId: ObjectId```
 
-**练习模块-中止专题**
+**练习模块-中止专题**[tested]
 
 ---
 
@@ -961,7 +961,7 @@ Last Modified: 15DEC14
   - 所在知识点ID  ```topicId: ObjectId```
   - 所在专题ID  ```problemSetId: ObjectId```
 
-**练习模块-退出挑战**
+**练习模块-中止挑战**[tested]
 
 ---
 
@@ -972,7 +972,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所在知识点ID  ```topicId: ObjectId```
 
-**练习模块-进入题目**
+**练习模块-进入题目**[pending]
 
 ---
 
@@ -983,7 +983,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 题目ID  ```problemId: ObjectId```
 
-**练习模块-答题**
+**练习模块-答题**[tested]
 
 ---
 
@@ -995,7 +995,7 @@ Last Modified: 15DEC14
   - 题目ID  ```problemId: ObjectId```
   - 用户选择选项  ```userChoice: String```
 
-**练习模块-修改**
+**练习模块-修改**[tested]
 
 ---
 
@@ -1007,7 +1007,7 @@ Last Modified: 15DEC14
   - 题目ID  ```problemId: ObjectId```
   - 用户选择选项  ```userChoice: String```
 
-**练习模块-提交答案**
+**练习模块-提交答案**[tested]
 
 ---
 
@@ -1020,7 +1020,7 @@ Last Modified: 15DEC14
   - 用户选择选项  ```userChoice: String```
   - 用户选择正误  ```correctness: Boolean```
 
-**练习模块-查看解析**
+**练习模块-查看解析**[tested]
 
 ---
 
@@ -1046,7 +1046,7 @@ Last Modified: 15DEC14
   - 问题ID  ```problemId: ObjectId```
   - 题目状态  ```problemState: String enum: ['answering', 'correct', 'incorrect']```
 
-**练习模块-选择错因**
+**练习模块-选择错因**[tested]
 
 ---
 
@@ -1058,7 +1058,7 @@ Last Modified: 15DEC14
   - 题目ID  ```problemId: ObjectId```
   - 所选的错误原因 ```mistakeReason: String```
 
-**练习模块-继续到下一题**
+**练习模块-继续到下一题**[tested]
 
 ---
 
@@ -1069,7 +1069,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 题目ID  ```problemId: ObjectId```
 
-**练习模块-专题失败**
+**练习模块-专题失败**[pending]
 
 ---
 
@@ -1080,7 +1080,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 专题ID  ```problemSetId: ObjectId```
 
-**练习模块-专题通过**
+**练习模块-专题通过**[tested]
 
 ---
 
@@ -1090,8 +1090,9 @@ Last Modified: 15DEC14
 * ```category: course```
 * 必传字段：
   - 专题ID  ```problemSetId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
-**练习模块-挑战失败**
+**练习模块-挑战失败**[pending]
 
 ---
 
@@ -1102,7 +1103,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
 
-**练习模块-挑战通过**
+**练习模块-挑战通过**[tested]
 
 ---
 
@@ -1113,7 +1114,7 @@ Last Modified: 15DEC14
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
 
-**练习模块-完成练习模块**
+**练习模块-完成练习模块**[tested]
 
 ---
 
