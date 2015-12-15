@@ -220,7 +220,7 @@ Last Modified: 15DEC14
 
 登录页，点击“QQ账号登录”
 
-* ```eventKey: clickQQLogin```
+* ```eventKey: loginQQ```
 * ```category: site```
 
 **登录页-登录成功**[tested]
