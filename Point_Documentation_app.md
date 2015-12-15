@@ -30,7 +30,7 @@ Last Modified: 15DEC09
 * 必传字段：
   - 视频ID ```videoId: ObjectId```
 
-**暂停视频**[tested]  
+**暂停视频**[tested][tested]  
 
 ---
 
@@ -43,7 +43,7 @@ Last Modified: 15DEC09
   - 视频ID ```videoId: ObjectId```
   - 用户暂停时的时间戳 ```pauseTime: Number```
 
-**恢复播放视频**[tested]  
+**恢复播放视频**[tested][tested]  
 
 ---
 
@@ -55,7 +55,7 @@ Last Modified: 15DEC09
   - 视频ID ```videoId: ObjectId```
   - 用户点击播放按钮时的时间戳 ```resumeTime: ISODate```
 
-**分享视频**[tested]  
+**分享视频**[tested][tested]  
 
 ---
 
@@ -81,7 +81,7 @@ Last Modified: 15DEC09
   - 交互ID ```interactionId: ObjectId```
   - 用户答案 ```answer: String```
 
-**拖动视频**[tested]  
+**拖动视频**[tested][tested]  
 
 ---
 
@@ -157,7 +157,7 @@ Last Modified: 15DEC09
   - 视频ID ```videoId: ObjectId```
   - 退出时的视频时间戳 ```quitTimeStamp: TimeStamp```
 
-**点击缓存**[tested]  
+**点击缓存**[tested][tested]  
 
 ---
 
@@ -193,7 +193,7 @@ Last Modified: 15DEC09
   - 所在知识点ID ```topicId: ObjectId```
   - 缓存视频列表 ```videoId: ObjectId```
 
-**缓存失败**[tested]  
+**缓存失败**[tested][tested]  
 
 ---
 
@@ -365,7 +365,7 @@ Last Modified: 15DEC09
 * 必传字段：
   - 当前问题ID ```problemId: ObjectId```
 
-**退出题目**[tested]  
+**退出题目**[tested][tested]  
 
 ---
 
@@ -744,7 +744,7 @@ Last Modified: 15DEC09
 * 必传字段：
   - 用户所选的年级ID ```newGradeId: ObjectId```
 
-**更改网络环境设置**[tested] 
+**更改网络环境设置**[tested][tested] 
 
 ---
 
@@ -756,7 +756,7 @@ Last Modified: 15DEC09
 * 必传字段：
   - 用户更改后的开关状态 ```networkConfig: Boolean```
 
-**分享**[tested]  
+**分享**[tested][tested]  
 
 ---
 
@@ -853,7 +853,7 @@ Last Modified: 15DEC09
 * ```eventKey: clickBufferingZone```
 * ```category: site```
 
-**下载中缓存管理-点击暂停**[tested]  
+**下载中缓存管理-点击暂停**[tested][tested]  
 
 ---
 
@@ -862,7 +862,7 @@ Last Modified: 15DEC09
 * ```eventKey: clickBufferingPause```
 * ```category: site```
 
-**下载中缓存管理-点击恢复**[tested]  
+**下载中缓存管理-点击恢复**[tested][tested]  
 
 ---
 
@@ -899,7 +899,7 @@ Last Modified: 15DEC09
 * ```category: site```
 
 
-**退出登录**[tested]  
+**退出登录**[tested][tested]  
 
 ---
 
