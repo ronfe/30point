@@ -1079,6 +1079,7 @@ Last Modified: 15DEC14
 * ```category: course```
 * 必传字段：
   - 专题ID  ```problemSetId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
 **练习模块-专题通过**[tested]
 
@@ -1102,6 +1103,7 @@ Last Modified: 15DEC14
 * ```category: course```
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
 **练习模块-挑战通过**[tested]
 
@@ -1113,6 +1115,7 @@ Last Modified: 15DEC14
 * ```category: course```
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
+  - 是否为重复完成 ```isRepeated: Boolean```
 
 **练习模块-完成练习模块**[tested]
 
@@ -1687,6 +1690,33 @@ Last Modified: 15DEC14
 * ```eventKey: enterSecondGuide```
 * ```category: site```
 
+**使用手册第二屏-认知节奏感视频**
+
+---
+
+使用手册第二屏，点击“认知节奏感”视频
+
+* ```eventKey: clickGuide2FirstVideo```
+* ```category: site```
+
+**使用手册第二屏-抽象概念可视化视频**
+
+---
+
+使用手册第二屏，点击“抽象概念可视化”视频
+
+* ```eventKey: clickGuide2SecondVideo```
+* ```category: site```
+
+**使用手册第二屏-趣味性视频**
+
+---
+
+使用手册第二屏，点击“趣味性”视频
+
+* ```eventKey: clickGuide2ThirdVideo```
+* ```category: site```
+
 **使用手册第二屏-查看趣味视频**
 
 ---
@@ -1760,6 +1790,78 @@ Last Modified: 15DEC14
 ---
 
 * ```eventKey: enterFifthGuide```
+* ```category: site```
+
+**使用手册第五屏-北大附中案例预览**
+
+---
+
+使用手册第五屏，点击“北大附中案例预览”
+
+* ```eventKey: clickGuide5FirstView```
+* ```category: site```
+
+**使用手册第五屏-北大附中案例下载**
+
+---
+
+使用手册第五屏，点击“北大附中案例下载”
+
+* ```eventKey: clickGuide5FirstDownload```
+* ```category: site```
+
+**使用手册第五屏-三十五中案例预览**
+
+---
+
+使用手册第五屏，点击“三十五中案例预览”
+
+* ```eventKey: clickGuide5SecondView```
+* ```category: site```
+
+**使用手册第五屏-三十五中案例下载**
+
+---
+
+使用手册第五屏，点击“三十五中案例下载”
+
+* ```eventKey: clickGuide5SecondDownload```
+* ```category: site```
+
+**使用手册第五屏-人大附中案例预览**
+
+---
+
+使用手册第五屏，点击“人大附中案例预览”
+
+* ```eventKey: clickGuide5ThirdView```
+* ```category: site```
+
+**使用手册第五屏-人大附中案例下载**
+
+---
+
+使用手册第五屏，点击“人大附中案例下载”
+
+* ```eventKey: clickGuide5ThirdDownload```
+* ```category: site```
+
+**使用手册第五屏-十一学校案例预览**
+
+---
+
+使用手册第五屏，点击“十一学校案例预览”
+
+* ```eventKey: clickGuide5FourthView```
+* ```category: site```
+
+**使用手册第五屏-十一学校案例下载**
+
+---
+
+使用手册第五屏，点击“十一学校案例下载”
+
+* ```eventKey: clickGuide5FourthDownload```
 * ```category: site```
 
 **使用手册-进入第六屏**
