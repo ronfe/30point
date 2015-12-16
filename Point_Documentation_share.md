@@ -8,7 +8,7 @@ Last Modified: 15DEC16
 
 ## 分享页
 
-**进入页面**
+**进入页面**[tested]
 
 [PC][Mobile] 进入视频分享页。  
 
@@ -19,7 +19,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 打开页面的视频ID ```videoId: ObjectId```
 
-**开始播放视频**
+**开始播放视频**[tested]
 
 ---
 
@@ -30,7 +30,7 @@ Last Modified: 15DEC16
 * 必传字段：
  - 播放视频之ID ```videoId: ObjectId```
 
-**暂停视频**
+**暂停视频**[pending]
 
 ---
 
@@ -42,7 +42,7 @@ Last Modified: 15DEC16
   - 视频ID ```videoId: ObjectId```
   - 用户暂停时的视频时间戳（毫秒单位，下同） ```pauseTime: Number```
 
-**完成视频**
+**完成视频**[tested]
 
 ---
 
@@ -65,7 +65,7 @@ Last Modified: 15DEC16
   - 视频ID ```videoId: ObjectId```
   - 用户分享平台（QQ/QQ空间/微博） ```sharePlatform: String, enum: ['qq', 'qzone', 'weibo']```
 
-**进入主页**
+**进入主页**[tested]
 
 ---
 
@@ -74,7 +74,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickEnterHomepage```
 * ```category: site```
 
-**登录**
+**登录**[tested]
 
 ---
 
@@ -83,7 +83,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickLoginBtn```
 * ```category: site```
 
-**注册**
+**注册**[tested]
 
 ---
 
@@ -92,7 +92,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickSignupBtn```
 * ```category: site```
 
-**点击下载按钮**
+**点击下载按钮**[tested]
 
 ---
 
