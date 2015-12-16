@@ -15,8 +15,86 @@ Last Modified: 15DEC16
 * ```eventKey: enterSharingPage```
 * ```category: site```
 * 必传字段：
-  - ```videoId``` 打开页面的视频ID
+  - 打开页面的视频ID ```videoId: ObjectId```
 
 ** 开始播放视频 **
 
-[PC][Mobile]
+---
+
+[PC][Mobile]播放视频
+
+* ```eventKey: startVideo```
+* ```category: video```
+* 必传字段：
+ - 播放视频之ID ```videoId: ObjectId```
+
+**暂停视频**
+
+---
+
+[PC][Mobile]暂停视频  
+
+* ```eventKey: pauseVideo```
+* ```category: video```
+* 必传字段:
+  - 视频ID ```videoId: ObjectId```
+  - 用户暂停时的视频时间戳（毫秒单位，下同） ```pauseTime: Number```
+
+**完成视频**
+
+---
+
+[PC][Mobile]完成视频  
+
+* ```eventKey: finishVideo```
+* ```category: video```
+* 必传字段:
+  - 视频ID ```videoId: ObjectId```
+
+**分享视频**
+
+---
+
+[PC][Mobile]点击分享按钮
+
+* ```eventKey: shareVideo```
+* ```category: site```
+* 必传字段：
+  - 视频ID ```videoId: ObjectId```
+  - 用户分享平台（QQ/QQ空间/微博） ```sharePlatform: String, enum: ['qq', 'qzone', 'weibo']```
+
+**进入主页**
+
+---
+
+[PC]点击“进入主页”
+
+* ```eventKey: clickEnterHomepage```
+* ```category: site```
+
+**登录**
+
+---
+
+[PC]点击“登录”
+
+* ```eventKey: clickLoginBtn```
+* ```category: site```
+
+**注册**
+
+---
+
+[PC]点击“注册”
+
+* ```eventKey: clickSignupBtn```
+* ```category: site```
+
+**点击下载按钮**
+
+---
+
+[Mobile]点击“下载app”
+
+* ```eventKey: clickDownloadApp```
+* ```category: site```
