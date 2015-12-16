@@ -8,7 +8,7 @@ Last Modified: 15DEC16
 
 ## 分享页
 
-** 进入页面 **
+**进入页面**
 
 [PC][Mobile] 进入视频分享页。  
 
@@ -19,7 +19,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 打开页面的视频ID ```videoId: ObjectId```
 
-** 开始播放视频 **
+**开始播放视频**
 
 ---
 
