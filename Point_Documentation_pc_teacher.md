@@ -12,7 +12,7 @@ Last Modified: 15DEC16
 
 ---
 
-用户单击创建班级button
+用户单击创建班级button (Pending Test)
 
 * ```eventKey: createClassroom```
 * ```category: site```
@@ -21,7 +21,7 @@ Last Modified: 15DEC16
 
 ---
 
-弹出创建班级的弹窗
+弹出创建班级的弹窗（Pending Test）
 
 * ```eventKey: enterCreateClassroomModal```
 * ```category: site```
@@ -30,7 +30,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内点击“确认创建”
+在弹窗内点击“确认创建” (Pending Test)
 
 * ```eventKey: confirmCreateClassroom```
 * ```category: site```
@@ -39,7 +39,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内取消创建班级
+在弹窗内取消创建班级 (Pending Test)
 
 * ```eventKey: cancelCreateClassroom```
 * ```category: site```
@@ -48,7 +48,7 @@ Last Modified: 15DEC16
 
 ---
 
-成功创建了一个班级
+成功创建了一个班级 (Pending Test)
 
 * ```eventKey: createClassroomSuccess```
 * ```category: site```
@@ -57,7 +57,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后进入"创建班级成功！"的弹窗
+创建班级成功后进入"创建班级成功！"的弹窗 (Pending Test)
 
 * ```eventKey: enterCreateClassroomSuccessModal```
 * ```category: site```
@@ -66,7 +66,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“前往添加学生”
+创建班级成功后，单击“前往添加学生” (Pending Test)
 
 * ```eventKey: clickInstantInsertStudent```
 * ```category: site```
@@ -75,7 +75,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“取消”
+创建班级成功后，单击“取消” (Pending Testing)
 
 * ```eventKey: clickCancelInstantInsertStudent```
 * ```category: site```
@@ -84,7 +84,7 @@ Last Modified: 15DEC16
 
 ---
 
-查看当前班级状态
+查看当前班级状态(Pending Test)
 
 * ```eventKey: checkClassroomStat```
 * ```category: site```
@@ -102,7 +102,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击某个班级进入班级数据页面
+点击某个班级进入班级数据页面（Pending Testing）
 
 * ```eventKey: enterClassroomInfo```
 * ```category: site```
@@ -111,18 +111,18 @@ Last Modified: 15DEC16
 
 ---
 
-选择某个年级
+选择某个年级 (Pending Test)
 
 * ```eventKey: selectGrade```
 * ```category: site```
 * 必传字段：
   - 年级ID  ```gradeId: ObjectId```
 
-**班级数据-选择章节**
+**班级数据-选择章节** ()
 
 ---
 
-选择某个年级旁的某个章节
+选择某个年级旁的某个章节 (Pending Test)
 
 * ```eventKey: selectChapter```
 * ```category: site```
@@ -133,7 +133,7 @@ Last Modified: 15DEC16
 
 ---
 
-选择某个知识点
+选择某个知识点 (Pending Test)
 
 * ```eventKey: selectTopic```
 * ```category: site```
@@ -153,7 +153,7 @@ Last Modified: 15DEC16
 
 ---
 
-查看某个视频
+查看某个视频 (Pending Test)
 
 * ```eventKey: checkVideo```
 * ```category: site```
@@ -162,7 +162,7 @@ Last Modified: 15DEC16
 
 ---
 
-查看某一习题
+查看某一习题 (Pending Test)
 
 * ```eventKey: checkProblem```
 * ```category: site```
@@ -171,7 +171,7 @@ Last Modified: 15DEC16
 
 ---
 
-打开一条题目
+打开一条题目 (Pending Test)
 
 * ```eventKey: openOneProblem```
 * ```category: site```
@@ -180,7 +180,7 @@ Last Modified: 15DEC16
 
 ---
 
-收起某一条题目
+收起某一条题目 (Pending Test)
 
 * ```eventKey: closeOneProblem```
 * ```category: site```
@@ -198,7 +198,7 @@ Last Modified: 15DEC16
 
 ---
 
-进入班级管理页
+进入班级管理页 (Pending Test)
 
 * ```eventKey: enterClassAdmin```
 * ```category: site```
@@ -207,7 +207,7 @@ Last Modified: 15DEC16
 
 ---
 
-无学生班级管理页，点击“开始批量添加”
+无学生班级管理页，点击“开始批量添加”(Pending Test)
 
 * ```eventKey: adminBatchInsert```
 * ```category: site```
@@ -216,7 +216,7 @@ Last Modified: 15DEC16
 
 ---
 
-无学生班级管理页，点击“开始批量添加”
+无学生班级管理页，点击“引导学生注册”(Pending Test)
 
 * ```eventKey: adminNaturalInsert```
 * ```category: site```
@@ -225,7 +225,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击“添加学生”图标
+点击“添加学生”图标(Pending Test)
 
 * ```eventKey: clickAddStuIntoClassroom```
 * ```category: site```
@@ -234,7 +234,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击“查看更多功能”图标
+点击“查看更多功能”图标 (Pending Test)
 
 * ```eventKey: clickMoreFeatures```
 * ```category: site```
@@ -243,7 +243,7 @@ Last Modified: 15DEC16
 
 ---
 
-在班级管理页内，学生列表中给学生添加或修改“学生姓名”
+在班级管理页内，学生列表中给学生添加或修改“学生姓名” (Pending Test)
 
 * ```eventKey: changeStuNameNote```
 * ```category: site```
@@ -252,7 +252,7 @@ Last Modified: 15DEC16
 
 ---
 
-在班级管理页内，学生列表中修改学生的密码，单击钥匙图标，并在弹窗中点“确认重置”
+在班级管理页内，学生列表中修改学生的密码，单击钥匙图标，并在弹窗中点“确认重置” (Pending Test)
 
 * ```eventKey: changeStuPassword```
 * ```category: site```
@@ -261,7 +261,7 @@ Last Modified: 15DEC16
 
 ---
 
-在班级管理页内，把学生从学生列表中移除，单击垃圾桶图标，并在弹窗中点“确认移出”
+在班级管理页内，把学生从学生列表中移除，单击垃圾桶图标，并在弹窗中点“确认移出” (Pending Test)
 
 * ```eventKey: removeStuFromClassroom```
 * ```category: site```
@@ -270,7 +270,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击...，点“生成账号列表”
+点击...，点“生成账号列表” (Pending Test)
 
 * ```eventKey: createClassroomMemberList```
 * ```category: site```
@@ -279,7 +279,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击...，点“编辑班级名称”
+点击...，点“编辑班级名称” (Pending Test)
 
 * ```eventKey: modifyClassroomName```
 * ```category: site```
@@ -288,7 +288,7 @@ Last Modified: 15DEC16
 
 ---
 
-确认给班级改名
+确认给班级改名 (Pending Test)
 
 * ```eventKey: confirmModifyClassroomName```
 * ```category: site```
@@ -297,7 +297,7 @@ Last Modified: 15DEC16
 
 ---
 
-点击...，点“解散班级”
+点击...，点“解散班级” (Pending Test)
 
 * ```eventKey: disbandClassroom```
 * ```category: site```
@@ -306,7 +306,7 @@ Last Modified: 15DEC16
 
 ---
 
-确认解散整个班级
+确认解散整个班级 (Pending Test)
 
 * ```eventKey: confirmDisbandClassroom```
 * ```category: site```
@@ -333,7 +333,7 @@ Last Modified: 15DEC16
 
 ---
 
-拖动控制条
+拖动控制条 (Pending Test)
 
 * ```eventKey: dragInsertStuStripe```
 * ```category: site```
@@ -344,7 +344,7 @@ Last Modified: 15DEC16
 
 ---
 
-直接输入班级人数
+直接输入班级人数 (Pending Test)
 
 * ```eventKey: inputInsertStuNum```
 * ```category: site```
@@ -355,7 +355,7 @@ Last Modified: 15DEC16
 
 ---
 
-确认添加学生
+确认添加学生 (Pending Test)
 
 * ```eventKey: confirmInsertStu```
 * ```category: site```
@@ -364,7 +364,7 @@ Last Modified: 15DEC16
 
 ---
 
-批量添加学生成功
+批量添加学生成功 (Pendint Test)
 
 * ```eventKey: createClassroomSuccess```
 * ```category: site```
@@ -373,7 +373,7 @@ Last Modified: 15DEC16
 
 ---
 
-批量添加学生成功页面，点击“创建账号列表”
+批量添加学生成功页面，点击“创建账号列表” (Pending Test)
 
 * ```eventKey: createStuList```
 * ```category: site```
@@ -382,7 +382,7 @@ Last Modified: 15DEC16
 
 ---
 
-承接上一步进入账号列表页
+承接上一步进入账号列表页 (Pending Test)
 
 * ```eventKey: enterStuListPage```
 * ```category: site```
@@ -391,7 +391,7 @@ Last Modified: 15DEC16
 
 ---
 
-在“账号列表页”单击下载
+在“账号列表页”单击下载 (Pending Test)
 
 * ```eventKey: downloadStuList```
 * ```category: site```
@@ -400,7 +400,7 @@ Last Modified: 15DEC16
 
 ---
 
-在“账号列表页”单击打印
+在“账号列表页”单击打印 (Pending Test)
 
 * ```eventKey: printStuList```
 * ```category: site```
@@ -409,41 +409,11 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，点击“加入班级指南”
+引导学生注册页，点击“加入班级指南” (Pending Test)
 
 * ```eventKey: clickNaturalInsertGuide```
 * ```category: site```
 
-**添加学生流程-设置班级人数——拖拽控制条**
-
----
-
-引导学生注册页，点击“加入班级指南”并在弹窗中拖拽控制条
-
-* ```eventKey: dragNaturalInsertStripe```
-* ```category: site```
-* 必传字段：
-  - 用户拖动终点数字  ```dragIndicator: Number```
-
-**添加学生流程-设置班级人数——输入框**
-
----
-
-引导学生注册页，点击“加入班级指南”并在弹窗中填入数字
-
-* ```eventKey: inputNaturalInsertNum```
-* ```category: site```
-* 必传字段：
-  - 用户输入数字  ```inputIndicator: Number```
-
-**添加学生流程-确认设置班级人数**
-
----
-
-引导学生注册页，点击“加入班级指南”并在弹窗中点击确认
-
-* ```eventKey: confirmNaturalInsert```
-* ```category: site```
 
 **添加学生流程-进入注册指南**
 
