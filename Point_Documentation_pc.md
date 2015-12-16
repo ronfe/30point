@@ -1644,3 +1644,136 @@ Last Modified: 15DEC14
 
 * ```eventKey: clickBannerCancelInstantInsertStudent```
 * ```category: site```
+
+
+### 教师线使用手册
+
+**使用手册-进入使用指南**
+
+---
+
+* ```eventKey: enterTeacherGuide```
+* ```category: site```
+
+**使用手册-进入第一屏**
+
+---
+
+* ```eventKey: enterFirstGuide```
+* ```category: site```
+
+**使用手册第一屏-查看课程内容**
+
+---
+
+使用手册，点击“查看课程内容”
+
+* ```eventKey: clickGuideCourseContent```
+* ```category: site```
+
+**使用手册第一屏-让学生加入**
+
+---
+
+使用手册第一屏，点击“让学生加入”
+
+* ```eventKey: clickGuide1InviteStudents```
+* ```category: site```
+
+**使用手册-进入第二屏**
+
+---
+
+* ```eventKey: enterSecondGuide```
+* ```category: site```
+
+**使用手册第二屏-查看趣味视频**
+
+---
+
+使用手册第二屏，点击“查看趣味视频”按钮
+
+* ```eventKey: clickGuideFeaturedVideo```
+* ```category: site```
+
+**使用手册第二屏-让学生加入**
+
+---
+
+使用手册第二屏，点击“让学生加入”
+
+* ```eventKey: clickGuide1InviteStudents```
+* ```category: site```
+
+**使用手册-进入第三屏**
+
+---
+
+* ```eventKey: enterThirdGuide```
+* ```category: site```
+
+**使用手册第三屏-查看专题训练**
+
+---
+
+使用手册第三屏，点击“查看专题训练”
+
+* ```eventKey: clickGuideProblemSet```
+* ```category: site```
+
+**使用手册第三屏-让学生加入**
+
+---
+
+使用手册第三屏，点击“让学生加入”
+
+* ```eventKey: clickGuide3InviteStudents```
+* ```category: site```
+
+**使用手册-进入第四屏**
+
+---
+
+* ```eventKey: enterFourthGuide```
+* ```category: site```
+
+**使用手册第四屏-查看班级数据**
+
+---
+
+使用手册第四屏，点击“查看班级数据”
+
+* ```eventKey: clickGuideRoomData```
+* ```category: site```
+
+**使用手册第四屏-让学生加入**
+
+---
+
+使用手册第四屏，点击“让学生加入”
+
+* ```eventKey: clickGuide4InviteStudents```
+* ```category: site```
+
+**使用手册-进入第五屏**
+
+---
+
+* ```eventKey: enterFifthGuide```
+* ```category: site```
+
+**使用手册-进入第六屏**
+
+---
+
+* ```eventKey: enterSixthGuide```
+* ```category: site```
+
+**使用手册第六屏-创建班级**
+
+---
+
+使用手册第六屏，点击“创建班级”
+
+* ```eventKey: clickGuideCreateClassroom```
+* ```category: site```
