@@ -4,7 +4,9 @@ by ronfe
 Last Modified: 15DEC16 
 
 本文档基于James 20151215钉钉口谕，适用于3.0视频分享页之埋点。  
-视频分享页的```platform```为
+视频分享页的```platform```为实际平台（pc/iOS/android）
+
+## 分享页
 
 ** 进入页面 **
 
