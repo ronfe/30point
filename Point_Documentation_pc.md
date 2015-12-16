@@ -1,7 +1,7 @@
 # v3.0 Points Documentation (PC)
 
 by ronfe  
-Last Modified: 15DEC14 
+Last Modified: 15DEC16 
 
 本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 PC端埋点。  
 
@@ -900,6 +900,18 @@ Last Modified: 15DEC14
 * 必传字段：
   - 所在知识点ID  ```topicId: ObjectId```
   - 最后完成视频ID  ```videoId: ObjectId```
+
+**学习模块-完成学习**  
+
+---
+
+完成学习模块，弹出完成页面。
+
+* ```eventKey: completeLearning```
+* ```category: course```
+* 必传字段：
+ - 所在知识点ID topicId: ObjectId
+
 
 ## 练习模块
 
