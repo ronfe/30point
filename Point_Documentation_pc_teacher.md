@@ -1,3 +1,11 @@
+# v3.0 Points Documentation (PC-Teacher)
+
+by ronfe  
+Last Modified: 15DEC16 
+
+本文档基于产品埋点需求文档 v151030 之埋点描述，适用于3.0 PC端埋点（教师线）。  
+
+
 ## 教师端
 
 **教师端后台首页-点击创建班级**
