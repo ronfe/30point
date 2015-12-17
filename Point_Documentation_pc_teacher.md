@@ -315,7 +315,7 @@ Last Modified: 15DEC16
 
 ---
 
-添加学生页面, 点击“开始批量添加”
+添加学生页面, 点击“开始批量添加” (Pending Test)
 
 * ```eventKey: initBatchInsert```
 * ```category: site```
@@ -324,7 +324,7 @@ Last Modified: 15DEC16
 
 ---
 
-添加学生页面, 点击“引导学生注册”
+添加学生页面, 点击“引导学生注册” (Pending Test)
 
 * ```eventKey: initNaturalInsert```
 * ```category: site```
@@ -594,7 +594,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第三屏，点击“查看专题训练”
+使用手册第三屏，点击“查看专题训练” (Pending Test)
 
 * ```eventKey: clickGuideProblemSet```
 * ```category: site```
@@ -628,7 +628,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第四屏，点击“查看班级数据”
+使用手册第四屏，点击“查看班级数据” (Pending Test)
 
 * ```eventKey: clickGuideRoomData```
 * ```category: site```
@@ -653,7 +653,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“北大附中案例预览”
+使用手册第五屏，点击“北大附中案例预览” (Pending Test)
 
 * ```eventKey: clickGuide5FirstView```
 * ```category: site```
@@ -662,7 +662,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“北大附中案例下载”
+使用手册第五屏，点击“北大附中案例下载” (Pending Test)
 
 * ```eventKey: clickGuide5FirstDownload```
 * ```category: site```
@@ -671,7 +671,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“三十五中案例预览”
+使用手册第五屏，点击“三十五中案例预览” (Pending Test)
 
 * ```eventKey: clickGuide5SecondView```
 * ```category: site```
@@ -680,7 +680,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“三十五中案例下载”
+使用手册第五屏，点击“三十五中案例下载” (Pending Test)
 
 * ```eventKey: clickGuide5SecondDownload```
 * ```category: site```
@@ -689,7 +689,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“人大附中案例预览”
+使用手册第五屏，点击“人大附中案例预览” (Pending Test)
 
 * ```eventKey: clickGuide5ThirdView```
 * ```category: site```
@@ -698,7 +698,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第五屏，点击“人大附中案例下载”
+使用手册第五屏，点击“人大附中案例下载” (Pending Test)
 
 * ```eventKey: clickGuide5ThirdDownload```
 * ```category: site```
@@ -732,7 +732,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第六屏，点击“创建班级”
+使用手册第六屏，点击“创建班级” (Pending Test)
 
 * ```eventKey: clickGuideCreateClassroom```
 * ```category: site```
