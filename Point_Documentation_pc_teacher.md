@@ -315,7 +315,7 @@ Last Modified: 15DEC16
 
 ---
 
-添加学生页面, 点击“开始批量添加”
+添加学生页面, 点击“开始批量添加” (Pending Test)
 
 * ```eventKey: initBatchInsert```
 * ```category: site```
@@ -324,7 +324,7 @@ Last Modified: 15DEC16
 
 ---
 
-添加学生页面, 点击“引导学生注册”
+添加学生页面, 点击“引导学生注册” (Pending Test)
 
 * ```eventKey: initNaturalInsert```
 * ```category: site```
@@ -419,7 +419,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开
+引导学生注册页，确认加入班级指南后跳转页面打开 (Pending Test)
 
 * ```eventKey: enterNaturalListPage```
 * ```category: site```
@@ -428,7 +428,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开，点击“打印”
+引导学生注册页，确认加入班级指南后跳转页面打开，点击“打印” (Pending Test)
 
 * ```eventKey: printNaturalList```
 * ```category: site```
@@ -437,7 +437,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开，点击“下载”
+引导学生注册页，确认加入班级指南后跳转页面打开，点击“下载” (Pending Test)
 
 * ```eventKey: downloadNaturalList```
 * ```category: site```
@@ -446,7 +446,7 @@ Last Modified: 15DEC16
 
 ---
 
-无班级教师内循环，点击“让学生加入”
+无班级教师内循环，点击“让学生加入” (Pending Test)
 
 * ```eventKey: clickBannerInsert```
 * ```category: site```
@@ -455,7 +455,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内点击“确认创建”
+在弹窗内点击“确认创建” (Pending Test)
 
 * ```eventKey: confirmBannerCreateClassroom```
 * ```category: site```
@@ -464,7 +464,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内取消创建班级
+在弹窗内取消创建班级 (Pending Test)
 
 * ```eventKey: cancelBannerCreateClassroom```
 * ```category: site```
@@ -473,7 +473,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后进入"创建班级成功！"的弹窗
+创建班级成功后进入"创建班级成功！"的弹窗 (Pending Test)
 
 * ```eventKey: enterBannerCreateClassroomSuccessModal```
 * ```category: site```
@@ -482,7 +482,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“前往添加学生”
+创建班级成功后，单击“前往添加学生” (Pending Test)
 
 * ```eventKey: clickBannerInstantInsertStudent```
 * ```category: site```
@@ -491,7 +491,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“取消”
+创建班级成功后，单击“取消” (Pending Test)
 
 * ```eventKey: clickBannerCancelInstantInsertStudent```
 * ```category: site```
