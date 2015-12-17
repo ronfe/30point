@@ -419,7 +419,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开
+引导学生注册页，确认加入班级指南后跳转页面打开 (Pending Test)
 
 * ```eventKey: enterNaturalListPage```
 * ```category: site```
@@ -428,7 +428,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开，点击“打印”
+引导学生注册页，确认加入班级指南后跳转页面打开，点击“打印”(Pending Test)
 
 * ```eventKey: printNaturalList```
 * ```category: site```
@@ -437,7 +437,7 @@ Last Modified: 15DEC16
 
 ---
 
-引导学生注册页，确认加入班级指南后跳转页面打开，点击“下载”
+引导学生注册页，确认加入班级指南后跳转页面打开，点击“下载”(Pending Test)
 
 * ```eventKey: downloadNaturalList```
 * ```category: site```
@@ -446,7 +446,7 @@ Last Modified: 15DEC16
 
 ---
 
-无班级教师内循环，点击“让学生加入”
+无班级教师内循环，点击“让学生加入”(Pending Test)
 
 * ```eventKey: clickBannerInsert```
 * ```category: site```
@@ -455,7 +455,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内点击“确认创建”
+在弹窗内点击“确认创建”(Pending Test)
 
 * ```eventKey: confirmBannerCreateClassroom```
 * ```category: site```
@@ -464,7 +464,7 @@ Last Modified: 15DEC16
 
 ---
 
-在弹窗内取消创建班级
+在弹窗内取消创建班级(Pending Test)
 
 * ```eventKey: cancelBannerCreateClassroom```
 * ```category: site```
@@ -473,7 +473,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后进入"创建班级成功！"的弹窗
+创建班级成功后进入"创建班级成功！"的弹窗(Pending Test)
 
 * ```eventKey: enterBannerCreateClassroomSuccessModal```
 * ```category: site```
@@ -482,7 +482,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“前往添加学生”
+创建班级成功后，单击“前往添加学生”(Pending Test)
 
 * ```eventKey: clickBannerInstantInsertStudent```
 * ```category: site```
@@ -491,7 +491,7 @@ Last Modified: 15DEC16
 
 ---
 
-创建班级成功后，单击“取消”
+创建班级成功后，单击“取消”(Pending Test)
 
 * ```eventKey: clickBannerCancelInstantInsertStudent```
 * ```category: site```
@@ -517,7 +517,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册，点击“查看课程内容”
+使用手册，点击“查看课程内容” (Pending Test)
 
 * ```eventKey: clickGuideCourseContent```
 * ```category: site```
@@ -526,7 +526,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第一屏，点击“让学生加入”
+使用手册第一屏，点击“让学生加入” (Pending Test)
 
 * ```eventKey: clickGuide1InviteStudents```
 * ```category: site```
@@ -578,9 +578,9 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第二屏，点击“让学生加入”
+使用手册第二屏，点击“让学生加入” (Pending Test)
 
-* ```eventKey: clickGuide1InviteStudents```
+* ```eventKey: clickGuide2InviteStudents```
 * ```category: site```
 
 **使用手册-进入第三屏**
@@ -612,7 +612,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第三屏，点击“让学生加入”
+使用手册第三屏，点击“让学生加入” (Pending Test)
 
 * ```eventKey: clickGuide3InviteStudents```
 * ```category: site```
@@ -637,7 +637,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第四屏，点击“让学生加入”
+使用手册第四屏，点击“让学生加入” (Pending Test)
 
 * ```eventKey: clickGuide4InviteStudents```
 * ```category: site```
