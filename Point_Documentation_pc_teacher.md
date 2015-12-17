@@ -542,7 +542,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第二屏，点击“认知节奏感”视频
+使用手册第二屏，点击“认知节奏感”视频 (Pending Test)
 
 * ```eventKey: clickGuide2FirstVideo```
 * ```category: site```
@@ -551,7 +551,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第二屏，点击“抽象概念可视化”视频
+使用手册第二屏，点击“抽象概念可视化”视频 (Pending Test)
 
 * ```eventKey: clickGuide2SecondVideo```
 * ```category: site```
@@ -560,7 +560,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第二屏，点击“趣味性”视频
+使用手册第二屏，点击“趣味性”视频 (Pending Test)
 
 * ```eventKey: clickGuide2ThirdVideo```
 * ```category: site```
@@ -569,7 +569,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第二屏，点击“查看趣味视频”按钮
+使用手册第二屏，点击“查看趣味视频”按钮 (Pending Test)
 
 * ```eventKey: clickGuideFeaturedVideo```
 * ```category: site```
