@@ -71,7 +71,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickInstantInsertStudent```
 * ```category: site```
 
-**教师端后台首页-取消添加学生**
+**教师端后台首页-取消添加学生**[tested]
 
 ---
 
@@ -98,7 +98,7 @@ Last Modified: 15DEC16
 * ```eventKey: checkExampleClassroom```
 * ```category: site```
 
-**班级数据-进入班级数据**
+**班级数据-进入班级数据**[tested]
 
 ---
 
@@ -107,7 +107,7 @@ Last Modified: 15DEC16
 * ```eventKey: enterClassroomInfo```
 * ```category: site```
 
-**班级数据-选择年级**
+**班级数据-选择年级**[tested]
 
 ---
 
@@ -118,7 +118,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 年级ID  ```gradeId: ObjectId```
 
-**班级数据-选择章节** ()
+**班级数据-选择章节** [tested]
 
 ---
 
@@ -129,7 +129,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 章节ID  ```chapterId: ObjectId```
 
-**班级数据-选择知识点**
+**班级数据-选择知识点**[tested]
 
 ---
 
@@ -140,7 +140,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 知识点ID  ```topicId: ObjectId```
 
-**班级数据-查看完成名单**
+**班级数据-查看完成名单**[tested]
 
 ---
 
@@ -149,7 +149,7 @@ Last Modified: 15DEC16
 * ```eventKey: checkTopicCompleteList```
 * ```category: site```
 
-**班级数据-查看视频**
+**班级数据-查看视频**[tested]
 
 ---
 
@@ -158,7 +158,7 @@ Last Modified: 15DEC16
 * ```eventKey: checkVideo```
 * ```category: site```
 
-**???班级数据-查看习题**
+**班级数据-查看习题**[tested]
 
 ---
 
@@ -194,7 +194,7 @@ Last Modified: 15DEC16
 * ```eventKey: checkMoreMistakes```
 * ```category: site```
 
-**班级管理-进入班级管理**
+**班级管理-进入班级管理**[tested]
 
 ---
 
@@ -203,7 +203,7 @@ Last Modified: 15DEC16
 * ```eventKey: enterClassAdmin```
 * ```category: site```
 
-**班级管理-开始批量添加**
+**班级管理-开始批量添加**[tested]
 
 ---
 
@@ -212,7 +212,7 @@ Last Modified: 15DEC16
 * ```eventKey: adminBatchInsert```
 * ```category: site```
 
-**班级管理-引导学生注册**
+**班级管理-引导学生注册**[tested]
 
 ---
 
@@ -221,7 +221,7 @@ Last Modified: 15DEC16
 * ```eventKey: adminNaturalInsert```
 * ```category: site```
 
-**班级管理-添加学生**
+**班级管理-添加学生**[tested]
 
 ---
 
@@ -230,7 +230,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickAddStuIntoClassroom```
 * ```category: site```
 
-**班级管理-查看更多功能（三个竖点）**
+**班级管理-查看更多功能（三个竖点）**[tested]
 
 ---
 
@@ -239,16 +239,16 @@ Last Modified: 15DEC16
 * ```eventKey: clickMoreFeatures```
 * ```category: site```
 
-**班级管理-备注姓名**
+**班级管理-备注姓名**[tested]
 
 ---
 
-在班级管理页内，学生列表中给学生添加或修改“学生姓名” (Pending Test)
+在班级管理页内，学生列表中给学生添加或修改“学生姓名”并确认 (Pending Test)
 
 * ```eventKey: changeStuNameNote```
 * ```category: site```
 
-**班级管理-重置密码**
+**班级管理-重置密码**[tested]
 
 ---
 
@@ -257,7 +257,7 @@ Last Modified: 15DEC16
 * ```eventKey: changeStuPassword```
 * ```category: site```
 
-**班级管理-移出学生**
+**班级管理-移出学生**[tested]
 
 ---
 
@@ -266,7 +266,7 @@ Last Modified: 15DEC16
 * ```eventKey: removeStuFromClassroom```
 * ```category: site```
 
-**班级管理-生成账号列表**
+**班级管理-生成账号列表**[tested]
 
 ---
 
@@ -275,7 +275,7 @@ Last Modified: 15DEC16
 * ```eventKey: createClassroomMemberList```
 * ```category: site```
 
-**班级管理-编辑班级名称**
+**班级管理-编辑班级名称**[tested]
 
 ---
 
@@ -284,7 +284,7 @@ Last Modified: 15DEC16
 * ```eventKey: modifyClassroomName```
 * ```category: site```
 
-**班级管理-确认修改班级名称**
+**班级管理-确认修改班级名称**[tested]
 
 ---
 
@@ -293,7 +293,7 @@ Last Modified: 15DEC16
 * ```eventKey: confirmModifyClassroomName```
 * ```category: site```
 
-**班级管理-解散班级**
+**班级管理-解散班级**[tested]
 
 ---
 
@@ -302,7 +302,7 @@ Last Modified: 15DEC16
 * ```eventKey: disbandClassroom```
 * ```category: site```
 
-**班级管理-确认解散班级**
+**班级管理-确认解散班级**[tested]
 
 ---
 
@@ -311,7 +311,7 @@ Last Modified: 15DEC16
 * ```eventKey: confirmDisbandClassroom```
 * ```category: site```
 
-**添加学生流程-开始批量添加**
+**添加学生流程-开始批量添加**[tested]
 
 ---
 
@@ -320,7 +320,7 @@ Last Modified: 15DEC16
 * ```eventKey: initBatchInsert```
 * ```category: site```
 
-**添加学生流程-引导学生注册**
+**添加学生流程-引导学生注册**[tested]
 
 ---
 
@@ -329,7 +329,7 @@ Last Modified: 15DEC16
 * ```eventKey: initNaturalInsert```
 * ```category: site```
 
-**添加学生流程-拖拽添加人数控制条**
+**添加学生流程-拖拽添加人数控制条**[tested]
 
 ---
 
@@ -340,7 +340,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 用户拖动终点数字  ```dragIndicator: Number```
 
-**添加学生流程-输入添加人数**
+**添加学生流程-输入添加人数**[tested]
 
 ---
 
@@ -351,7 +351,7 @@ Last Modified: 15DEC16
 * 必传字段：
   - 用户输入数字  ```inputIndicator: Number```
 
-**添加学生流程-确认添加**
+**添加学生流程-确认添加**[tested]
 
 ---
 
@@ -360,16 +360,16 @@ Last Modified: 15DEC16
 * ```eventKey: confirmInsertStu```
 * ```category: site```
 
-**添加学生流程-进入批量添加学生成功页面**
+**添加学生流程-进入批量添加学生成功页面**[tested]
 
 ---
 
 批量添加学生成功 (Pendint Test)
 
-* ```eventKey: createClassroomSuccess```
+* ```eventKey: batchInsertSuccess```
 * ```category: site```
 
-**添加学生流程-创建账号列表**
+**添加学生流程-创建账号列表**[tested]
 
 ---
 
@@ -378,7 +378,7 @@ Last Modified: 15DEC16
 * ```eventKey: createStuList```
 * ```category: site```
 
-**添加学生流程-进入账号列表**
+**添加学生流程-进入账号列表**[tested]
 
 ---
 
@@ -387,7 +387,7 @@ Last Modified: 15DEC16
 * ```eventKey: enterStuListPage```
 * ```category: site```
 
-**添加学生流程-下载账号列表**
+**添加学生流程-下载账号列表**[tested]
 
 ---
 
@@ -396,7 +396,7 @@ Last Modified: 15DEC16
 * ```eventKey: downloadStuList```
 * ```category: site```
 
-**添加学生流程-打印账号列表**
+**添加学生流程-打印账号列表**[tested]
 
 ---
 
@@ -405,7 +405,7 @@ Last Modified: 15DEC16
 * ```eventKey: printStuList```
 * ```category: site```
 
-**添加学生流程-加入班级指南**
+**添加学生流程-加入班级指南**[tested]
 
 ---
 
@@ -415,7 +415,7 @@ Last Modified: 15DEC16
 * ```category: site```
 
 
-**添加学生流程-进入注册指南**
+**添加学生流程-进入注册指南**[tested]
 
 ---
 
@@ -424,7 +424,7 @@ Last Modified: 15DEC16
 * ```eventKey: enterNaturalListPage```
 * ```category: site```
 
-**添加学生流程-打印注册指南**
+**添加学生流程-打印注册指南**[tested]
 
 ---
 
@@ -433,7 +433,7 @@ Last Modified: 15DEC16
 * ```eventKey: printNaturalList```
 * ```category: site```
 
-**添加学生流程-下载注册指南**
+**添加学生流程-下载注册指南**[tested]
 
 ---
 
@@ -442,7 +442,7 @@ Last Modified: 15DEC16
 * ```eventKey: downloadNaturalList```
 * ```category: site```
 
-**内循环-进入创建班级弹窗**
+**内循环-进入创建班级弹窗**[tested]
 
 ---
 
@@ -451,7 +451,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickBannerInsert```
 * ```category: site```
 
-**内循环-创建班级弹窗-确认创建班级**
+**内循环-创建班级弹窗-确认创建班级**[tested]
 
 ---
 
@@ -460,7 +460,7 @@ Last Modified: 15DEC16
 * ```eventKey: confirmBannerCreateClassroom```
 * ```category: site```
 
-**内循环-创建班级弹窗-取消**
+**内循环-创建班级弹窗-取消**[tested]
 
 ---
 
@@ -469,7 +469,7 @@ Last Modified: 15DEC16
 * ```eventKey: cancelBannerCreateClassroom```
 * ```category: site```
 
-**内循环-进入创建班级成功弹窗**
+**内循环-进入创建班级成功弹窗**[tested]
 
 ---
 
@@ -478,7 +478,7 @@ Last Modified: 15DEC16
 * ```eventKey: enterBannerCreateClassroomSuccessModal```
 * ```category: site```
 
-**内循环-创建班级成功弹窗-前往添加学生**
+**内循环-创建班级成功弹窗-前往添加学生**[pending]
 
 ---
 
@@ -487,7 +487,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickBannerInstantInsertStudent```
 * ```category: site```
 
-**内循环-创建班级成功弹窗-取消**
+**内循环-创建班级成功弹窗-取消**[tested]
 
 ---
 
@@ -499,21 +499,21 @@ Last Modified: 15DEC16
 
 ### 教师线使用手册
 
-**使用手册-进入使用指南** (Pending Test)
+**使用手册-进入使用指南** [tested]
 
 ---
 
 * ```eventKey: enterTeacherGuide```
 * ```category: site```
 
-**使用手册-进入第一屏**
+~~**使用手册-进入第一屏**~~
 
 ---
 
 * ```eventKey: enterFirstGuide```
 * ```category: site```
 
-**使用手册第一屏-查看课程内容**
+**使用手册第一屏-查看课程内容**[tested]
 
 ---
 
@@ -522,7 +522,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuideCourseContent```
 * ```category: site```
 
-**使用手册第一屏-让学生加入**
+**使用手册第一屏-让学生加入**[tested]
 
 ---
 
@@ -531,7 +531,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide1InviteStudents```
 * ```category: site```
 
-**使用手册-进入第二屏**
+~~**使用手册-进入第二屏**~~
 
 ---
 
@@ -544,7 +544,7 @@ Last Modified: 15DEC16
 
 使用手册第二屏，点击“认知节奏感”视频 (Pending Test)
 
-* ```eventKey: clickGuide2FirstVideo```
+* ```eventKey: clickGuide2ThirdVideo```
 * ```category: site```
 
 **使用手册第二屏-抽象概念可视化视频**
@@ -553,7 +553,7 @@ Last Modified: 15DEC16
 
 使用手册第二屏，点击“抽象概念可视化”视频 (Pending Test)
 
-* ```eventKey: clickGuide2SecondVideo```
+* ```eventKey: clickGuide2FirstVideo```
 * ```category: site```
 
 **使用手册第二屏-趣味性视频**
@@ -562,10 +562,10 @@ Last Modified: 15DEC16
 
 使用手册第二屏，点击“趣味性”视频 (Pending Test)
 
-* ```eventKey: clickGuide2ThirdVideo```
+* ```eventKey: clickGuide2SecondVideo```
 * ```category: site```
 
-**使用手册第二屏-查看趣味视频**
+**使用手册第二屏-查看趣味视频**[tested]
 
 ---
 
@@ -574,7 +574,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuideFeaturedVideo```
 * ```category: site```
 
-**使用手册第二屏-让学生加入**
+**使用手册第二屏-让学生加入**[tested]
 
 ---
 
@@ -583,14 +583,14 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide2InviteStudents```
 * ```category: site```
 
-**使用手册-进入第三屏**
+~~**使用手册-进入第三屏**~~
 
 ---
 
 * ```eventKey: enterThirdGuide```
 * ```category: site```
 
-**使用手册第三屏-查看专题训练**
+**使用手册第三屏-查看专题训练**[tested]
 
 ---
 
@@ -599,7 +599,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuideProblemSet```
 * ```category: site```
 
-**使用手册第三屏-点击专题标签**
+**使用手册第三屏-点击专题标签**[tested]
 
 ---
 
@@ -608,7 +608,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuideProblemSetTab```
 * ```category: site```
 
-**使用手册第三屏-让学生加入**
+**使用手册第三屏-让学生加入**[tested]
 
 ---
 
@@ -617,14 +617,14 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide3InviteStudents```
 * ```category: site```
 
-**使用手册-进入第四屏**
+~~**使用手册-进入第四屏**~~
 
 ---
 
 * ```eventKey: enterFourthGuide```
 * ```category: site```
 
-**使用手册第四屏-查看班级数据**
+**使用手册第四屏-查看班级数据**[pending]
 
 ---
 
@@ -633,7 +633,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuideRoomData```
 * ```category: site```
 
-**使用手册第四屏-让学生加入**
+**使用手册第四屏-让学生加入**[tested]
 
 ---
 
@@ -642,14 +642,14 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide4InviteStudents```
 * ```category: site```
 
-**使用手册-进入第五屏**
+~~**使用手册-进入第五屏**~~
 
 ---
 
 * ```eventKey: enterFifthGuide```
 * ```category: site```
 
-**使用手册第五屏-北大附中案例预览**
+**使用手册第五屏-北大附中案例预览**[tested]
 
 ---
 
@@ -658,7 +658,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5FirstView```
 * ```category: site```
 
-**使用手册第五屏-北大附中案例下载**
+**使用手册第五屏-北大附中案例下载**[tested]
 
 ---
 
@@ -667,7 +667,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5FirstDownload```
 * ```category: site```
 
-**使用手册第五屏-三十五中案例预览**
+**使用手册第五屏-三十五中案例预览**[tested]
 
 ---
 
@@ -676,7 +676,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5SecondView```
 * ```category: site```
 
-**使用手册第五屏-三十五中案例下载**
+**使用手册第五屏-三十五中案例下载**[pending]
 
 ---
 
@@ -685,7 +685,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5SecondDownload```
 * ```category: site```
 
-**使用手册第五屏-人大附中案例预览**
+**使用手册第五屏-人大附中案例预览**[tested]
 
 ---
 
@@ -694,7 +694,7 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5ThirdView```
 * ```category: site```
 
-**使用手册第五屏-人大附中案例下载**
+**使用手册第五屏-人大附中案例下载**[tested]
 
 ---
 
@@ -721,14 +721,14 @@ Last Modified: 15DEC16
 * ```eventKey: clickGuide5FourthDownload```
 * ```category: site```
 
-**使用手册-进入第六屏**
+~~**使用手册-进入第六屏**~~
 
 ---
 
 * ```eventKey: enterSixthGuide```
 * ```category: site```
 
-**使用手册第六屏-创建班级**
+**使用手册第六屏-创建班级**[tested]
 
 ---
 
