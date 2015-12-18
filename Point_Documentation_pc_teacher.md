@@ -144,7 +144,7 @@ Last Modified: 15DEC16
 
 ---
 
-查看各个知识点的完成名单
+查看各个知识点的完成名单 (Pending Test)
 
 * ```eventKey: checkTopicCompleteList```
 * ```category: site```
@@ -603,7 +603,7 @@ Last Modified: 15DEC16
 
 ---
 
-使用手册第三屏，点击任何专题标签
+使用手册第三屏，点击任何专题标签 (Pending Test)
 
 * ```eventKey: clickGuideProblemSetTab```
 * ```category: site```
