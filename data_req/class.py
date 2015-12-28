@@ -23,7 +23,10 @@ class Rentou:
             
         self.user_id = user_id
         self.add_device(device)
-        Rentou.already_registered[self.user_id] = self
+        if self.user_id == "":
+            Rentou.already_registered[self.unique_id] = self
+        else:
+            Rentou.already_registered[self.user_id] = self
 
     def add_device(self, device):
         self.devices.append(device)
