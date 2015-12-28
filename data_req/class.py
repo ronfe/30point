@@ -32,11 +32,11 @@ class Rentou:
         self.devices.append(device)
         self.devices = list(set(self.devices))
 
-    def collect_events(self, start, end):
+    def collect_events(self, start, end, platforms):
         if self.device_exclusive:
             pipeline = [
                 {
-                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}}
+                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}, "platform": {"$in": platforms}}
                 },
                 {
                     "$group": {"_id": None, "event_flows": {"$push": "$eventFlow"}}
@@ -45,7 +45,7 @@ class Rentou:
         else:
             pipeline = [
                 {
-                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}, "user": self.user_id}
+                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}, "user": self.user_id, "platform": {"$in": platforms}}
                 },
                 {
                     "$group": {"_id": None, "event_flows": {"$push": "$eventFlow"}}
@@ -54,7 +54,7 @@ class Rentou:
         x = list(event_flow.aggregate(pipeline))
 
         if len(x) > 0:
-            return x[0]["event_flows"]
+            return sum(x[0]["event_flows"], [])
         else:
             return []
 
