@@ -7,8 +7,10 @@ db_cache = MongoClient('10.8.8.111:27017')['cache']
 
 event_flow = db_cache['eventFlow']
 device_attr_col = db_cache['deviceAttr']
+users = db['users']
 
 class Rentou:
+    already_registered = {}
     devices = []
     device_exclusive = True
     user_id = ""
@@ -20,9 +22,11 @@ class Rentou:
             self.device_exclusive = False
             
         self.user_id = user_id
+        self.add_device(device)
+        Rentou.already_registered[self.user_id] = self
 
-    def add_device(self, device_id):
-        self.devices.append(device_id)
+    def add_device(self, device):
+        self.devices.append(device)
         self.devices = list(set(self.devices))
 
     def collect_events(self, start, end):
@@ -57,11 +61,16 @@ class Device:
     platform = "pc"
     users = []
     rentou_list = []
+    activate = datetime.datetime(2015,12,19)
+    recent = datetime.datetime(2015,12,19)
 
     def __init__(self, device_attr):
         meta_data = device_attr
         self.device_id = meta_data['_id']
         self.users = meta_data['users']
+        self.platform = device_attr['platform']
+        self.activate = device_attr['activateDate']
+        self.recent = device_attr['recentSession']
         rentou_list = []
         if len(self.users) >= 2:
             self.is_exclusive = False
@@ -70,7 +79,13 @@ class Device:
         elif len(self.users) == 0:
             rentou_list.append(Rentou(self, ""))
         else:
-            rentou_list.append(Rentou(self, self.users[0]))
+            if self.users[0] in Rentou.already_registered.keys():
+                this_rentou = Rentou.already_registered[self.users[0]]
+                this_rentou.add_device(self)
+            else:
+                this_rentou = Rentou(self, self.users[0])
+
+            rentou_list.append(this_rentou)
 
         self.rentou_list = rentou_list
 
@@ -79,8 +94,20 @@ class Device:
 y = {
     "_id" : ObjectId("567d089e8223976cc8dfc71f"),
     "users" : [
-        ObjectId("563c4614ed88f8da05fe6fce"),
-        ObjectId("564f0061ceabbcd42b046bf7")
+        ObjectId("563c4614ed88f8da05fe6fce")
+
+    ],
+    "recentSession" : datetime.datetime(2015, 12, 2, 12, 41, 48,755),
+    "platform" : "android",
+    "activateDate" : datetime.datetime(2015, 11, 20, 11, 13, 36, 82),
+    "device" : "yanhui rejecor a check"
+}
+
+z = {
+    "_id" : ObjectId("564f0061ceabbcd42b046bf7"),
+    "users": [
+        ObjectId("563c4614ed88f8da05fe6fce")
+
     ],
     "recentSession" : datetime.datetime(2015, 12, 2, 12, 41, 48,755),
     "platform" : "android",
@@ -89,6 +116,11 @@ y = {
 }
 
 trial = Device(y)
+trial2 = Device(z)
+
 print trial.device_id
-for each in trial.rentou_list:
-    print each.user_id
+print trial2.device_id
+
+print Rentou.already_registered[ObjectId("563c4614ed88f8da05fe6fce")].devices
+print Rentou.already_registered.keys()
+
