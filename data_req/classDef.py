@@ -8,8 +8,10 @@ db_cache = MongoClient('10.8.8.111:27017')['cache']
 event_flow = db_cache['eventFlow']
 device_attr_col = db_cache['deviceAttr']
 users = db['users']
+events = db['events']
 
 class Rentou:
+    already_user = {}
     already_registered = {}
     devices = []
     device_exclusive = True
@@ -24,39 +26,13 @@ class Rentou:
         self.user_id = user_id
         self.add_device(device)
         if self.user_id == "":
-            Rentou.already_registered[self.unique_id] = self
+            Rentou.already_registered[self.devices[0].device_id] = self
         else:
-            Rentou.already_registered[self.user_id] = self
+            Rentou.already_user[self.user_id] = self
 
     def add_device(self, device):
         self.devices.append(device)
         self.devices = list(set(self.devices))
-
-    def collect_events(self, start, end, platforms):
-        if self.device_exclusive:
-            pipeline = [
-                {
-                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}, "platform": {"$in": platforms}}
-                },
-                {
-                    "$group": {"_id": None, "event_flows": {"$push": "$eventFlow"}}
-                }
-            ]
-        else:
-            pipeline = [
-                {
-                    "$match": {"start": {"$gte": start, "$lt": end}, "device": {"$in": self.devices}, "user": self.user_id, "platform": {"$in": platforms}}
-                },
-                {
-                    "$group": {"_id": None, "event_flows": {"$push": "$eventFlow"}}
-                }
-            ]
-        x = list(event_flow.aggregate(pipeline))
-
-        if len(x) > 0:
-            return sum(x[0]["event_flows"], [])
-        else:
-            return []
 
 class Device:
     device_id = ""
@@ -92,38 +68,81 @@ class Device:
 
         self.rentou_list = rentou_list
 
+    def output(self):
+        x = {
+            "id": self.device_id,
+            "isExclusive": self.is_exclusive,
+            "users": self.users,
+            "rentou": self.rentou_list,
+            "platform": self.platform
+        }
+        return x
+
+START = datetime.datetime(2015,12,23)
+END = datetime.datetime(2015,12,24)
+
+# STEP 1 get all the new users in time period
+new_user_q = users.find({"type": {"$ne": "batch"}, "registTime": {"$gte": START, "$lt": END}}, {"_id": 1})
+new_user_batch_q = users.find({"type":"batch", "activateDate": {"$gte": START, "$lt": END}}, {"_id": 1})
+user_group = [doc["_id"] for doc in new_user_q] + [doc["_id"] for doc in new_user_batch_q]
+
+# STEP 2 get all the related devices
+device_group = device_attr_col.find({"users": {"$in": user_group}})
+device_group = [each for each in device_group]
+# remove invalid users
+for each in device_group:
+    ori_user = set(each['users'])
+    new_user = list(ori_user.intersection(set(user_group)))
+    each['users'] = new_user
+# device_group.remove('null')
+# device_group = device_group[2:]
 
 
-y = {
-    "_id" : ObjectId("567d089e8223976cc8dfc71f"),
-    "users" : [
-        ObjectId("563c4614ed88f8da05fe6fce")
+# STEP 3 Add devices
+device_list = []
+for each in device_group:
+    device_list.append(Device(each))
 
-    ],
-    "recentSession" : datetime.datetime(2015, 12, 2, 12, 41, 48,755),
-    "platform" : "android",
-    "activateDate" : datetime.datetime(2015, 11, 20, 11, 13, 36, 82),
-    "device" : "yanhui rejecor a check"
-}
+# event_flow_list = []
+# for each in Rentou.already_registered.keys():
+#     x = Rentou.already_registered[each].collect_events(START, END, ['pc'])
+#     event_flow_list.append(x)
 
-z = {
-    "_id" : ObjectId("564f0061ceabbcd42b046bf7"),
-    "users": [
-        ObjectId("563c4614ed88f8da05fe6fce")
+# event_flow_list = [each for each in event_flow_list if len(each) > 0]
+# print len(event_flow_list)
 
-    ],
-    "recentSession" : datetime.datetime(2015, 12, 2, 12, 41, 48,755),
-    "platform" : "android",
-    "activateDate" : datetime.datetime(2015, 11, 20, 11, 13, 36, 82),
-    "device" : "yanhui rejecor a check"
-}
 
-trial = Device(y)
-trial2 = Device(z)
 
-print trial.device_id
-print trial2.device_id
+def collect_events(start, end, platforms):
+    x = []
+    pipeline = [
+        {"$match": {"startTime": {"$gte": start, "$lt": end}, "platform": {"$in": platforms}, "device": {"$in": Rentou.already_registered.keys()}}},
+        {"$group": {"_id": "$device", "eventFlows": {"$push": "$eventFlow"}}}
+    ]
+    x = list(event_flow.aggregate(pipeline))
 
-print Rentou.already_registered[ObjectId("563c4614ed88f8da05fe6fce")].devices
-print Rentou.already_registered.keys()
+    if len(x) > 0:
+        x = sum(x[0]["eventFlows"], [])
+    else:
+        x = []
 
+    pipeline = [
+        {"$match": {"startTime": {"$gte": start, "$lt": end}, "platform": {"$in": platforms}, "user": {"$in": Rentou.already_user.keys()}}},
+        {"$group": {"_id": "$user", "eventFlows": {"$push": "$eventFlow"}}}
+    ]
+    y = list(event_flow.aggregate(pipeline))
+
+    if len(y) > 0:
+        output = []
+        for each in y:
+            each_ef = sum(each["eventFlows"], [])
+            output.append(each_ef)
+        y = output
+    else:
+        y = []
+
+    return x + y
+
+result = collect_events(START, END, ['pc'])
+print len(Rentou.already_user.keys())
+print len(result)
