@@ -30,12 +30,11 @@ def calc_user_device(start, end, platforms):
         user_device[each['_id']] = each['devices']
 
     output = {
-        "hasUsers": [],
+        "hasUsers": {},
         "notUsers": []
     }
     for k, v in user_device.iteritems():
-        for each in v:
-            output['hasUsers'].append([k, each])
+        output['hasUsers'][k] = v
 
     # STEP 3 get all the no user devices
     no_user_devices = device_attr.find({"platform": {"$in": platforms}, "users.0": {"$exists": False}, "activateDate": {"$gte": start, "$lt": end}}, {"device": 1})
@@ -46,4 +45,3 @@ def calc_user_device(start, end, platforms):
 
 
 x = calc_user_device(START, END, ['android'])
-print x['notUsers'][0:10]
