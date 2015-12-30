@@ -1,5 +1,9 @@
+# _*_ coding:utf-8 _*_
+
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import random
+import collections
 import datetime
 
 db = MongoClient('10.8.8.111:27017')['onionsBackupOnline']
@@ -45,7 +49,7 @@ class Device:
 
     def __init__(self, device_attr):
         meta_data = device_attr
-        self.device_id = meta_data['_id']
+        self.device_id = meta_data['device']
         self.users = meta_data['users']
         self.platform = device_attr['platform']
         self.activate = device_attr['activateDate']
@@ -87,8 +91,9 @@ new_user_batch_q = users.find({"type":"batch", "activateDate": {"$gte": START, "
 user_group = [doc["_id"] for doc in new_user_q] + [doc["_id"] for doc in new_user_batch_q]
 
 # STEP 2 get all the related devices
-device_group = device_attr_col.find({"users": {"$in": user_group}})
-device_group = [each for each in device_group]
+device_group = device_attr_col.find({"users.0": {"$exists": False}, "activateDate": {"$gte": START, "$lt": END}})
+device_group2 = device_attr_col.find({"users": {"$in": user_group}})
+device_group = list([each for each in device_group] + [each for each in device_group2])
 # remove invalid users
 for each in device_group:
     ori_user = set(each['users'])
@@ -122,12 +127,23 @@ def collect_events(start, end, platforms):
     x = list(event_flow.aggregate(pipeline))
 
     if len(x) > 0:
-        x = sum(x[0]["eventFlows"], [])
+        output = []
+        for each in x:
+            each_ef = sum(each["eventFlows"], [])
+            output.append(each_ef)
+        x = output
     else:
         x = []
 
+
+    user_devices = []
+    for each in Rentou.already_user.keys():
+        for unit_one in Rentou.already_user[each].devices:
+            user_devices.append(str(unit_one.device_id))
+    user_devices = list(set(user_devices))
+
     pipeline = [
-        {"$match": {"startTime": {"$gte": start, "$lt": end}, "platform": {"$in": platforms}, "user": {"$in": Rentou.already_user.keys()}}},
+        {"$match": {"startTime": {"$gte": start, "$lt": end}, "platform": {"$in": platforms}, "device": {"$in": user_devices}}},
         {"$group": {"_id": "$user", "eventFlows": {"$push": "$eventFlow"}}}
     ]
     y = list(event_flow.aggregate(pipeline))
@@ -144,5 +160,27 @@ def collect_events(start, end, platforms):
     return x + y
 
 result = collect_events(START, END, ['pc'])
+def pvUvCount(eventFlow, eventKey):
+    pvUv = {}
+    pvCounter = 0
+    uvCounter = 0
+    for oneUserFlow in eventFlow:
+        if eventKey in oneUserFlow:
+            uvCounter += 1
+            counter = collections.Counter(oneUserFlow)
+            pvCounter += counter[eventKey]
+        
+            print ''
+
+    pvUv['pv'] = pvCounter
+    pvUv['uv'] = uvCounter
+    return pvUv
+
+print result[0]
+event_result = pvUvCount(result, 'enterHome')
+print "PC端数据"
+print "A. 新用户当天行为"
+print "A1, 进入启动页面：%i / %i (PV/UV) " %(event_result['pv'], event_result['uv'])
+
 print len(Rentou.already_user.keys())
 print len(result)
