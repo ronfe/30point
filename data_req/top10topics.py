@@ -62,7 +62,7 @@ def uvOfStartOrCompleteLearning(startDate, endDate, weeklyTopTenTopics, event, p
 
 def perNum(molecule, denominator):
     if molecule == 0 or denominator == 0:
-        return str("denominator cannot equal zero.")
+        return str("比率不成立")
     m = float(molecule)
     d = float(denominator)
     num = ("%.2f")%(m/d*100)
@@ -88,7 +88,7 @@ def weeklyTopTenVideoId(weeklyEnterTopicsTopTenList):
     hv_id = [str(each) for each in unit_hv]
 
     return hv_id
-    #
+
     # topTenTopicsList = changeObjectId(weeklyEnterTopicsTopTenList)
     # pipeLine = [
     #     {"$match": {
@@ -130,7 +130,6 @@ def startOrfinishVideo(startDate, endDate, weeklyTopTenVideoId, event, platform)
 
 for topic in weeklyEnterTopicsTopTenList:
     oneTopic = [topic]
-    print topic
     print("----------------------------------")
     topicName = topics.find_one({"_id": ObjectId(topic)})['name']
     print("###%s")%topicName
@@ -155,13 +154,12 @@ for topic in weeklyEnterTopicsTopTenList:
     print(perNum(completeLearningUvAndroid, startLearningUvAndroid))
 
     weeklyTopTenVideoIdList = weeklyTopTenVideoId(oneTopic)
-    print weeklyTopTenVideoIdList
-
     # PC
     print("PC 视频总观看量:")
     print(startOrfinishVideo(START_DATE, END_DATE, weeklyTopTenVideoIdList, "startVideo", "PC"))
+    # TODO: after 3.0 only change PC's finishVideo to startEmpower, remember change it 'finishVideo' back.
     print("PC 视频完成总量:")
-    print(startOrfinishVideo(START_DATE, END_DATE, weeklyTopTenVideoIdList, "finishVideo", "PC"))
+    print(startOrfinishVideo(START_DATE, END_DATE, weeklyTopTenVideoIdList, "startEmpower", "PC"))
 
     # iOS
     print("iOS 视频总观看量:")
@@ -175,4 +173,3 @@ for topic in weeklyEnterTopicsTopTenList:
     print("android 视频完成总量:")
     print(startOrfinishVideo(START_DATE, END_DATE, weeklyTopTenVideoIdList, "finishVideo", "android"))
     print("\n----------------------------------\n")
-
