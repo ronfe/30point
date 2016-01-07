@@ -105,10 +105,15 @@ def getFirstProblemSetsFirstAndSecondProblem(problemSetsId):
     firstProblem = []
     secondProblem = []
     for doc in problemSetsList:
-        firstProblem.append(doc['problems']['practice'][0]['_id'])
-        secondProblem.append(doc['problems']['practice'][1]['_id'])
-    firstAndSecondProblem['firstProblem'] = firstProblem
-    firstAndSecondProblem['secondProblem'] = secondProblem
+        if doc['problems']['practice'] == []:
+            print("本章节没有专题")
+            firstAndSecondProblem['firstProblem'] = []
+            firstAndSecondProblem['secondProblem'] = []
+        else:
+            firstProblem.append(doc['problems']['practice'][0]['_id'])
+            secondProblem.append(doc['problems']['practice'][1]['_id'])
+            firstAndSecondProblem['firstProblem'] = firstProblem
+            firstAndSecondProblem['secondProblem'] = secondProblem
     return firstAndSecondProblem
 
 def removeObjectId(changeList):
@@ -118,7 +123,10 @@ def removeObjectId(changeList):
     return returnList
 
 def uvOfAnswerFirstProblemSetFirstProblem(startDate, endDate, inputProblemList, platform):
-    problemList = removeObjectId(inputProblemList)
+    if inputProblemList == None:
+        return 0
+    else:
+        problemList = removeObjectId(inputProblemList)
     pipeLine = [
         {"$match": {
             "serverTime": {
@@ -155,7 +163,7 @@ def top10TopicsCompleteMaster(startDate, endDate, topTenTopics, platform):
 
 def perNum(molecule, denominator):
     if molecule == 0 or denominator == 0:
-        return str("denominator cannot equal zero.")
+        return str("比率不成立")
     m = float(molecule)
     d = float(denominator)
     num = ("%.2f")%(m/d*100)
@@ -237,8 +245,13 @@ for topic in weeklyEnterTopicsTopTenList:
     firstProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['firstProblemSets'])
     secondProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['secondProblemSets'])
 
-    problemList1 = firstProblemSetsFirstProblemList['firstProblem']
-    problemList2 = secondProblemSetsFirstProblemList['firstProblem']
+    if firstProblemSetsFirstProblemList['firstProblem'] != [] and secondProblemSetsFirstProblemList['firstProblem'] != []:
+        problemList1 = firstProblemSetsFirstProblemList['firstProblem']
+        problemList2 = secondProblemSetsFirstProblemList['firstProblem']
+    else:
+        print("本专题没有任何题目")
+        problemList1 = None
+        problemList2 = None
 
     # PC
     print("PC 练习模块真实进入量 --- 练习第一专题第一题作答总量:")
@@ -260,6 +273,11 @@ for topic in weeklyEnterTopicsTopTenList:
     uvOfIntoChallage = intoChallage(START_DATE, END_DATE, oneTopic, pc)
     uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, pc)
     print(perNum(len(uvOfFailChallage), uvOfIntoChallage))
+
+    print("PC 挑战成功率	 --- 挑战成功量/挑战进入量:")
+    uvOfSuccessChallage = successChallage(START_DATE, END_DATE, oneTopic, pc)
+    uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, pc)
+    print(perNum(len(uvOfSuccessChallage), uvOfIntoChallage))
 
     print("PC 挑战完成率	 --- 挑战成功+失败量/挑战进入量")
     failChallageList = []
@@ -296,6 +314,11 @@ for topic in weeklyEnterTopicsTopTenList:
     uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, ios)
     print(perNum(len(uvOfFailChallage), uvOfIntoChallage))
 
+    print("iOS 挑战成功率	 --- 挑战成功量/挑战进入量:")
+    uvOfSuccessChallage = successChallage(START_DATE, END_DATE, oneTopic, ios)
+    uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, ios)
+    print(perNum(len(uvOfSuccessChallage), uvOfIntoChallage))
+
     print("iOS 挑战完成率	 --- 挑战成功+失败量/挑战进入量")
     failChallageList = []
     for doc in uvOfFailChallage:
@@ -330,6 +353,11 @@ for topic in weeklyEnterTopicsTopTenList:
     uvOfIntoChallage = intoChallage(START_DATE, END_DATE, oneTopic, android)
     uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, android)
     print(perNum(len(uvOfFailChallage), uvOfIntoChallage))
+
+    print("android 挑战成功率	 --- 挑战成功量/挑战进入量:")
+    uvOfSuccessChallage = successChallage(START_DATE, END_DATE, oneTopic, android)
+    uvOfFailChallage = failInChallage(START_DATE, END_DATE, oneTopic, android)
+    print(perNum(len(uvOfSuccessChallage), uvOfIntoChallage))
 
     print("android 挑战完成率	 --- 挑战成功+失败量/挑战进入量")
     failChallageList = []
