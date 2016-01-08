@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 s = time.time()
 
-START_DATE = datetime.datetime(2015, 12, 27)
+START_DATE = datetime.datetime(2015, 12, 30)
 END_DATE = START_DATE + datetime.timedelta(days=7)
 
 START_DATE_UTC = START_DATE - datetime.timedelta(hours=8)
