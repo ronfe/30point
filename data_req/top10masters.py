@@ -107,8 +107,8 @@ def getFirstProblemSetsFirstAndSecondProblem(problemSetsId):
     for doc in problemSetsList:
         if doc['problems']['practice'] == []:
             print("本章节没有专题")
-            firstAndSecondProblem['firstProblem'] = []
-            firstAndSecondProblem['secondProblem'] = []
+            firstAndSecondProblem['firstProblem'] = None
+            firstAndSecondProblem['secondProblem'] = None
         else:
             firstProblem.append(doc['problems']['practice'][0]['_id'])
             secondProblem.append(doc['problems']['practice'][1]['_id'])
@@ -242,16 +242,21 @@ for topic in weeklyEnterTopicsTopTenList:
     print(uvOfWeeklyTop10Masters(START_DATE, END_DATE, oneTopic, android))
 
     problemSetsFirstAndSecond = getTop10TopicsFirstAndSecondProblemSet(START_DATE, END_DATE, oneTopic)
-    firstProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['firstProblemSets'])
-    secondProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['secondProblemSets'])
+    if problemSetsFirstAndSecond.has_key('firstProblemSets'):
+        firstProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['firstProblemSets'])
+        if firstProblemSetsFirstProblemList.has_key('firstProblem') and firstProblemSetsFirstProblemList['firstProblem'] != None:
+            problemList1 = firstProblemSetsFirstProblemList['firstProblem']
+        else:
+            print("第一个专题内没有题目")
+            problemList1 = None
 
-    if firstProblemSetsFirstProblemList['firstProblem'] != [] and secondProblemSetsFirstProblemList['firstProblem'] != []:
-        problemList1 = firstProblemSetsFirstProblemList['firstProblem']
-        problemList2 = secondProblemSetsFirstProblemList['firstProblem']
-    else:
-        print("本专题没有任何题目")
-        problemList1 = None
-        problemList2 = None
+    if problemSetsFirstAndSecond.has_key('secondProblemSets'):
+        secondProblemSetsFirstProblemList = getFirstProblemSetsFirstAndSecondProblem(problemSetsFirstAndSecond['secondProblemSets'])
+        if secondProblemSetsFirstProblemList.has_key('firstProblem') and secondProblemSetsFirstProblemList['firstProblem'] != None:
+            problemList2 = secondProblemSetsFirstProblemList['firstProblem']
+        else:
+            print("第二个专题内没有题目")
+            problemList2 = None
 
     # PC
     print("PC 练习模块真实进入量 --- 练习第一专题第一题作答总量:")
