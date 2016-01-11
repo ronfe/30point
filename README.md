@@ -2,5 +2,5 @@
 V3.0 points
 
 
-- [ ] Shadowsocks
+- [x] Shadowsocks
 - [x] SocksShadow 
