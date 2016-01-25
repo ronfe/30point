@@ -536,7 +536,7 @@ Schema
 		- eK: `clickCloseProblemSet`
 		- eV: `{topic: String, problemSet: String}`
 
-	* 练习模块专题失败页/成功页，用户点击右上角关闭图标后，选择“取消”
+	* 练习模块专题失败页，用户点击右上角关闭图标后，选择“取消”
 		- eK: `clickCancelCloseProblemSet`
 		- eV: `{topic: String, problemSet: String}`
 	
@@ -560,7 +560,7 @@ Schema
 		- eK: `clickCloseChallenge`
 		- eV: `{topic: String}`
 	
-	* 练习模块挑战失败页/成功页，用户点击右上角关闭图标后，选择“取消”
+	* 练习模块挑战失败页，用户点击右上角关闭图标后，选择“取消”
 		- eK: `clickCancelCloseChallenge`
 		- eV: `{topic: String}`
 	
@@ -603,11 +603,11 @@ Schema
 		- eK: `terminateProblemSet` -> `clickConfirmCloseProblem`
 		- eV: `{topic: String, problemSet: String, problem: String}`
 	
-	* 练习模块专题失败页/成功页，用户点击右上角关闭图标后，选择“确认退出”
+	* 练习模块专题失败页，用户点击右上角关闭图标后，选择“确认退出”
 		- eK: `quitProblemSet` -> `clickConfirmCloseProblemSet`
 		- eV: `{topic: Stirng, problemSet: String}`
 	
-	* 练习模块挑战失败页/成功页，用户点击右上角关闭图标后，选择“确认退出”
+	* 练习模块挑战失败页，用户点击右上角关闭图标后，选择“确认退出”
 		- eK: `quitChallenge` -> `clickConfirmCloseChallenge`
 		- eV: `{topic: String}`
 	
