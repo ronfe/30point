@@ -1,5 +1,10 @@
 ## Track Events Changelog (PC/web v3.1)
 
+Schema
+--
+
+* 区分埋点q和用户q，在埋点Schema中添加user.channel字段，用于记录用户q，埋点自身的q传到埋点的q字段中
+
 学生首页 (/student)
 ---
 
