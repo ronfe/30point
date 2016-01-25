@@ -727,7 +727,7 @@ Video类埋点 - 不完全重构
 * 视频播放过程中卡顿发生，弹出切换提示  
 	注意：用户拖动后的加载不在本类
 	- eK: `videoLagged`
-	- eV: `{video: String, timeStamp: Number}`
+	- eV: `{video: String, timeStamp: Number, cause: String]}`
 
 * 视频播放卡顿后再次playThrough  
 	注意：用户拖动后的playThrough亦在本类
