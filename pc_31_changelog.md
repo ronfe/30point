@@ -569,7 +569,7 @@ Schema
 		- eV: `{topic: String, nextProblemSet: String}`
 	
 	* 练习模块挑战成功页，用户点击“完成知识点”  
-		注意：此处完成不一定是真完成，完成知识点仍要使用course类埋点中的finishTopic统计
+		注意：此处完成不一定是真完成，完成知识点仍要使用course类埋点中的finishMaster/finishLearning统计
 		- eK: `clickFinishTopicBtn`
 		- eV: `{topic: String}`
 	
@@ -621,10 +621,6 @@ Course类埋点 - 完全重构
 
 * reviewTopic
 	- 除`startTopic`外任何情况下进入知识点详情页
-	- `{topic: String}`
-
-* finishTopic
-	- 知识点变金色前一个的学习模块/练习模块完成页
 	- `{topic: String}`
 
 * startLearning
