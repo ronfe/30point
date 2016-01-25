@@ -516,8 +516,8 @@ Schema
 		- eK: `clickNextVideo`
 		- eV: `{topic: String, video: String}`
 	
-	* 练习模块，用户点击进度条回到某个视频(如果是挑战，problemSet传topicId)
-		- eK: `clickReviewVideo`
+	* 练习模块，用户点击进度条回到某个专题/挑战(如果是挑战，problemSet传topicId)
+		- eK: `clickReviewProblemSet`
 		- eV: `{topic: String, problemSet: String}`
 
 	* 练习模块问题页，用户点击“返回题目”
