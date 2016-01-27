@@ -4,13 +4,15 @@ from dataFunctions import *
 
 s = time.time()
 
-START_DATE = datetime.datetime(2015, 12, 30)
+START_DATE = datetime.datetime(2016, 1, 2)
 END_DATE = START_DATE + datetime.timedelta(days=7)
 
 ONLINE_30 = datetime.datetime(2015, 12, 18, 16)
 
 START_DATE_UTC = START_DATE - datetime.timedelta(hours=8)
 END_DATE_UTC = END_DATE - datetime.timedelta(hours=8)
+
+TODAY = datetime.datetime.now()
 
 
 events_create_room = [
@@ -22,7 +24,7 @@ events_create_room = [
 
 events_add_students = [
     {"name": "选择批量创建学生", "key": "initBatchInsert"},
-    {"name": "批量创建成功", "key": "batchInsertSuccess"},
+    {"name": "批量创建成功", "key": "batchInsertSuccess"},  # ??? pv_uv : 0
     {"name": "批量创建成功后生成学生账号列表", "key": "createStuList"},
     {"name": "下载账号列表", "key": "downloadStuList"},
     {"name": "打印账号列表", "key": "printStuList"},
@@ -39,7 +41,8 @@ events_room_data = [
     {"name": "点击【查看完成名单】", "key": "checkTopicCompleteList"},
     {"name": "点击【查看视频】", "key": "checkVideo"},
     {"name": "点击【查看习题】", "key": "checkProblem"},
-    {"name": "用户查看的知识点内有大于5道错题时，点击【查看更多错题】的比例", "key": "checkMoreMistakes"},
+    # {"name": "用户查看的知识点内有大于5道错题时，点击【查看更多错题】的比例", "key": "checkMoreMistakes"},
+    {"name": "点击【查看更多错题】", "key": "checkMoreMistakes"},
     {"name": "展开题目", "key": "openOneProblem"},
     {"name": "点击【收起】按钮", "key": "closeOneProblem"},
 ]
@@ -50,7 +53,6 @@ events_room_data2 = [
 ]
 
 
-# 进入第几屏 埋点??????????????????
 events_manual = [
     {"name": "进入使用指南", "key": "enterTeacherGuide"},
     # {"name": "进入第一屏", "key": ""},
@@ -80,24 +82,46 @@ events_manual = [
     {"name": "第五屏-十一学校案例预览", "key": "clickGuide5FourthView"},
     {"name": "第五屏-十一学校案例下载", "key": "clickGuide5FourthDownload"},
     {"name": "第六屏【创建班级】按钮点击", "key": "clickGuideCreateClassroom"},
-
 ]
 
 
 events_else = [
     {"name": "教师后台首页-演示班级查看", "key": "checkExampleClassroom"},
     {"name": "视频播放页面-让学生加入", "key": "clickBannerInsert"},
-    {"name": "视频播放页面-稍后再说", "key": ""},  #????????
-    {"name": "习题页面-让学生加入", "key": ""},
-    {"name": "习题页面-稍后再说", "key": ""},
+    # {"name": "视频播放页面-稍后再说", "key": ""},  #????????
+    {"name": "习题页面-让学生加入", "key": "clickBannerInsert"},
+    # {"name": "习题页面-稍后再说", "key": ""},
 ]
 
 
 def new_teacher(start, end):
-    return users.count({
+    teachers = list(users.find({
         "role": "teacher",
         "registTime": {"$gte": start, "$lt": end}
-    })
+    }, {"_id": 1}))
+    return [t['_id'] for t in teachers]
+
+
+def teacher_event(userIds, start, end):
+    pipeline = [
+        {
+            "$match": {
+                "user": {"$in": userIds},
+                "startTime": {"$gte": start, "$lt": end}
+            }
+        },
+        {
+            "$group": {
+                "_id": "$user",
+                "eventFlows": {"$push": "$eventFlow"}
+            }
+        }
+    ]
+    user_flows = list(eventFlow.aggregate(pipeline, allowDiskUse=True))
+    event_flow = []
+    for u in user_flows:
+        event_flow.append(sum(u["eventFlows"], []))
+    return event_flow
 
 
 def teacher_room_distribution():
@@ -105,7 +129,7 @@ def teacher_room_distribution():
         {
             "$match": {
                 "role": "teacher",
-                "registTime": {"$lt": ONLINE_30}
+                "registTime": {"$gte": ONLINE_30}
             }
         },
         {
@@ -144,7 +168,7 @@ def room_has_student_count():
         {
             "$match": {
                 "role": "student",
-                "registTime": {"$lt": ONLINE_30}
+                "registTime": {"$gte": ONLINE_30}
             }
         },
         {
@@ -174,69 +198,120 @@ def event_count_distribution(event_flow, event_key):
     return res
 
 
-# 不同页面创建班级成功的埋点 是不同 还是只是url不同?????
-def create_room_main():
-    pass
-    # eventKey : createClassroom createClassroomSuccess
+def create_room_success(userIds, pos):
+    regex = r"/main|rooms/" if pos == 'admin' else ("chapter" if pos == 'banner' else 'manual')
+    pipeline = [
+        {
+            "$match": {
+                "user": {"$in": userIds},
+                "eventKey": "createClassroomSuccess",
+                "serverTime": {"$gte": START_DATE_UTC, "$lt": END_DATE_UTC},
+                "url": {"$regex": regex}
+            }
+        },
+        {
+            "$group": {
+                "_id": None,
+                "users": {"$addToSet": "$user"}
+            }
+        },
+        {
+            "$project": {
+                "uv": {"$size": "$users"}
+            }
+        }
+    ]
+    success = list(events.aggregate(pipeline, allowDiskUse=True))[0]['uv']
+    return success
 
 
-def create_room_banner():
-    pass
-    # key: clickBannerInsert enterBannerCreateClassroomSuccessModal
+def event_pos(userIds, event, pos):
+    pipeline = [
+        {
+            "$match": {
+                "user": {"$in": userIds},
+                "eventKey": event,
+                "serverTime": {"$gte": START_DATE_UTC, "$lt": END_DATE_UTC},
+                "url": {"$regex": pos}
+            }
+        },
+        {
+            "$group": {
+                "_id": None,
+                "usersPV": {"$push": "$user"},
+                "usersUV": {"$addToSet": "$user"}
+            }
+        },
+        {
+            "$project": {
+                "pv": {"$size": "$usersPV"},
+                "uv": {"$size": "$usersUV"}
+            }
+        }
+    ]
+    res = list(events.aggregate(pipeline, allowDiskUse=True))[0]
+    return res
 
 
-def create_room_manual():
-    pass
-    # key: clickGuideCreateClassroom
+# users_dict = calc_user_device(ONLINE_30, TODAY, ['pc'])
+teachers = new_teacher(ONLINE_30, TODAY)
+# users_dict['notUsers'] = []
+# event_flow = collect_event(START_DATE_UTC, END_DATE_UTC, users_dict, ['pc'])
+event_flow = teacher_event(teachers, START_DATE_UTC, END_DATE_UTC)
 
 
-#  时间段???????????
+f = open('../data/3.0教师数据周报' + str(START_DATE.date()) +'-'+ str((END_DATE-datetime.timedelta(days=1)).date()) + '.txt', 'w')
+print('----------- 3.0教师数据周报', START_DATE.date(), '-', (END_DATE-datetime.timedelta(days=1)).date(), '-----------', file=f)
+print("\n", file=f)
+print('---------- 规模数据 ----------', file=f)
+print('3.0新增教师用户数: ', len(teachers), file=f)
+print('3.0教师创建班级分布: ', teacher_room_distribution(), file=f)
+print('3.0有学生的班级数: ', room_has_student_count(), file=f)
+print('本周新增教师用户数: ', len(new_teacher(START_DATE_UTC, END_DATE_UTC)), file=f)
+print('本周批量创建学生数: ', batch_count(START_DATE_UTC, END_DATE_UTC), file=f)
+print('本周批量创建激活学生数: ', batch_activate_count(START_DATE_UTC, END_DATE_UTC), file=f)
+print("\n", file=f)
 
-users_dict = calc_user_device(START_DATE_UTC, END_DATE_UTC, ['pc'])
-event_flow = collect_event(START_DATE_UTC, END_DATE_UTC, users_dict, ['pc'])
-
-
-print(event_count_distribution(event_flow, 'enterClassroomInfo'))
-print(event_count_distribution(event_flow, 'selectTopic'))
-
-
-print('----------- 教师数据报告', START_DATE.date(), '-', (END_DATE-datetime.timedelta(days=1)).date(), '-----------')
-print('---------- 规模数据 ----------')
-print('本周新增教师用户数: ', new_teacher(START_DATE_UTC, END_DATE_UTC))
-print('3.0教师创建班级分布: ', teacher_room_distribution())
-print('3.0有学生的班级数: ', room_has_student_count())
-print('本周批量创建学生数: ', batch_count(START_DATE_UTC, END_DATE_UTC))
-print('本周批量创建激活学生数: ', batch_activate_count(START_DATE_UTC, END_DATE_UTC))
-
-print('---------- 创建班级 ----------')
+print('---------- 创建班级 ----------', file=f)
 
 for event in events_create_room:
     pv_uv = pv_uv_count(event_flow, event['key'])
-    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'])
-# print('在使用手册页面创建班级成功率', create_room_manual())
-# print('后台首页创建班级成功率', create_room_main())
-# print('在内循环页面创建班级成功率', create_room_banner())
+    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+print('在使用手册页面创建班级成功率', pv_uv_count(event_flow, 'createClassroom')['uv'], '/', create_room_success(teachers, 'manual'), file=f)
+print('后台首页创建班级成功率', pv_uv_count(event_flow, 'clickBannerInsert')['uv'], '/', create_room_success(teachers, 'admin'), file=f)
+print('在内循环页面创建班级成功率', pv_uv_count(event_flow, 'clickGuideCreateClassroom')['uv'], '/', create_room_success(teachers, 'banner'), file=f)
+print("\n", file=f)
 
 
-print('---------- 添加学生 ----------')
+print('---------- 添加学生 ----------', file=f)
 for event in events_add_students:
     pv_uv = pv_uv_count(event_flow, event['key'])
-    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'])
+    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+print("\n", file=f)
 
-print('---------- 班级数据 ----------')
+print('---------- 班级数据 ----------', file=f)
 for event in events_room_data:
     pv_uv = pv_uv_count(event_flow, event['key'])
-    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'])
+    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
 for event in events_room_data2:
-    print(event['name'], event_count_distribution(event_flow, event['key']))
+    print(event['name'], event_count_distribution(event_flow, event['key']), file=f)
+print("\n", file=f)
 
 
-print('---------- 使用指南 ----------')
+print('---------- 使用指南 ----------', file=f)
 for event in events_manual:
     pv_uv = pv_uv_count(event_flow, event['key'])
-    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'])
+    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+print("\n", file=f)
 
-print('---------- 其他 ----------')
-for event in events_else:
-    pv_uv = pv_uv_count(event_flow, event['key'])
-    print(event['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'])
+print('---------- 其他 ----------', file=f)
+pv_uv = pv_uv_count(event_flow, events_else[0]['key'])
+print(events_else[0]['name'], ' uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+
+pv_uv = event_pos(teachers, events_else[1]['key'], 'learning')
+print(events_else[1]['name'], 'uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+
+pv_uv = event_pos(teachers, events_else[2]['key'], 'master')
+print(events_else[2]['name'], 'uv: ', pv_uv['uv'], ' pv: ', pv_uv['pv'], file=f)
+
+f.close()

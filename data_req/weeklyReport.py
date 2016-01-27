@@ -1,89 +1,85 @@
 # _*_ coding:utf-8 _*_
 from __future__ import print_function
 from dataFunctions import *
-import calendar
 import time
 from collections import OrderedDict
 
 s = time.time()
 
-START_DATE = datetime.datetime(2016, 1, 3)
+
+ONLINE_30 = datetime.datetime(2015, 12, 18, 16)
+START_DATE = datetime.datetime(2016, 1, 17) - datetime.timedelta(hours=8)
 END_DATE = START_DATE + datetime.timedelta(days=7)
 
-START_DATE_UTC = START_DATE - datetime.timedelta(hours=8)
-END_DATE_UTC = END_DATE - datetime.timedelta(hours=8)
+LAST_WEEK_START_DATE = START_DATE - datetime.timedelta(days=7)
+LAST_WEEK_END_DATE = START_DATE
 
-LAST_WEEK_START_DATE_UTC = START_DATE_UTC - datetime.timedelta(days=7)
-LAST_WEEK_END_DATE_UTC = START_DATE_UTC
-
-# START_TIMESTAMP = calendar.timegm(START_DATE.utctimetuple()) * 1000
-# END_TIMESTAMP = calendar.timegm(END_DATE.utctimetuple()) * 1000
-#
-# LAST_WEEK_START_TIMESTAMP = calendar.timegm(LAST_WEEK_START_DATE.utctimetuple()) * 1000
-# LAST_WEEK_END_TIMESTAMP = calendar.timegm(LAST_WEEK_END_DATE.utctimetuple()) * 1000
-
-filename = '../data/数据周报' + str(START_DATE.date()) + '-' + str((END_DATE - datetime.timedelta(days=1)).date()) + '.txt'
+filename = '../data/数据周报' + str((START_DATE + datetime.timedelta(days=1)).date()) + '-' + str(END_DATE.date()) + '.txt'
 f = open(filename, 'w')
 
-pc = 'PC'
-ios = 'iOS'
-android = 'android'
-
-print('---------- 数据周报 ', START_DATE.date(), '-', (END_DATE - datetime.timedelta(days=1)).date(), ' ----------\n', file=f)
+print('---------- 数据周报 ', (START_DATE + datetime.timedelta(days=1)).date(), '-', END_DATE.date(), ' ----------\n', file=f)
 
 print('---------- 视频播放PV ----------\n', file=f)
 
 
 def video_play_pv(start, end, platform, event):
-    query = {
+    return events.count({
         "eventKey": event,
         "platform2": platform,
         "serverTime": {"$gte": start, "$lt": end}
-    }
-    return events.find(query).count()
+    })
 
 eventKey = 'startVideo'
-iosVideoPlay = video_play_pv(START_DATE_UTC, END_DATE_UTC, ios, eventKey)
-androidVideoPlay = video_play_pv(START_DATE_UTC, END_DATE_UTC, android, eventKey)
-pcVideoPlay = video_play_pv(START_DATE_UTC, END_DATE_UTC, pc, eventKey)
+iosVideoPlay = video_play_pv(START_DATE, END_DATE, 'iOS', eventKey) + video_play_pv(START_DATE, END_DATE, 'iOS', 'startLearning')
+androidVideoPlay = video_play_pv(START_DATE, END_DATE, 'android', eventKey)
+pcVideoPlay = video_play_pv(START_DATE, END_DATE, 'PC', eventKey)
 
-print(pc, '本周视频播放数: ', str(pcVideoPlay), '\n', file=f)
-print(android, '本周视频播放数: ', str(androidVideoPlay), '\n', file=f)
-print(ios, '本周视频播放数: ', str(iosVideoPlay), '\n', file=f)
+print('PC本周视频播放数: ', str(pcVideoPlay), '\n', file=f)
+print('android本周视频播放数: ', str(androidVideoPlay), '\n', file=f)
+print('iOS本周视频播放数: ', str(iosVideoPlay), '\n', file=f)
 print('本周视频播放总数: ', str(iosVideoPlay + androidVideoPlay + pcVideoPlay), '\n', file=f)
 
 
 print('---------- 总用户数 ----------\n', file=f)
 
 
-def user_count(platform):
-    query1 = {
+def user_count_30(platform):
+    return users.count({
         "from": platform,
-        "type": {"$ne": "batch"},
-        "registTime": {"$exists": True}
-    }
-    query2 = {
+        "$or": [
+            {"type": {"$ne": "batch"}, "registTime": {"$gte": ONLINE_30, "$lt": END_DATE}},
+            {"type": "batch", "activateDate": {"$gte": ONLINE_30, "$lt": END_DATE}}
+        ]
+    })
+
+
+def user_count_25(platform):
+    return users25.count({
         "from": platform,
-        "type": "batch",
-        "activateDate": {"$exists": True}
-    }
-    return users.find(query1).count() + users.find(query2).count()
+        "$or": [
+            {"type": {"$ne": "batch"}, "registTime": {"$lt": ONLINE_30}},
+            {"type": "batch", "activateDate": {"$lt": ONLINE_30}}
+        ]
+    })
 
 
 def mobile_unregistered(platforms):
-    query = {
+    return deviceAttr.count({
         "platform": {"$in": platforms},
-        "users": []
-    }
-    return deviceAttr.find(query).count()
+        "users.0": {"$exists": False}
+    })
 
-pcActUser = user_count('pc')
-androidActUser = user_count('android')
-iosActUser = user_count('ios')
+pcUser25 = 267984  # user_count_25('pc')
+androidUser25 = 180068  # user_count_25('android')
+iosUser25 = 43430  # user_count_25('ios')
+
+pcActUser = pcUser25 + user_count_30('pc')
+androidActUser = androidUser25 + user_count_30('android')
+iosActUser = iosUser25 + user_count_30('ios')
 androidUnregistered = mobile_unregistered(['android'])
 iosUnregistered = mobile_unregistered(['ios'])
 
-
+print('总用户数: ', pcActUser + androidActUser + iosActUser + androidUnregistered + iosUnregistered, '\n', file=f)
 print('PC端累计活跃用户数: ' + str(pcActUser) + '\n', file=f)
 print('移动端总用户数: ' + str(androidActUser + iosActUser + androidUnregistered + iosUnregistered),
       '  注册: ', androidActUser + iosActUser, '  未注册: ', androidUnregistered + iosUnregistered, '\n', file=f)
@@ -92,72 +88,66 @@ print ('android总用户数: ', str(androidActUser + androidUnregistered),
 print ('iOS总用户数: ', str(iosActUser + iosUnregistered),
        '   注册: ', iosActUser, '  未注册: ', iosUnregistered, '\n', file=f)
 
+
 print('---------- 新增用户数 ----------\n', file=f)
 
 
 def new_user(start, end, platform):
-    query1 = {
+    user_list = list(users.find({
         "from": platform,
-        "type": {"$ne": "batch"},
-        "registTime": {"$gte": start, "$lt": end}
-    }
-    query2 = {
-        "from": platform,
-        "type": "batch",
-        "activateDate": {"$gte": start, "$lt": end}
-    }
-    user_list = list(users.find(query1, {"_id": 1})) + list(users.find(query2, {"_id": 1}))
+        "$or": [
+            {"type": {"$ne": "batch"}, "registTime": {"$gte": start, "$lt": end}},
+            {"type": "batch", "activateDate": {"$gte": start, "$lt": end}}]
+    },
+            {"_id": 1}))
     user_ids = [u['_id'] for u in user_list]
     return user_ids
 
 
 def mobile_new_unregistered(start, end, platforms):
-    query = {
-        "users": [],
+    user_list = list(deviceAttr.find({
+        "users.0": {"$exists": False},
         "activateDate": {"$gte": start, "$lt": end},
         "platform": {"$in": platforms}
-    }
-    user_list = list(deviceAttr.find(query, {"device": 1}))
+    }, {"device": 1}))
     user_ids = [u['device'] for u in user_list]
     return user_ids
 
 
-# [ "signup", "batch", "qq", "cyxt", "lnxxt", "bjxxt" ]
 def new_user_by_type(start, end, types):
-    query = {
+    return users.count({
         "type": {"$in": types},
         "registTime": {"$gte": start, "$lt": end}
-    }
-    return users.find(query).count()
+    })
 
 
-def new_user_third_party(start, end, channel):
-    query = {
-        "channel": {"$in": channel},
+# 'cyxt'/*朝阳学堂*/,'bjxxt'/*北京校讯通*/, 'cqxxt'/*重庆校讯通*/, 'lnxxt'/*辽宁校讯通*/,
+# 'ynxxt'/*云南校讯通*/, 'tjxxt'/*天津校讯通*/, 'twsm'/*天闻数媒*/, 'eduyun'/*国家教育资源公共服务平台*/
+def new_user_by_third_party(start, end):
+    return users.count({
+        "type": {"$nin": ["signup", "batch", "qq"]},
         "registTime": {"$gte": start, "$lt": end}
-    }
-    return users.find(query).count()
+    })
 
 
 def new_user_batch(start, end):
-    query = {
+    return users.count({
         "type": 'batch',
         "activateDate": {"$gte": start, "$lt": end}
-    }
-    return users.find(query).count()
+    })
 
-thirdParty = ["cyxt", "lnxxt", "bjxxt"]
-
-pcNewUser = len(new_user(START_DATE_UTC, END_DATE_UTC, 'pc'))
-androidNewUser = len(new_user(START_DATE_UTC, END_DATE_UTC, 'android'))
-iosNewUser = len(new_user(START_DATE_UTC, END_DATE_UTC, 'ios'))
-androidNewUnregistered = len(mobile_new_unregistered(START_DATE_UTC, END_DATE_UTC, ['android']))
-iosNewUnregistered = len(mobile_new_unregistered(START_DATE_UTC, END_DATE_UTC, ['ios']))
+pcNewUser = len(new_user(START_DATE, END_DATE, 'pc'))
+androidNewUser = len(new_user(START_DATE, END_DATE, 'android'))
+iosNewUser = len(new_user(START_DATE, END_DATE, 'ios'))
+androidNewUnregistered = len(mobile_new_unregistered(START_DATE, END_DATE, ['android']))
+iosNewUnregistered = len(mobile_new_unregistered(START_DATE, END_DATE, ['ios']))
 mobileNewUnregistered = androidNewUnregistered + iosNewUnregistered
-qqNewUser = new_user_by_type(START_DATE_UTC, END_DATE_UTC, ['qq'])
-thirdPartyNewUser = new_user_by_type(START_DATE_UTC, END_DATE_UTC, thirdParty)
-batchNewUser = new_user_batch(START_DATE_UTC, END_DATE_UTC)
+qqNewUser = new_user_by_type(START_DATE, END_DATE, ['qq'])
+thirdPartyNewUser = new_user_by_third_party(START_DATE, END_DATE)
+batchNewUser = new_user_batch(START_DATE, END_DATE)
 
+
+print('本周新增用户数: ', pcNewUser + androidNewUser + iosNewUser + mobileNewUnregistered, '\n', file=f)
 print('PC端本周新增用户数: ' + str(pcNewUser) + '\n', file=f)
 print('移动端本周新增用户数: ' + str(androidNewUser + iosNewUser + mobileNewUnregistered),
       '  注册: ', (androidNewUser + iosNewUser), '  未注册: ', mobileNewUnregistered, '\n', file=f)
@@ -167,126 +157,188 @@ print('iOS本周新增用户数: ', iosNewUser + iosNewUnregistered,
       '  注册: ', iosNewUser, '  未注册: ', iosNewUnregistered, '\n', file=f)
 
 print('本周首次QQ登录用户: ' + str(qqNewUser) + '\n', file=f)
-print('本周首次第三方登录用户: ', str(thirdPartyNewUser), ' (朝阳学堂, 校讯通)', '\n', file=f)
+print('本周首次第三方登录用户: ', str(thirdPartyNewUser), '\n', file=f)
 print('本周批量创建激活用户: ' + str(batchNewUser) + '\n', file=f)
+
 
 print('---------- 活跃用户数 ----------\n', file=f)
 
 
-def pc_active_user(start, end):
-    return userAttr.find({"recentPCSession": {"$gte": start, "$lt": end}}).count()
+def active_user(start, end, platform):
+    recent_session = 'recentPCSession' if platform is 'pc' else 'recentMobileSession'
+    return list(userAttr.find({recent_session: {"$gte": start, "$lt": end}}))
 
 
-def mobile_active_user(start, end):
-    reg = userAttr.find({"recentMobileSession": {"$gte": start, "$lt": end}}).count()
-    unreg = deviceAttr.find({
+def active_user_unregistered(start, end):
+    return list(deviceAttr.find({
+        "platform": {"$in": ["android", "ios"]},
         "recentSession": {"$gte": start, "$lt": end},
-        "users": []
-    }).count()
-    return reg + unreg
+        "users.0": {"$exists": False},
+    }))
 
 
 def both_active_user(start, end):
-    return userAttr.find({
+    return userAttr.count({
         "recentPCSession": {"$gte": start, "$lt": end},
         "recentMobileSession": {"$gte": start, "$lt": end}
-    }).count()
+    })
 
-pcActUser = pc_active_user(START_DATE_UTC, END_DATE_UTC)
-mobileActUser = mobile_active_user(START_DATE_UTC, END_DATE_UTC)
-bothActUser = both_active_user(START_DATE_UTC, END_DATE_UTC)
+pcActUser = active_user(START_DATE, END_DATE, 'pc')
+mobileActUser = active_user(START_DATE, END_DATE, 'mobile')
+mobileActUserUnregistered = active_user_unregistered(START_DATE, END_DATE)
+bothActUser = both_active_user(START_DATE, END_DATE)
 
-print("本周PC端活跃用户: " + str(pcActUser) + '\n', file=f)
-print("本周移动端活跃用户: " + str(mobileActUser) + '\n', file=f)
+print("本周PC端活跃用户: ", len(pcActUser),  '\n', file=f)
+print("本周移动端活跃用户: ", len(mobileActUser) + len(mobileActUserUnregistered), '\n', file=f)
 print("本周双端活跃用户: " + str(bothActUser) + '\n', file=f)
 
+
+print('---------- 去新增活跃用户数 ----------\n', file=f)
+
+# 目的：更深入地分析活跃用户的质量，监控我们的用户质量是否有不正常的起伏
+# 定义：定义时间内，刨除掉仅在新增当天活跃过的活跃用户数
+# 公式：老活跃用户+定义时间内活跃>=2天的新增用户
+
+
+def real_active_user(user_list, platform):
+    recent_session = 'recentPCSession' if platform is 'pc' else ('recentMobileSession' if platform is 'mobile' else 'recentSession')
+    counter = 0
+    for user in user_list:
+        if (user[recent_session] + datetime.timedelta(hours=8)).date() != (user['activateDate'] + datetime.timedelta(hours=8)).date():
+            counter += 1
+    return counter
+
+print('本周PC端去新增活跃用户数: ', real_active_user(pcActUser, 'pc'), '\n', file=f)
+print('本周移动端去新增活跃用户数: ', real_active_user(mobileActUser, 'mobile') + real_active_user(mobileActUserUnregistered, 'else'),
+      '注册:', real_active_user(mobileActUser, 'mobile'), '未注册:', real_active_user(mobileActUserUnregistered, 'else'), '\n', file=f)
 
 print("---------- 首页转化率 ----------\n", file=f)
 
 
-def convert_rate(start, end, platform):
+def convert_rate(start, end, platform, keys):
     users_dict = calc_user_device(start, end, [platform])
     event_flow = collect_event(start, end, users_dict, [platform])
-
-    if platform is 'pc':
-        counter = [('enterHome', 0), ('clickSignupBtn', 0), ('enterSignupPage', 0), ('signupSuccess', 0), ('startVideo', 0), ('finishVideo', 0)]
-    elif platform is 'android':
-        counter = [('enterGuidePage', 0), ('clickUserLogBtn', 0), ('enterSignupPage', 0), ('clickSignupBtn', 0), ('registSuccess', 0), ('startVideo', 0), ('finishVideo', 0)]
-    else:
-        counter = [('clickUserLogBtn', 0), ('enterSignupPage', 0), ('clickSignupBtn', 0), ('registSuccess', 0), ('startVideo', 0), ('finishVideo', 0)]
-    counter = OrderedDict(counter)
-
+    counter = OrderedDict([(key, 0) for key in keys])
     for flow in event_flow:
         for key in counter:
-            if key in flow:
+            ks = key.split('|')
+            if any([k in flow for k in ks]):
                 counter[key] += 1
             else:
                 break
     return counter
 
-convert_rate_pc = convert_rate(START_DATE_UTC, END_DATE_UTC, 'pc')
-convert_rate_android = convert_rate(START_DATE_UTC, END_DATE_UTC, 'android')
-convert_rate_ios = convert_rate(START_DATE_UTC, END_DATE_UTC, 'ios')
 
-print('----- PC -----', file=f)
-print('首页访问: ', convert_rate_pc['enterHome'], file=f)
-print('点击注册: ', convert_rate_pc['clickSignupBtn'], file=f)
-print('进入注册页面: ', convert_rate_pc['enterSignupPage'], file=f)
-print('注册成功: ', convert_rate_pc['signupSuccess'], file=f)
-print('开始观看一个视频: ', convert_rate_pc['startVideo'], file=f)
-print('观看完一个视频: ', convert_rate_pc['finishVideo'], file=f)
-print('\n', file=f)
-print('----- android -----', file=f)
-print('首页访问: ', convert_rate_android['enterGuidePage'], file=f)
-print('点击注册: ', convert_rate_android['clickUserLogBtn'], file=f)
-print('进入注册页面: ', convert_rate_android['enterSignupPage'], file=f)
-print('提交注册: ', convert_rate_android['clickSignupBtn'], file=f)
-print('注册成功: ', convert_rate_android['registSuccess'], file=f)
-print('开始观看一个视频: ', convert_rate_android['startVideo'], file=f)
-print('观看完一个视频: ', convert_rate_android['finishVideo'], file=f)
-print('\n', file=f)
-print('----- iOS -----', file=f)
-print('点击注册: ', convert_rate_ios['clickUserLogBtn'], file=f)
-print('进入注册页面: ', convert_rate_ios['enterSignupPage'], file=f)
-print('提交注册: ', convert_rate_ios['clickSignupBtn'], file=f)
-print('注册成功: ', convert_rate_ios['registSuccess'], file=f)
-print('开始观看一个视频: ', convert_rate_ios['startVideo'], file=f)
-print('观看完一个视频: ', convert_rate_ios['finishVideo'], file=f)
+home_pc = [
+    {"name": "首页访问", "key": "enterHome"},
+    {"name": "点击注册", "key": "clickSignupBtn|clickFreeForUseSS"},
+    {"name": "进入注册页面", "key": "enterSignupPage"},
+    {"name": "注册成功", "key": "signupSuccess"},
+    {"name": "开始观看一个视频", "key": "startVideo"},
+    {"name": "观看完一个视频", "key": "finishVideo"},
+]
 
-print('\n', file=f)
+home_android = [
+    {"name": "首页访问", "key": "enterGuidePage"},
+    {"name": "点击注册", "key": "clickUserLogBtn"},
+    {"name": "进入注册页面", "key": "enterSignupPage"},
+    {"name": "提交注册", "key": "clickSignupBtn"},
+    {"name": "注册成功", "key": "registSuccess"},
+    {"name": "开始观看一个视频", "key": "startVideo"},
+    {"name": "观看完一个视频", "key": "finishVideo"},
+]
+
+home_ios = [
+    {"name": "点击注册", "key": "clickUserLogBtn"},
+    {"name": "进入注册页面", "key": "enterSignupPage"},
+    {"name": "提交注册", "key": "clickSignupBtn"},
+    {"name": "注册成功", "key": "registSuccess"},
+    {"name": "开始观看一个视频", "key": "startVideo"},
+    {"name": "观看完一个视频", "key": "finishVideo"},
+]
+
+platforms = ['pc', 'android', 'ios']
+for p in platforms:
+    home = globals()['home_'+p]
+    keys = [h['key'] for h in home]
+    rate = convert_rate(START_DATE, END_DATE, p, keys)
+    values = rate.values()
+    print('-----', p, '-----', file=f)
+    for i, h in enumerate(home):
+        print(h['name'], rate[h['key']], str(round(values[i]*100.0/values[i-1], 2))+'%' if i != 0 else '',
+              str(round(values[i]*100.0/values[0], 2))+'%' if i != 0 else '', file=f)
+    print('\n', file=f)
+
+
 print('----------- 周留存 -----------\n', file=f)
-last_week_users_pc = new_user(LAST_WEEK_START_DATE_UTC, LAST_WEEK_END_DATE_UTC, 'pc')
-last_week_users_android = new_user(LAST_WEEK_START_DATE_UTC, LAST_WEEK_END_DATE_UTC, 'android')
-last_week_users_ios = new_user(LAST_WEEK_START_DATE_UTC, LAST_WEEK_END_DATE_UTC, 'ios')
-last_week_users_mobile_unregistered = mobile_new_unregistered(LAST_WEEK_START_DATE_UTC, LAST_WEEK_END_DATE_UTC, ['android', 'ios'])
+
+
+last_week_users_pc = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'pc')
+last_week_users_android = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'android')
+last_week_users_ios = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'ios')
+last_week_users_mobile_unregistered = mobile_new_unregistered(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, ['android', 'ios'])
 
 
 def count_active(start, end, ids, platform):
     recent_session = "recentPCSession" if platform is "pc" else "recentMobileSession"
-    query = {
+    return userAttr.count({
         "user": {"$in": ids},
         recent_session: {"$gte": start, "$lt": end}
-    }
-    return userAttr.find(query).count()
+    })
 
 
 def count_active_unregistered(start, end, devices):
-    query = {
+    return deviceAttr.count({
         "device": {"$in": devices},
-        "recentSession": {"$gte": start, "$lt": end}
-    }
-    return deviceAttr.find(query).count()
+        "recentSession": {"$gte": start, "$lt": end},
+    })
 
-this_week_retention_pc = count_active(START_DATE_UTC, END_DATE_UTC, last_week_users_pc, 'pc')
-this_week_retention_mobile = count_active(START_DATE_UTC, END_DATE_UTC, last_week_users_android, 'android') \
-                             + count_active(START_DATE_UTC, END_DATE_UTC, last_week_users_ios, 'ios') \
-                             + count_active_unregistered(START_DATE_UTC, END_DATE_UTC, last_week_users_mobile_unregistered)
+this_week_retention_pc = count_active(START_DATE, END_DATE, last_week_users_pc, 'pc')
+this_week_retention_mobile = count_active(START_DATE, END_DATE, last_week_users_android, 'android') \
+                             + count_active(START_DATE, END_DATE, last_week_users_ios, 'ios') \
+                             + count_active_unregistered(START_DATE, END_DATE, last_week_users_mobile_unregistered)
 
 print('pc端上周新增用户: ', len(last_week_users_pc), '\n', file=f)
 print('pc端上周新增用户本周留存: ', this_week_retention_pc, '\n', file=f)
 print('移动端上周新增用户: ', len(last_week_users_android) + len(last_week_users_ios) + len(last_week_users_mobile_unregistered), '\n', file=f)
 print('移动端上周新增用户本周留存: ', this_week_retention_mobile, '\n', file=f)
 
+
+print('----------- H5首页 -----------\n', file=f)
+
+
+def h5(start, end, platforms):
+    pipeline = [
+        {
+            "$match": {
+                "eventKey": "enterMobileSite",
+                "platform": "landing",
+                "platform2": {"$in": platforms},
+                "serverTime": {"$gte": start, "$lt": end}
+            }
+        },
+        {
+            "$group": {
+                "_id": "$device",
+                "pv": {"$sum": 1}
+            }
+        },
+        {
+            "$group": {
+                "_id": None,
+                "uv": {"$sum": 1},
+                "pv": {"$sum": "$pv"}
+            }
+        }
+    ]
+    return list(events.aggregate(pipeline))[0]
+h5_android = h5(START_DATE, END_DATE, ['android'])
+h5_ios = h5(START_DATE, END_DATE, ['iOS'])
+
+print('android', 'uv:', h5_android['uv'], 'pv:', h5_android['pv'], '\n', file=f)
+print('iOS', 'uv:', h5_ios['uv'], 'pv:', h5_ios['pv'], file=f)
+
+
 f.close()
 e = time.time()
-print("Total time: ", int((e-s)), ' s')
+print("Total time: ", (e-s)/60, ' min')

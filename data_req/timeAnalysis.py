@@ -1,86 +1,43 @@
 # _*_ coding:utf-8 _*_
 from __future__ import print_function
-from pymongo import MongoClient, DESCENDING
-import pickle
-from bson.objectid import ObjectId
-import time
-import datetime
-import calendar
-import math
-db = MongoClient('10.8.8.111:27017')['onionsBackupOnline']
-events = db['events']
-topics = db['topics']
-
-START_DATE = datetime.datetime(2015, 12, 30)
-END_DATE = datetime.datetime(2016, 1, 6)
-
-START_DATE_UTC = START_DATE - datetime.timedelta(hours=8)
-END_DATE_UTC = END_DATE - datetime.timedelta(hours=8)
-
-START_TIMESTAMP = calendar.timegm(START_DATE_UTC.utctimetuple()) * 1000
-END_TIMESTAMP = calendar.timegm(END_DATE_UTC.utctimetuple()) * 1000
-
-print(START_TIMESTAMP, END_TIMESTAMP)
-s = time.time()
+# import pickle
+# from bson.objectid import ObjectId
+from dataFunctions import *
 
 
-# calculate weekly top 10 topics
-def weeklyTopicsEnterTop10(startDate, endDate):
-    pipeline = [
-        {
-            "$match": {
-                "eventKey": "enterTopic",
-                "serverTime": {
-                    "$gte": startDate,
-                    "$lt": endDate
-                }
-            }
-        },
-        {
-            "$group": {
-                "_id": "$eventValue.topicId",
-                "count": {"$sum": 1}
-            }
-        },
-        {
-            "$sort": {
-                "count": DESCENDING
-            }
-        }
-    ]
-
-    x = list(events.aggregate(pipeline))[:10]
-    return [t['_id'] for t in x]
-
-
-def topic_time(topicId):
-    res = {}
+def topic_time(start, end, topicId, platform):
+    # res = {'completeLearning': 0, 'completeMaster': 0, 'time_learning': [], 'time_master': 0}
+    res = dict()
     users1 = list(events.find({
         "eventKey": "startLearning",
         "user": {"$exists": True},
+        "platform2": platform,
         "eventValue.topicId": topicId,
-        "eventTime": {"$gte": START_TIMESTAMP, "$lt": END_TIMESTAMP}
+        "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1, 'eventTime': 1, '_id': 0}).sort('eventTime', 1)
                   )
     users2 = list(events.find({
         "eventKey": "completeLearning",
         "user": {"$exists": True},
+        "platform2": platform,
         "eventValue.topicId": topicId,
-        "eventTime": {"$gte": START_TIMESTAMP, "$lt": END_TIMESTAMP}
+        "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1, 'eventTime': 1, '_id': 0}).sort('eventTime', 1))
 
     users3 = list(events.find({
         "eventKey": "startMaster",
         "user": {"$exists": True},
+        "platform2": platform,
         "eventValue.topicId": topicId,
-        "eventTime": {"$gte": START_TIMESTAMP, "$lt": END_TIMESTAMP}
+        "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1, 'eventTime': 1, '_id': 0}).sort('eventTime', 1))
 
     users4 = list(events.find({
         "eventKey": "completeMaster",
         "user": {"$exists": True},
+        "platform2": platform,
         "eventValue.topicId": topicId,
-        "eventTime": {"$gte": START_TIMESTAMP, "$lt": END_TIMESTAMP}
+        "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1, 'eventTime': 1, '_id': 0}).sort('eventTime', 1))
 
     print(len(users1), len(users2), len(users3), len(users4))
@@ -206,35 +163,46 @@ def topic_time(topicId):
 #     u'56399cccbdbf426a5d58ed5e',
 #     u'564ee8151edb0de474025bd0']
 
-weeklyEnterTopicsTopTenList = [u'54c708798bac81fccbd4bae5', u'54c708798bac81fccbd4bb3c', u'54c708798bac81fccbd4bae8', u'56629d6057da889d40916287', u'54c708798bac81fccbd4bb53', u'564ed38c2e05ec030b0ad3c3', u'54c708798bac81fccbd4bb40', u'563050396c21a8f0350a1ea3', u'564ee8151edb0de474025bd0', u'56399cccbdbf426a5d58ed5e']
+# weeklyEnterTopicsTopTenList = [u'54c708798bac81fccbd4bae5', u'54c708798bac81fccbd4bb3c', u'54c708798bac81fccbd4bae8', u'56629d6057da889d40916287', u'54c708798bac81fccbd4bb53', u'564ed38c2e05ec030b0ad3c3', u'54c708798bac81fccbd4bb40', u'563050396c21a8f0350a1ea3', u'564ee8151edb0de474025bd0', u'56399cccbdbf426a5d58ed5e']
 # print(weeklyEnterTopicsTopTenList)
 # f = open('../data/周前十知识点时间分析'+str(START_DATE.date())+'-'+str((END_DATE-datetime.timedelta(days=1)).date())+'.txt', 'w')
-print('---------- 周前十知识点时间分析', START_DATE.date(), '-', (END_DATE-datetime.timedelta(days=1)).date(), '----------')
-for topic in weeklyEnterTopicsTopTenList:
-    # print('知识点名称 ', topic['name'])
-    print('知识点 ', topic)
-    res = topic_time(topic)
-    print('学习模块完成人数 ', res['completeLearning'])
-    print('练习模块完成人数', res['completeMaster'])
-    print('学习模块时间分析 ')
-    for k in res['learning_time_bucket']:
-        if k != 30:
-            print(k, '-', k+2, '分钟: ', res['learning_time_bucket'][k])
-        else:
-            print('30分钟以上: ', res['learning_time_bucket'][30])
-    print('练习模块时间分析 ')
-    for k in res['master_time_bucket']:
-        if k != 30:
-            print(k, '-', k+2, '分钟: ', res['master_time_bucket'][k])
-        else:
-            print('30分钟以上: ', res['master_time_bucket'][30])
-    # print(res['time_learning'])
-    # print(res['time_master'])
-    # print(res['learning_time_bucket'])
-    # print(res['master_time_bucket'])
-    print('----------------------------------------')
 
-# f.close()
-e = time.time()
-print(e-s)
+
+def print_time_analysis(topics, start, end):
+    s = time.time()
+    start_timestamp = calendar.timegm(start.utctimetuple()) * 1000
+    end_timestamp = calendar.timegm(end.utctimetuple()) * 1000
+    platforms = ['PC', 'android', 'iOS']
+    f = open('../data/周前十知识点时间分析'+str((start + datetime.timedelta(days=1)).date())+'-'+str(end.date())+'.txt', 'w')
+    print('---------- 周前十知识点时间分析', (start+datetime.timedelta(days=1)).date(), '-', end.date(), '----------', file=f)
+    for p in platforms:
+        print('----------', p, '----------', file=f)
+        for topic in topics:
+            # print('知识点名称 ', topic['name'])
+            print('知识点 ', topic['_id'], topic['name'].encode('UTF-8'), file=f)
+            res = topic_time(start_timestamp, end_timestamp, topic['_id'], p)
+            print('学习模块完成人数 ', res['completeLearning'], file=f)
+            print('练习模块完成人数', res['completeMaster'], file=f)
+            print('学习模块时间分析 ', file=f)
+            for k in res['learning_time_bucket']:
+                if k != 30:
+                    print(k, '-', k+2, '分钟: ', res['learning_time_bucket'][k], file=f)
+                else:
+                    print('30分钟以上: ', res['learning_time_bucket'][30], file=f)
+            print('练习模块时间分析 ', file=f)
+            for k in res['master_time_bucket']:
+                if k != 30:
+                    print(k, '-', k+2, '分钟: ', res['master_time_bucket'][k], file=f)
+                else:
+                    print('30分钟以上: ', res['master_time_bucket'][30], file=f)
+            # print(res['time_learning'])
+            # print(res['time_master'])
+            # print(res['learning_time_bucket'])
+            # print(res['master_time_bucket'])
+            print('----------------------------------------', file=f)
+            print('知识点', topic['name'], p, 'done')
+
+    f.close()
+    e = time.time()
+    print('新用户周前十知识点时间分析 运行用时: ', (e-s)/60, 'min')
 

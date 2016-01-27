@@ -1,8 +1,9 @@
 # _*_ coding:utf-8 _*_
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 import datetime
 import time
-
+import calendar
+import math
 
 db = MongoClient('10.8.8.111:27017')['onionsBackupOnline']
 cache = MongoClient('10.8.8.111:27017')['cache']
@@ -11,12 +12,14 @@ userAttr = cache['userAttr']
 eventFlow = cache['eventFlow']
 users = db['users']
 events = db['events']
+users25 = cache['users25']
+topics = db['topics']
 
 
 def calc_user_device(start, end, platforms):
     # STEP 1 get all the new users in given time period
-    new_user_q = users.find({"type": {"$ne": "batch"}, "registTime": {"$gte": start, "$lt": end}}, {"_id": 1})
-    new_user_batch_q = users.find({"type": "batch", "activateDate": {"$gte": start, "$lt": end}}, {"_id": 1})
+    new_user_q = users.find({"type": {"$ne": "batch"}, "from": {"$in": platforms}, "registTime": {"$gte": start, "$lt": end}}, {"_id": 1})
+    new_user_batch_q = users.find({"type": "batch", "from": {"$in": platforms}, "activateDate": {"$gte": start, "$lt": end}}, {"_id": 1})
     user_group = [doc["_id"] for doc in new_user_q] + [doc["_id"] for doc in new_user_batch_q]
     # STEP 2 get all the devices that user has used
     user_device = {}
@@ -25,10 +28,9 @@ def calc_user_device(start, end, platforms):
         {"$match": {"users": {"$in": user_group}, "platform": {"$in": platforms}}},
         {"$group": {"_id": "$users", "devices": {"$addToSet": "$device"}}}
     ]
-    temp_device = list(deviceAttr.aggregate(pipeline))
+    temp_device = list(deviceAttr.aggregate(pipeline, allowDiskUse=True))
     for each in temp_device:
         user_device[each['_id']] = each['devices']
-
     output = {
         "hasUsers": {},
         "notUsers": []
@@ -44,6 +46,8 @@ def calc_user_device(start, end, platforms):
 
 
 def collect_event(start, end, users_dict, platforms):
+    if not platforms:
+        platforms = ['pc', 'android', 'ios']
     device_list = users_dict['notUsers']
     user_device_list = users_dict['hasUsers']
 
@@ -109,7 +113,7 @@ def collect_event(start, end, users_dict, platforms):
                         j -= 1
                 user_event_flow += sum([flow['eventFlow'] for i, flow in enumerate(user_flows) if i in ind], [])
         y.append(user_event_flow)
-    return x + y
+    return y + x
 
 
 def pv_uv_count(event_flow, event_key):
@@ -140,7 +144,7 @@ def new_user_count(start, end, platform):
         "type": "batch",
         "activateDate": {"$gte": start, "$lt": end}
     }
-    return users.find(query1).count() + users.find(query2).count()
+    return users.count(query1) + users.count(query2)
 
 
 def mobile_new_unregistered_count(start, end, platform):
@@ -149,4 +153,4 @@ def mobile_new_unregistered_count(start, end, platform):
         "activateDate": {"$gte": start, "$lt": end},
         "platform": platform
     }
-    return deviceAttr.find(query).count()
+    return deviceAttr.count(query)
