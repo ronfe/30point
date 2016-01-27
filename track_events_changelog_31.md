@@ -362,3 +362,15 @@ Schema
 * 用户提交答案后，点击左下角解析按钮
 	- `clickShowExplanation`
 	- `{topic: String, problemSet: String, problem: String}`
+
+* 软键盘出现
+	- `softKeyboardPop`
+	- `{topic: String, problemSet: String, problem: String}`
+
+* 软键盘消失
+	- `softKeyboardDisappear`
+	- `{topic: String, problemSet: String, problem: String}`
+
+* 填空题，点击输入框
+	- `clickProblemTextbox`
+	- `{topic: String, problemSet: String, problem: String}`
