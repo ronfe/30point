@@ -316,6 +316,7 @@ Schema
 * Schema
 
 	* 所有video埋点的eventValue中加上videoUrl字段，值是video的url，以下埋点不再重复
+	* 所有video埋点的eventValue中加上cache字段，值是Boolean，用来标识当前视频是否为用户缓存视频，以下埋点不再重复
 	* 在videoLoadFailed后请求七牛拿视频meta信息
 
 * 视频首次开始播放
