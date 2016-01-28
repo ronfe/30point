@@ -58,10 +58,6 @@ Schema
 * 进入章节列表页面【i】
 	- `enterChapterListPage`
 
-* 自动打开某个章节【i】
-	- `autoOpenChapterList`
-	- `{chapter: String}`
-
 * 点击“设置”【i】
 	- `enterSetting` -> `clickSettingBtn`
 
