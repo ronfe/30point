@@ -5,6 +5,22 @@ Schema
 
 * 区分埋点q和用户q，在埋点Schema中添加webChannel字段，用于记录web query里的q，用户自带的q传到埋点的q字段中
 
+补遗
+--
+
+* Add
+	* 进入外循环
+		- eK: `enterOuterPage`
+	
+	* 专题介绍页面，点击“开始专题”
+		- eK: `clickStartProblemSet`
+		- category: `site`
+		- eV: `{topic: String, problemSet: String}`
+	
+
+* Modify
+	* course类埋点eventValue，topicId/problemId/videoId -> topic/problem/video
+
 学生首页 (/student)
 ---
 
