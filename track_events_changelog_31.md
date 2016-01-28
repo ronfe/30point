@@ -1,6 +1,8 @@
 Track Events Changelog (iOS/Android App v2.1)
 --
 
+以下埋点如无明确category标注，其category均为`site`
+
 Schema
 --
 
