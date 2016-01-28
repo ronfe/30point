@@ -205,12 +205,12 @@ Schema
 	- `course`
 	- `{topic: String, video: String}`
 
-* 视频onEnd时和finishVideo一起发送【i】
+* 视频完成，页面跳转之前【i】
 	- `finishHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
 
-* (多视频学习模块) 视频完成页，点击”退出“
+* 视频完成页，点击”退出“
 	- `quitLearning` -> `clickQuitLearningSeries`
 	- `course` -> `site`
 	- `{topic: String, video: String}`
@@ -219,7 +219,7 @@ Schema
 	- `clickContinueLearning`
 	- `{topic: String, video: String}`
 
-* 修改 - 进入学习模块完成页（包括unsigned用户）【i】
+* 修改 - 按我们check过的走【i】
 	- `finishLearning`
 	- `course`
 	- `{topic: String, video: String, stars: Number, points: Number}`
@@ -264,29 +264,29 @@ Schema
 	- `course`
 	- `{topic: String, problemSet: String, stars: Number, points: Number}`
 
-* 专题完成页面，点击”返回“
+* 专题/挑战完成页面，点击”返回“，若是挑战，problemSetId发topic id
 	- `quitProblemSet` -> `clickQuitMaster`
 	- `course` -> `site`
-	- `{topic: String, problemSet: String}`
+	- `{topicId: String, problemSetId: String}`
 
-* 专题完成页面，点击”下一专题“
+* 专题/挑战完成页面，点击”下一专题“，若是挑战，problemSetId发topic id
 	- `clickContinueNextProblemSet`
 	- `site`
-	- `{topic: String, problemSet: String}`
+	- `{topicId: String, problemSetId: String}`
 
-* 进入挑战页面
+* 进入挑战介绍页
 	- `enterChallenge`
 	- `site`
-	- `{topic: String}`
+	- `{topicId: String}`
 
 * 挑战页面，点击”开始挑战“
 	- `startChallenge` -> `clickStartChallenge`
 	- `course` -> `site`
-	- `{topic: String}`
+	- `{topicId: String}`
 
 * 点击”开始挑战“后，进入第一道题
 	- `startChallenge`
-	- `{topic: String}`
+	- `{topicId: String}`
 
 视频埋点
 --
@@ -317,9 +317,9 @@ Schema
 	- eK: getQiniuResFailure
 	- eV: {video: String, error: String}
 
-* 视频播放过程中出现卡顿
+* 视频播放过程中出现卡顿(bufferSpeed待定)
 	- eK: videoLagged
-	- eV: {video: String, timeStamp: Number}
+	- eV: {video: String, timeStamp: Number, bufferSpeed: Number}
 
 * 视频播放卡顿后再次play
 
