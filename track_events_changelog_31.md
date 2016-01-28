@@ -47,17 +47,8 @@ Schema
 * wifi中断pop，点击“继续下载”【i】
 	- `clickDownloadUsingLocalNetwork`
 
-* 弹出遇到小问题pop【i】
-	- `popEncounterProblemsMsg`
-
-* 小问题pop，点击”好的“【i】
-	- `clickConfirmProblemMsg`
-
-* 弹出服务器开小差pop
+* 弹出服务器开小差pop (iOS Only)
 	- `popServerError`
-
-* 开小差pop，点击”好的“
-	- `clickConfirmServerMsg`
 
 外循环 - 章节列表页面
 --
