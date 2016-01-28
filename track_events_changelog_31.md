@@ -36,11 +36,7 @@ Schema
 提示
 --
 
-* 弹出发送通知pop【i】
-	- `popPushingNotificationMsg`
-
 * 弹出wifi中断pop【i】
-
 	- `popDownloadTerminatedMsg`
 
 * wifi中断pop，点击“稍后再说”【i】
@@ -86,7 +82,7 @@ Schema
 * 进入选择教材版本页面【i】
 	- `enterSwitchBookPage`
 
-* 选择教材版本页面，选择“返回”【i】
+* 选择教材版本页面，点击“返回”【i】
 	- `clickReturnFromSwitchBook`
 
 * 选择教材版本页面，点击某个教材【i】
@@ -115,17 +111,17 @@ Schema
 * 缓存管理页面，点击切换顶部tab到“已下载”【i】
 	- `clickDownloadedVideosTab`
 
-* 进入用户反馈页面【i】
-	- `enterUserFeedbackPage`
+<!--* 进入用户反馈页面【i】-->
+<!--	- `enterUserFeedbackPage`-->
 
-* 用户反馈页面，点击“返回”【i】
-	- `clickReturnFromUserFeedback`
+<!--* 用户反馈页面，点击“返回”【i】-->
+<!--	- `clickReturnFromUserFeedback`-->
 
-* 用户反馈页面，点击“完善联系信息”【i】
-	- `clickFillContactForm`
+<!--* 用户反馈页面，点击“完善联系信息”【i】-->
+<!--	- `clickFillContactForm`-->
 
-* 用户反馈页面，点击“发送”【i】
-	- `clickSendUserFeedback`
+<!--* 用户反馈页面，点击“发送”【i】-->
+<!--	- `clickSendUserFeedback`-->
 
 * 点击“常见问题”【i】
 	- `clickFAQ`
@@ -142,17 +138,15 @@ Schema
 * 点击“分享”【i】
 	- `clickShareAppBtn`
 
-* 点击“给洋葱数学评分”【i】
-	- `clickRateAppBtn`
-
 外循环 - “我的”页面
 --
 
-* (unsigned用户)进入“我的”页面【i】
-	- `enterUnsignedProfilePage`
+* enterMyProfile （进入“我的”页面）【i】
+	- `{signedStatus: Boolean}`
 
-* (unsigned用户)点击“返回”【i】
-	- `clickReturnFromUnsignedProfilePage`
+* “我的”页面，点击“返回”【i】
+	- `clickReturnFromProfilePage`
+	- `{signedStatus: Boolean}`
 
 * (unsigned用户)点击“登录”【i】
 	- `clickLoginFromProfile`
@@ -189,15 +183,10 @@ Schema
 	- `course` -> `site`
 	- `{topic: String}`
 
-* 点击”继续“专题训练
-	- `clickReviewMaster`
-	- `site`
-	- `{topic: String}`
-
 * 点击”继续“专题训练后，选择”想进入的专题“
 	- `clickEnterReviewProblemSet`
 	- `site`
-	- `{topic: String}`
+	- `{topic: String, problemSet: String}`
 
 * 网络连接不正常时，点击“点击刷新”
 	- `clickRefreshTopic`
@@ -206,7 +195,7 @@ Schema
 内循环 - 学习模块
 --
 
-* 点击“进入”视频讲解后，进入视频播放页【i】
+* 1. 首次进入视频讲解，学习第一个视频（一个signed用户一辈子一个知识点只发一次enterLearning）【i】
 	- `enterLearning`
 	- `course`
 	- `{topic: String}`
@@ -216,7 +205,7 @@ Schema
 	- `course`
 	- `{topic: String, video: String}`
 
-* 进入视频完成页（多视频学习模块）或学习模块完成页（最后一个视频）（包括Unsigned用户）【i】
+* 视频onEnd时和finishVideo一起发送【i】
 	- `finishHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
