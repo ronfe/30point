@@ -8,7 +8,7 @@ Schema
 
 * 区分埋点q和用户q，在埋点Schema中添加webChannel字段，用于记录web query里的q，用户自带的q传到埋点的q字段中
 
-引导页
+引导页(tips:Android端enter事件触发时机都是onresume<即每次页面显示，包括从后台回来>)
 --
 
 * 只要进入引导页，就发`enterGuidePage`【i】
