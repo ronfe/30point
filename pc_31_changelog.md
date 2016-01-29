@@ -15,10 +15,10 @@ Schema
 	* 教师首页，点击下载ios应用后点击“直接下载”
 		- eK: `clickDownloadIosAppViaPCTC`
 	
-	* 学生首页，点击下载ios应用后点击“直接下载”
-		- eK: `clickDownloadIosAndroidViaPCSS`
+	* 学生首页，点击下载android应用后点击“直接下载”
+		- eK: `clickDownloadAndroidAppViaPCSS`
 	
-	* 教师首页，点击下载ios应用后点击“直接下载”
+	* 教师首页，点击下载android应用后点击“直接下载”
 		- eK: `clickDownloadAndroidAppViaPCTC`
 
 	* 进入外循环
