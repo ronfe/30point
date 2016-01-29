@@ -62,7 +62,7 @@ Schema
 
 * 点击收起某个章节【i】
 	- `clickCloseChapterList`
-	- `{chapter: String}`
+	- `{chapterId: String}`
 
 * 点击某个知识点【i】
 	- `enterTopic` -> `clickEnterTopic`
