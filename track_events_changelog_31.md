@@ -3,6 +3,14 @@ Track Events Changelog (iOS/Android App v2.1)
 
 以下埋点如无明确category标注，其category均为`site`
 
+增补
+--
+
+* 学习模块完成页，点击“休息一下”
+	- `quitLearning` -> `clickHaveARest`
+	- `site`
+	- `{topicId: String, videoId: String}`
+
 Schema
 --
 
