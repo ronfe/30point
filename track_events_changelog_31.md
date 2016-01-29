@@ -10,7 +10,7 @@ Schema
 
 引导页
 --
-(tips:Android端enter事件触发时机都是onresume<即每次页面显示，包括从后台回来>)
+**tips**:Android端引导页的enter事件触发时机都是onresume<即每次页面显示，包括从后台回来>
 
 * 只要进入引导页，就发`enterGuidePage`【i】
 
