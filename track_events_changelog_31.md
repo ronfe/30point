@@ -20,7 +20,7 @@ Schema
 --
 **tips**:Android端引导页的enter事件触发时机都是onresume<即每次页面显示，包括从后台回来>
 
-* 只要进入引导页，就发`enterGuidePage`【i】
+* 只要进入引导页，就发`enterGuidePage`【i】[diggzhang-0201-Android2.1:tested]
 
 * 引导页，进入选择教材版本页面【i】【A】
 	- `enterChoosePublisherPage`
