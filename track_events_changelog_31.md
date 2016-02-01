@@ -6,7 +6,7 @@ Track Events Changelog (iOS/Android App v2.1)
 增补
 --
 
-* 学习模块完成页，点击“休息一下”  [diggzhang-0201-Android2.1:未触发] 修复
+* 学习模块完成页，点击“休息一下”  [diggzhang-0201-Android2.1:未触发] **修复**
 	- `quitLearning` -> `clickHaveARest`
 	- `site`
 	- `{topicId: String, videoId: String}`
@@ -25,7 +25,7 @@ Schema
 * 引导页，进入选择教材版本页面【i】【A】[diggzhang-0201-Android2.1:tested]
 	- `enterChoosePublisherPage`
 
-* 引导页，选择教材版本页面，点击“返回”图标【i】【A】[diggzhang-0201-Android2.1:未触发]
+* 引导页，选择教材版本页面，点击“返回”图标【i】【A】[diggzhang-0201-Android2.1:未触发]  **修复**
 	- `clickReturnFromChoosePublisher`
 
 * 引导页，选择教材版本页面，点击某个教材【i】【A】[diggzhang-0201-Android2.1:tested]
@@ -35,7 +35,7 @@ Schema
 * 引导页，进入选择年级页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterChooseGradePage`
 
-* 引导页，选择年级页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
+* 引导页，选择年级页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发]  **修复**
 	- `clickReturnFromChooseGrade`
 
 * 引导页，选择年级页面，点击某个年级【i】[diggzhang-0201-Android2.1:tested]
