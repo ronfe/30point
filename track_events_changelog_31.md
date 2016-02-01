@@ -22,23 +22,23 @@ Schema
 
 * 只要进入引导页，就发`enterGuidePage`【i】[diggzhang-0201-Android2.1:tested]
 
-* 引导页，进入选择教材版本页面【i】【A】
+* 引导页，进入选择教材版本页面【i】【A】[diggzhang-0201-Android2.1:tested]
 	- `enterChoosePublisherPage`
 
-* 引导页，选择教材版本页面，点击“返回”图标【i】【A】
+* 引导页，选择教材版本页面，点击“返回”图标【i】【A】[diggzhang-0201-Android2.1:未触发]
 	- `clickReturnFromChoosePublisher`
 
-* 引导页，选择教材版本页面，点击某个教材【i】【A】
+* 引导页，选择教材版本页面，点击某个教材【i】【A】[diggzhang-0201-Android2.1:tested]
 	- `clickChoosePublisher`
 	- `{publisher: String}`
 
-* 引导页，进入选择年级页面【i】
+* 引导页，进入选择年级页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterChooseGradePage`
 
-* 引导页，选择年级页面，点击“返回”【i】
+* 引导页，选择年级页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickReturnFromChooseGrade`
 
-* 引导页，选择年级页面，点击某个年级【i】
+* 引导页，选择年级页面，点击某个年级【i】[diggzhang-0201-Android2.1:tested]
 	- `clickChooseGrade`
 	- `{grade: String}`
 
@@ -362,3 +362,5 @@ Schema
 * 填空题，点击输入框
 	- `clickProblemTextbox`
 	- `{topic: String, problemSet: String, problem: String}`
+
+
