@@ -45,35 +45,35 @@ Schema
 提示
 --
 
-* 弹出wifi中断pop【i】
+* 弹出wifi中断pop【i】[diggzhang-0201-Android2.1:未测试到]
 	- `popDownloadTerminatedMsg`
 
-* wifi中断pop，点击“稍后再说”【i】
+* wifi中断pop，点击“稍后再说”【i】[diggzhang-0201-Android2.1:未测试到]
 	- `clickDownloadVideoLater`
 
-* wifi中断pop，点击“继续下载”【i】
+* wifi中断pop，点击“继续下载”【i】[diggzhang-0201-Android2.1:未测试到]
 	- `clickDownloadUsingLocalNetwork`
 
-* 弹出服务器开小差pop (iOS Only)
+* 弹出服务器开小差pop (iOS Only) [diggzhang-0201-Android2.1:未测试到]
 	- `popServerError`
 
 外循环 - 章节列表页面
 --
 
-* 进入章节列表页面【i】
+* 进入章节列表页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterChapterListPage`
 
-* 点击“设置”【i】
+* 点击“设置”【i】[diggzhang-0201-Android2.1:未测试到]
 	- `enterSetting` -> `clickSettingBtn`
 
-* 点击“我的”【i】
+* 点击“我的”【i】[diggzhang-0201-Android2.1:未测试到]
 	- `enterMyProfile` -> `clickProfileBtn`
 
-* 点击收起某个章节【i】
+* 点击收起某个章节【i】[diggzhang-0201-Android2.1:tested]
 	- `clickCloseChapterList`
 	- `{chapterId: String}`
 
-* 点击某个知识点【i】
+* 点击某个知识点【i】[diggzhang-0201-Android2.1:tested]
 	- `enterTopic` -> `clickEnterTopic`
 
 外循环 - 设置页面
