@@ -44,7 +44,7 @@ Schema
 
 提示
 --
-
+Tips:Android 暂时没有提示功能
 * 弹出wifi中断pop【i】[diggzhang-0201-Android2.1:未测试到]
 	- `popDownloadTerminatedMsg`
 
@@ -63,10 +63,10 @@ Schema
 * 进入章节列表页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterChapterListPage`
 
-* 点击“设置”【i】[diggzhang-0201-Android2.1:未测试到]
+* 点击“设置”【i】[diggzhang-0201-Android2.1:未测试到]**已存在**
 	- `enterSetting` -> `clickSettingBtn`
 
-* 点击“我的”【i】[diggzhang-0201-Android2.1:未测试到]
+* 点击“我的”【i】[diggzhang-0201-Android2.1:未测试到]**已存在**
 	- `enterMyProfile` -> `clickProfileBtn`
 
 * 点击收起某个章节【i】[diggzhang-0201-Android2.1:tested]
