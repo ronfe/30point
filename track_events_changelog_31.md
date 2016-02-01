@@ -79,45 +79,45 @@ Schema
 外循环 - 设置页面
 --
 
-* 进入设置页面【i】
+* 进入设置页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterSettingPage`
 
-* (unsigned用户)点击“注册新用户”【i】
+* (unsigned用户)点击“注册新用户”【i】[diggzhang-0201-Android2.1:已经登录的用户也会触发该埋点]
 	- `clickSignupFromSetting`
 
-* (unsigned用户)点击“登录”【i】
+* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:直接计入到enterLoginPage]
 	- `clickLoginFromSetting`
 
-* 进入选择教材版本页面【i】
+* 进入选择教材版本页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterSwitchBookPage`
 
-* 选择教材版本页面，点击“返回”【i】
+* 选择教材版本页面，点击“返回”【i】[diggzhang-0201-Android2.1:第一次点击返回后未触发，第二次触发了]
 	- `clickReturnFromSwitchBook`
 
-* 选择教材版本页面，点击某个教材【i】
+* 选择教材版本页面，点击某个教材【i】[diggzhang-0201-Android2.1:tested]
 	- `clickSwitchBookBtn`
 	- `{book: String}`
 
-* 进入选择年级页面【i】
+* 进入选择年级页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterSwitchGradePage`
 
-* 选择年级页面，点击“返回”【i】
+* 选择年级页面，点击“返回”【i】[diggzhang-0201-Android2.1:tested]
 	- `clickReturnFromSwitchGrade`
 
-* 选择年级页面，点击某个年级【i】
+* 选择年级页面，点击某个年级【i】[diggzhang-0201-Android2.1:tested]
 	- `clickSwitchGradeBtn`
 	- `{grade: String}`
 
-* 进入缓存管理页面【i】
+* 进入缓存管理页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterBufferManagementHome`
 
-* 缓存管理页面，点击“返回”【i】
+* 缓存管理页面，点击“返回”【i】[diggzhang-0201-Android2.1:tested]
 	- `clickReturnFromBufferManagement`
 
-* 缓存管理页面，点击切换顶部tab到“正在下载”【i】
+* 缓存管理页面，点击切换顶部tab到“正在下载”【i】[diggzhang-0201-Android2.1:tested]
 	- `clickDownloadingVideosTab`
 
-* 缓存管理页面，点击切换顶部tab到“已下载”【i】
+* 缓存管理页面，点击切换顶部tab到“已下载”【i】[diggzhang-0201-Android2.1:tested]
 	- `clickDownloadedVideosTab`
 
 <!--* 进入用户反馈页面【i】-->
