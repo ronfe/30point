@@ -225,14 +225,24 @@ Tips:Android 暂时没有提示功能
 	- `course` -> `site`
 	- `{topic: String, video: String}`
 
+* 视频完成页, 点击右上角分享按钮 注：安卓app埋点```sharePlatform```值为```"unknown"```。
+   - ```eventKey: shareVideo```
+   - ```category: site```
+   -  `必传字段：`
+   - 视频ID videoId: ObjectId
+   - (未载于埋点文档）用户分享平台 ```sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencent']```
+
 * (多视频学习模块) 视频完成页,点击”继续学习“ [diggzhang-0201-Android2.1:未触发]
 	- `clickContinueLearning`
 	- `{topic: String, video: String}`
+
 
 * 修改 - 按我们check过的走【i】[diggzhang-0201-Android2.1:你们check过什么？？？]
 	- `finishLearning`
 	- `course`
 	- `{topic: String, video: String, stars: Number, points: Number}`
+
+
 
 内循环 - 练习模块
 --

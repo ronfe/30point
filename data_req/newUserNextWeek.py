@@ -79,6 +79,6 @@ def next_week(start, end):
 
     f.close()
     ee = time.time()
-    print("新用户次周行为 运行用时: ", (ee-ss)/60, 'min')
+    print("next week time: ", (ee-ss)/60, 'min')
 
 

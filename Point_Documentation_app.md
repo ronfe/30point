@@ -66,7 +66,7 @@ Last Modified: 15DEC09
 * ```category: site```
 * 必传字段：
   - 视频ID ```videoId: ObjectId```
-  - （未载于埋点文档）用户分享平台 ```sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencentWeibo']```
+  - （未载于埋点文档）用户分享平台 ```sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencent']```
 
 **视频交互**[tested]  
 

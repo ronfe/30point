@@ -169,7 +169,7 @@ def print_topic_scene(topics, start, end):
             print('完成学习立即进入练习用户完成练习比 ', res['immediatelyCompleteCount'] * 1.0 / res['startMasterImmediately'] if res['startMasterImmediately'] != 0 else 0, file=f)
             print('完成按照预习,课后模式完成用户完成练习比 ', res['laterCompleteCount'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
             print('----------------------------------------', file=f)
-            print('知识点', topic['name'], p, 'done')
+            print(topic['_id'], topic['name'], p, 'done')
 
     # for p in platforms:
     #     print('----------', p, '----------', file=f)

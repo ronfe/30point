@@ -15,11 +15,20 @@ events = db['events']
 users25 = cache['users25']
 topics = db['topics']
 
+ONLINE_30 = datetime.datetime(2015, 12, 18, 16)
+
 
 def calc_user_device(start, end, platforms):
     # STEP 1 get all the new users in given time period
-    new_user_q = users.find({"type": {"$ne": "batch"}, "from": {"$in": platforms}, "registTime": {"$gte": start, "$lt": end}}, {"_id": 1})
-    new_user_batch_q = users.find({"type": "batch", "from": {"$in": platforms}, "activateDate": {"$gte": start, "$lt": end}}, {"_id": 1})
+    if start < ONLINE_30:
+        new_user_q = list(users.find({"type": {"$ne": "batch"}, "from": {"$in": platforms}, "registTime": {"$gte": ONLINE_30, "$lt": end}}, {"_id": 1})) + \
+                     list(users25.find({"type": {"$ne": "batch"}, "from": {"$in": platforms}, "registTime": {"$gte": start, "$lt": ONLINE_30}}, {"_id": 1}))
+        new_user_batch_q = list(users.find({"type": "batch", "from": {"$in": platforms}, "activateDate": {"$gte": ONLINE_30, "$lt": end}}, {"_id": 1})) + \
+                           list(users25.find({"type": "batch", "from": {"$in": platforms}, "activateDate": {"$gte": start, "$lt": ONLINE_30}}, {"_id": 1}))
+    else:
+        new_user_q = users.find({"type": {"$ne": "batch"}, "from": {"$in": platforms}, "registTime": {"$gte": start, "$lt": end}}, {"_id": 1})
+        new_user_batch_q = users.find({"type": "batch", "from": {"$in": platforms}, "activateDate": {"$gte": start, "$lt": end}}, {"_id": 1})
+
     user_group = [doc["_id"] for doc in new_user_q] + [doc["_id"] for doc in new_user_batch_q]
     # STEP 2 get all the devices that user has used
     user_device = {}
@@ -132,25 +141,3 @@ def pv_uv_count(event_flow, event_key):
     pv_uv['uv'] = uv_counter
     return pv_uv
 
-
-def new_user_count(start, end, platform):
-    query1 = {
-        "from": platform,
-        "type": {"$ne": "batch"},
-        "registTime": {"$gte": start, "$lt": end}
-    }
-    query2 = {
-        "from": platform,
-        "type": "batch",
-        "activateDate": {"$gte": start, "$lt": end}
-    }
-    return users.count(query1) + users.count(query2)
-
-
-def mobile_new_unregistered_count(start, end, platform):
-    query = {
-        "users.0": {"$exists": False},
-        "activateDate": {"$gte": start, "$lt": end},
-        "platform": platform
-    }
-    return deviceAttr.count(query)

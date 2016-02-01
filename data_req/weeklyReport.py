@@ -3,6 +3,7 @@ from __future__ import print_function
 from dataFunctions import *
 import time
 from collections import OrderedDict
+import pickle
 
 s = time.time()
 
@@ -33,11 +34,12 @@ eventKey = 'startVideo'
 iosVideoPlay = video_play_pv(START_DATE, END_DATE, 'iOS', eventKey) + video_play_pv(START_DATE, END_DATE, 'iOS', 'startLearning')
 androidVideoPlay = video_play_pv(START_DATE, END_DATE, 'android', eventKey)
 pcVideoPlay = video_play_pv(START_DATE, END_DATE, 'PC', eventKey)
+totalPlay = iosVideoPlay + androidVideoPlay + pcVideoPlay
 
-print('PC本周视频播放数: ', str(pcVideoPlay), '\n', file=f)
-print('android本周视频播放数: ', str(androidVideoPlay), '\n', file=f)
-print('iOS本周视频播放数: ', str(iosVideoPlay), '\n', file=f)
-print('本周视频播放总数: ', str(iosVideoPlay + androidVideoPlay + pcVideoPlay), '\n', file=f)
+print('PC本周视频播放数: ', pcVideoPlay, str(round(pcVideoPlay*100.0/totalPlay, 2))+'%', '\n', file=f)
+print('android本周视频播放数: ', androidVideoPlay, str(round(androidVideoPlay*100.0/totalPlay, 2))+'%', '\n', file=f)
+print('iOS本周视频播放数: ', iosVideoPlay, str(round(iosVideoPlay*100.0/totalPlay, 2))+'%', '\n', file=f)
+print('本周视频播放总数: ', totalPlay, '\n', file=f)
 
 
 print('---------- 总用户数 ----------\n', file=f)
@@ -114,8 +116,9 @@ def mobile_new_unregistered(start, end, platforms):
     return user_ids
 
 
-def new_user_by_type(start, end, types):
+def new_user_by_type(start, end, types, platform):
     return users.count({
+        "from": platform,
         "type": {"$in": types},
         "registTime": {"$gte": start, "$lt": end}
     })
@@ -139,24 +142,33 @@ def new_user_batch(start, end):
 pcNewUser = len(new_user(START_DATE, END_DATE, 'pc'))
 androidNewUser = len(new_user(START_DATE, END_DATE, 'android'))
 iosNewUser = len(new_user(START_DATE, END_DATE, 'ios'))
-androidNewUnregistered = len(mobile_new_unregistered(START_DATE, END_DATE, ['android']))
-iosNewUnregistered = len(mobile_new_unregistered(START_DATE, END_DATE, ['ios']))
-mobileNewUnregistered = androidNewUnregistered + iosNewUnregistered
-qqNewUser = new_user_by_type(START_DATE, END_DATE, ['qq'])
+
+androidNewUnregisteredUsers = mobile_new_unregistered(START_DATE, END_DATE, ['android'])
+iosNewUnregisteredUsers = mobile_new_unregistered(START_DATE, END_DATE, ['ios'])
+
+androidNewUnregistered = len(androidNewUnregisteredUsers)
+iosNewUnregistered = len(iosNewUnregisteredUsers)
+
+mobileNewUnregisteredNum = androidNewUnregistered + iosNewUnregistered
+
+mobileNewUnregistered = androidNewUnregisteredUsers + iosNewUnregisteredUsers
+qqNewUser_pc = new_user_by_type(START_DATE, END_DATE, ['qq'], 'pc')
+qqNewUser_android = new_user_by_type(START_DATE, END_DATE, ['qq'], 'android')
+qqNewUser_ios = new_user_by_type(START_DATE, END_DATE, ['qq'], 'ios')
+qqNewUser = qqNewUser_pc + qqNewUser_android + qqNewUser_ios
 thirdPartyNewUser = new_user_by_third_party(START_DATE, END_DATE)
 batchNewUser = new_user_batch(START_DATE, END_DATE)
 
-
-print('本周新增用户数: ', pcNewUser + androidNewUser + iosNewUser + mobileNewUnregistered, '\n', file=f)
+print('本周新增用户数: ', pcNewUser + androidNewUser + iosNewUser + mobileNewUnregisteredNum, '\n', file=f)
 print('PC端本周新增用户数: ' + str(pcNewUser) + '\n', file=f)
-print('移动端本周新增用户数: ' + str(androidNewUser + iosNewUser + mobileNewUnregistered),
-      '  注册: ', (androidNewUser + iosNewUser), '  未注册: ', mobileNewUnregistered, '\n', file=f)
+print('移动端本周新增用户数: ' + str(androidNewUser + iosNewUser + mobileNewUnregisteredNum),
+      '  注册: ', (androidNewUser + iosNewUser), '  未注册: ', mobileNewUnregisteredNum, '\n', file=f)
 print('android本周新增用户数: ', androidNewUser + androidNewUnregistered,
       '  注册: ', androidNewUser, '  未注册: ', androidNewUnregistered, '\n', file=f)
 print('iOS本周新增用户数: ', iosNewUser + iosNewUnregistered,
       '  注册: ', iosNewUser, '  未注册: ', iosNewUnregistered, '\n', file=f)
 
-print('本周首次QQ登录用户: ' + str(qqNewUser) + '\n', file=f)
+print('本周首次QQ登录用户: ', qqNewUser, 'pc:', qqNewUser_pc, 'android:', qqNewUser_android, 'ios:', qqNewUser_ios, '\n', file=f)
 print('本周首次第三方登录用户: ', str(thirdPartyNewUser), '\n', file=f)
 print('本周批量创建激活用户: ' + str(batchNewUser) + '\n', file=f)
 
@@ -189,7 +201,9 @@ mobileActUserUnregistered = active_user_unregistered(START_DATE, END_DATE)
 bothActUser = both_active_user(START_DATE, END_DATE)
 
 print("本周PC端活跃用户: ", len(pcActUser),  '\n', file=f)
-print("本周移动端活跃用户: ", len(mobileActUser) + len(mobileActUserUnregistered), '\n', file=f)
+print("本周移动端活跃用户: ", len(mobileActUser) + len(mobileActUserUnregistered),
+      '注册:', len(mobileActUser), '未注册:', len(mobileActUserUnregistered),'\n', file=f)
+
 print("本周双端活跃用户: " + str(bothActUser) + '\n', file=f)
 
 
@@ -276,7 +290,11 @@ print('----------- 周留存 -----------\n', file=f)
 last_week_users_pc = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'pc')
 last_week_users_android = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'android')
 last_week_users_ios = new_user(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, 'ios')
-last_week_users_mobile_unregistered = mobile_new_unregistered(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, ['android', 'ios'])
+# last_week_users_mobile_unregistered = mobile_new_unregistered(LAST_WEEK_START_DATE, LAST_WEEK_END_DATE, ['android', 'ios'])
+fNext = open('dataForNextWeek.txt', 'r')
+last_week_users_mobile_unregistered = pickle.load(fNext)
+fNext.close()
+
 
 
 def count_active(start, end, ids, platform):
@@ -294,14 +312,17 @@ def count_active_unregistered(start, end, devices):
     })
 
 this_week_retention_pc = count_active(START_DATE, END_DATE, last_week_users_pc, 'pc')
-this_week_retention_mobile = count_active(START_DATE, END_DATE, last_week_users_android, 'android') \
-                             + count_active(START_DATE, END_DATE, last_week_users_ios, 'ios') \
-                             + count_active_unregistered(START_DATE, END_DATE, last_week_users_mobile_unregistered)
+this_week_retention_mobile_reg = count_active(START_DATE, END_DATE, last_week_users_android, 'android') \
+                             + count_active(START_DATE, END_DATE, last_week_users_ios, 'ios')
+this_week_retention_mobile_unreg = count_active_unregistered(START_DATE, END_DATE, last_week_users_mobile_unregistered)
+this_week_retention_mobile = this_week_retention_mobile_reg + this_week_retention_mobile_unreg
 
 print('pc端上周新增用户: ', len(last_week_users_pc), '\n', file=f)
 print('pc端上周新增用户本周留存: ', this_week_retention_pc, '\n', file=f)
-print('移动端上周新增用户: ', len(last_week_users_android) + len(last_week_users_ios) + len(last_week_users_mobile_unregistered), '\n', file=f)
-print('移动端上周新增用户本周留存: ', this_week_retention_mobile, '\n', file=f)
+print('移动端上周新增用户: ', len(last_week_users_android) + len(last_week_users_ios) + len(last_week_users_mobile_unregistered),
+      '注册:',  len(last_week_users_android) + len(last_week_users_ios), '未注册:', len(last_week_users_mobile_unregistered), '\n', file=f)
+print('移动端上周新增用户本周留存: ', this_week_retention_mobile,
+      '注册:',  this_week_retention_mobile_reg, '未注册:', this_week_retention_mobile_unreg, '\n', file=f)
 
 
 print('----------- H5首页 -----------\n', file=f)
@@ -342,3 +363,7 @@ print('iOS', 'uv:', h5_ios['uv'], 'pv:', h5_ios['pv'], file=f)
 f.close()
 e = time.time()
 print("Total time: ", (e-s)/60, ' min')
+
+f = open('dataForNextWeek', 'w')
+pickle.dump(mobileNewUnregistered, f)
+f.close()

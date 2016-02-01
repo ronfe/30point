@@ -36,34 +36,38 @@ def weeklyTopicsEnterTop10(startDate, endDate):
     return [t['_id'] for t in x]
 
 
+def run(start):
+    end = start + datetime.timedelta(days=7)
+    topicIds = weeklyTopicsEnterTop10(start, end)
+    topic_list = []
+    for t in topicIds:
+        to = topics.find_one({"_id": ObjectId(t)}, {'name': 1})
+        topic_list.append({"_id": str(to['_id']), "name": to['name']})
+
+    print "---------- 新用户当天行为 ----------"
+    td.data_by_day(start, end)
+
+    print "---------- 新用户次周行为 ----------"
+    nw.next_week(start, end)
+
+    print "---------- 情景设定 ----------"
+    # sc.print_topic_scene(topic_list, start, end)
+
+    print "--------- 时间分析 ----------"
+    # ta.print_time_analysis(topic_list, start, end)
+
 s = time.time()
 
 
-START_DATE = datetime.datetime(2016, 1, 10, 0)
-END_DATE = datetime.datetime(2016, 1, 17, 0)
+START_DATE = datetime.datetime(2015, 12, 20) - datetime.timedelta(hours=8)
+# END_DATE = datetime.datetime(2016, 1, 17, 0) - datetime.timedelta(hours=8)
 
-START_DATE_UTC = START_DATE - datetime.timedelta(hours=8)
-END_DATE_UTC = END_DATE - datetime.timedelta(hours=8)
+run(START_DATE)
+run(START_DATE+datetime.timedelta(days=7))
+run(START_DATE+datetime.timedelta(days=14))
+run(START_DATE+datetime.timedelta(days=21))
+run(START_DATE+datetime.timedelta(days=28))
 
-
-topicIds = weeklyTopicsEnterTop10(START_DATE_UTC, END_DATE_UTC)
-topic_list = []
-for t in topicIds:
-    to = topics.find_one({"_id": ObjectId(t)}, {'name': 1})
-    topic_list.append({"_id": str(to['_id']), "name": to['name']})
-
-
-print "---------- 新用户当天行为 ----------"
-td.data_by_day(START_DATE_UTC, END_DATE_UTC)
-
-print "---------- 新用户次周行为 ----------"
-nw.next_week(START_DATE_UTC, END_DATE_UTC)
-
-print "---------- 情景设定 ----------"
-sc.print_topic_scene(topic_list, START_DATE_UTC, END_DATE_UTC)
-
-print "--------- 时间分析 ----------"
-ta.print_time_analysis(topic_list, START_DATE_UTC, END_DATE_UTC)
 
 e = time.time()
 print '总用时: ', (e-s)/ 60, 'min'

@@ -96,5 +96,5 @@ def data_by_day(start, end):
                 print(event['name'], "uv: ", pv_uv['uv'], uv_rate, " pv: ", pv_uv['pv'], pv_rate, file=f)
     f.close()
     ee = time.time()
-    print('新用户当天行为 运行用时: ', (ee-ss)/ 60, 'min' )
+    print('that day time: ', (ee-ss)/ 60, 'min' )
 
