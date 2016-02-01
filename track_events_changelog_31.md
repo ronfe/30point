@@ -82,16 +82,16 @@ Tips:Android 暂时没有提示功能
 * 进入设置页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterSettingPage`
 
-* (unsigned用户)点击“注册新用户”【i】[diggzhang-0201-Android2.1:已经登录的用户也会触发该埋点]
+* (unsigned用户)点击“注册新用户”【i】[diggzhang-0201-Android2.1:已经登录的用户也会触发该埋点] **修复**
 	- `clickSignupFromSetting`
 
-* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:直接计入到enterLoginPage]
+* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:直接计入到enterLoginPage]  **修复**
 	- `clickLoginFromSetting`
 
 * 进入选择教材版本页面【i】[diggzhang-0201-Android2.1:tested]
 	- `enterSwitchBookPage`
 
-* 选择教材版本页面，点击“返回”【i】[diggzhang-0201-Android2.1:第一次点击返回后未触发，第二次触发了]
+* 选择教材版本页面，点击“返回”【i】[diggzhang-0201-Android2.1:第一次点击返回后未触发，第二次触发了]  **check**
 	- `clickReturnFromSwitchBook`
 
 * 选择教材版本页面，点击某个教材【i】[diggzhang-0201-Android2.1:tested]
@@ -132,19 +132,19 @@ Tips:Android 暂时没有提示功能
 <!--* 用户反馈页面，点击“发送”【i】-->
 <!--	- `clickSendUserFeedback`-->
 
-* 点击“常见问题”【i】[diggzhang-0201-Android2.1:未触发]
+* 点击“常见问题”【i】[diggzhang-0201-Android2.1:未触发] **check**
 	- `clickFAQ`
 
-* 进入“常见问题”【i】[diggzhang-0201-Android2.1:未触发]
+* 进入“常见问题”【i】[diggzhang-0201-Android2.1:未触发] **check**
 	- `enterFAQPage`
 
-* 常见问题页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
+* 常见问题页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发] **check**
 	- `clickReturnFromFAQ`
 
-* 常见问题页面，点击“用户反馈”【i】[diggzhang-0201-Android2.1:未触发]
+* 常见问题页面，点击“用户反馈”【i】[diggzhang-0201-Android2.1:未触发]**check**
 	- `clickUserFeedbackFromFAQ`
 
-* 点击“分享”【i】[diggzhang-0201-Android2.1:未触发 分享后会触发clickShareApp] 
+* 点击“分享”【i】[diggzhang-0201-Android2.1:未触发 分享后会触发clickShareApp]**check**
 	- `clickShareAppBtn`
 
 外循环 - “我的”页面
