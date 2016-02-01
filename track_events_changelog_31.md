@@ -150,17 +150,17 @@ Tips:Android 暂时没有提示功能
 外循环 - “我的”页面
 --
 
-* enterMyProfile （进入“我的”页面）【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,但会触发一个clickProfileBtn事件]
+* enterMyProfile （进入“我的”页面）【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,但会触发一个clickProfileBtn事件]**check**
 	- `{signedStatus: Boolean}`
 
-* “我的”页面，点击“返回”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发]
+* “我的”页面，点击“返回”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发]**check**
 	- `clickReturnFromProfilePage`
 	- `{signedStatus: Boolean}`
 
-* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发，直接进入enterLoginPage]
+* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发，直接进入enterLoginPage]**check**
 	- `clickLoginFromProfile`
 
-* (unsigned用户)点击“注册”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,直接进入enterSignupPage]
+* (unsigned用户)点击“注册”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,直接进入enterSignupPage]**check**
 	- `clickSignupFromProfile`
 
 外循环 - 知识点详情页
