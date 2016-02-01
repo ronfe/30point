@@ -220,12 +220,12 @@ Tips:Android 暂时没有提示功能
 	- `course`
 	- `{topic: String, video: String}`
 
-* 视频完成页，点击”退出“ [diggzhang-0201-Android2.1:未改名]
+* 视频完成页，点击”退出“ [diggzhang-0201-Android2.1:未改名]**修复**
 	- `quitLearning` -> `clickQuitLearningSeries`
 	- `course` -> `site`
 	- `{topic: String, video: String}`
 
-* (多视频学习模块) 视频完成页,点击”继续学习“ [diggzhang-0201-Android2.1:未触发]
+* (多视频学习模块) 视频完成页,点击”继续学习“ [diggzhang-0201-Android2.1:未触发]**checked**
 	- `clickContinueLearning`
 	- `{topic: String, video: String}`
 
@@ -237,12 +237,12 @@ Tips:Android 暂时没有提示功能
 内循环 - 练习模块
 --
 
-* 点击”进入“练习模块后，进入练习模块 [diggzhang-0201-Android2.1:触发了startMaster，需要更名？]
+* 点击”进入“练习模块后，进入练习模块 [diggzhang-0201-Android2.1:触发了startMaster，需要更名？]**修复**
 	- `enterMaster`
 	- `course`
 	- `{topic: String}`
 
-* 进入专题介绍页  [diggzhang-0201-Android2.1:未触发]
+* 进入专题介绍页  [diggzhang-0201-Android2.1:未触发] **checked**
 	- `enterProblemSet`
 	- `site`
 	- `{topic: String, problemSet: String}`
@@ -252,7 +252,7 @@ Tips:Android 暂时没有提示功能
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 点击”开始专题“后，进入第一道题 [diggzhang-0201-Android2.1:tested]
+* 点击”开始专题“后，进入第一道题 [diggzhang-0201-Android2.1:tested]**旧版也有**
 	- `startProblemSet`
 	- `course`
 	- `{topic: String, problemSet: String}`’
@@ -264,17 +264,17 @@ Tips:Android 暂时没有提示功能
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 专题失败页面，点击”重来“ [diggzhang-0201-Android2.1:未触发]
+* 专题失败页面，点击”重来“ [diggzhang-0201-Android2.1:未触发]**checked**
 	- `clickStartProblemSetAgain`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 进入专题完成页面 [diggzhang-0201-Android2.1:未测试到]
+* 进入专题完成页面 [diggzhang-0201-Android2.1:未测试到]**待确定**
 	- `finishProblemSet`
 	- `course`
 	- `{topic: String, problemSet: String, stars: Number, points: Number}`
 
-* 专题/挑战完成页面，点击”返回“，若是挑战，problemSetId发topic id [diggzhang-0201-Android2.1:未触发]
+* 专题/挑战完成页面，点击”返回“，若是挑战，problemSetId发topic id [diggzhang-0201-Android2.1:未触发]**旧版有**
 	- `quitProblemSet` -> `clickQuitMaster`
 	- `course` -> `site`
 	- `{topicId: String, problemSetId: String}`
@@ -284,12 +284,12 @@ Tips:Android 暂时没有提示功能
 	- `site`
 	- `{topicId: String, problemSetId: String}`
 
-* 进入挑战介绍页 [diggzhang-0201-Android2.1:未测试到]
+* 进入挑战介绍页 [diggzhang-0201-Android2.1:未测试到]**checked**
 	- `enterChallenge`
 	- `site`
 	- `{topicId: String}`
 
-* 挑战页面，点击”开始挑战“ [diggzhang-0201-Android2.1:应该改名]
+* 挑战页面，点击”开始挑战“ [diggzhang-0201-Android2.1:应该改名]**checked**
 	- `startChallenge` -> `clickStartChallenge`
 	- `course` -> `site`
 	- `{topicId: String}`
@@ -307,7 +307,7 @@ Tips:Android 暂时没有提示功能
 	* 所有video埋点的eventValue中加上cache字段，值是Boolean，用来标识当前视频是否为用户缓存视频，以下埋点不再重复
 	* 在videoLoadFailed后请求七牛拿视频meta信息
 
-* 视频首次开始播放
+* 视频首次开始播放 **checked**
 
 	- eK: startVideo
 	- eV: {video: String}
@@ -336,7 +336,7 @@ Tips:Android 暂时没有提示功能
 	- eK: resumePlaying
 	- eV: {video: String, timeStamp: Number}
 
-* 视频播放完成（停止播放）
+* 视频播放完成（停止播放）**??**
 	- eK: finishVideo
 	- eV: {video: String}
 
