@@ -132,103 +132,104 @@ Schema
 <!--* 用户反馈页面，点击“发送”【i】-->
 <!--	- `clickSendUserFeedback`-->
 
-* 点击“常见问题”【i】
+* 点击“常见问题”【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickFAQ`
 
-* 进入“常见问题”【i】
+* 进入“常见问题”【i】[diggzhang-0201-Android2.1:未触发]
 	- `enterFAQPage`
 
-* 常见问题页面，点击“返回”【i】
+* 常见问题页面，点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickReturnFromFAQ`
 
-* 常见问题页面，点击“用户反馈”【i】
+* 常见问题页面，点击“用户反馈”【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickUserFeedbackFromFAQ`
 
-* 点击“分享”【i】
+* 点击“分享”【i】[diggzhang-0201-Android2.1:未触发 分享后会触发clickShareApp] 
 	- `clickShareAppBtn`
 
 外循环 - “我的”页面
 --
 
-* enterMyProfile （进入“我的”页面）【i】
+* enterMyProfile （进入“我的”页面）【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,但会触发一个clickProfileBtn事件]
 	- `{signedStatus: Boolean}`
 
-* “我的”页面，点击“返回”【i】
+* “我的”页面，点击“返回”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发]
 	- `clickReturnFromProfilePage`
 	- `{signedStatus: Boolean}`
 
-* (unsigned用户)点击“登录”【i】
+* (unsigned用户)点击“登录”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发，直接进入enterLoginPage]
 	- `clickLoginFromProfile`
 
-* (unsigned用户)点击“注册”【i】
+* (unsigned用户)点击“注册”【i】[diggzhang-0201-Android2.1:未登录情况下点击未触发,直接进入enterSignupPage]
 	- `clickSignupFromProfile`
 
 外循环 - 知识点详情页
 --
 
-* 进入知识点详情页【i】
+* 进入知识点详情页【i】[diggzhang-0201-Android2.1:clickEnterTopic后未触发]
  	- `enterTopic`
  	- `{topic: String}`
  	- `course`
  
-* 点击“返回”【i】
+* 点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickReturnFromTopicPage`
 	- `{topic: String}`
 
-* (未缓存视频知识点) 点击下载图标【i】
+* (未缓存视频知识点) 点击下载图标【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickDownloadTopicVideo`
 	- `{topic: String}`
 
-* (正在缓存视频知识点) 点击暂停图标【i】
+* (正在缓存视频知识点) 点击暂停图标【i】[diggzhang-0201-Android2.1:未触发]
 	- `clickPauseDownloadTopicVideo`
 	- `{topic: String}`
 
-* 点击“进入”视频讲解【i】
+* 点击“进入”视频讲解【i】[diggzhang-0201-Android2.1:触发startLearning，应该改名， course应该改为site类埋点]
+
 	- `startLearning` -> `clickEnterLearning`
 	- `course` -> `site`
 
-* 点击“进入”专题训练“【i】
+* 点击“进入”专题训练“【i】[diggzhang-0201-Android2.1:改名，未进入course应该改为site类埋点，未传入topic名]
 	- `startMaster` -> `clickEnterMaster`
 	- `course` -> `site`
 	- `{topic: String}`
 
-* 点击”继续“专题训练后，选择”想进入的专题“
+* 点击”继续“专题训练后，选择”想进入的专题“ [diggzhang-0201-Android2.1:做了一半练习后退出，点击“继续”再回到专题，该点未触发]
 	- `clickEnterReviewProblemSet`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 网络连接不正常时，点击“点击刷新”
+* 网络连接不正常时，点击“点击刷新” [diggzhang-0201-Android2.1:未测到]
 	- `clickRefreshTopic`
 
 
 内循环 - 学习模块
 --
 
-* 1. 首次进入视频讲解，学习第一个视频（一个signed用户一辈子一个知识点只发一次enterLearning）【i】
+* 1. 首次进入视频讲解，学习第一个视频（一个signed用户一辈子一个知识点只发一次enterLearning）【i】[diggzhang-0201-Android2.1:首次打开某一个视频为触发]
 	- `enterLearning`
 	- `course`
 	- `{topic: String}`
 
-* 进入一个交互视频【i】
+* 进入一个交互视频【i】[diggzhang-0201-Android2.1:未触发]
 	- `enterHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
 
-* 视频完成，页面跳转之前【i】
+* 视频完成，页面跳转之前【i】[diggzhang-0201-Android2.1:未触发]
 	- `finishHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
 
-* 视频完成页，点击”退出“
+* 视频完成页，点击”退出“ [diggzhang-0201-Android2.1:未改名]
 	- `quitLearning` -> `clickQuitLearningSeries`
 	- `course` -> `site`
 	- `{topic: String, video: String}`
 
-* (多视频学习模块) 视频完成页,点击”继续学习“
+* (多视频学习模块) 视频完成页,点击”继续学习“ [diggzhang-0201-Android2.1:未触发]
 	- `clickContinueLearning`
 	- `{topic: String, video: String}`
 
-* 修改 - 按我们check过的走【i】
+* 修改 - 按我们check过的走【i】[diggzhang-0201-Android2.1:你们check过什么？？？]
 	- `finishLearning`
 	- `course`
 	- `{topic: String, video: String, stars: Number, points: Number}`
@@ -236,64 +237,64 @@ Schema
 内循环 - 练习模块
 --
 
-* 点击”进入“练习模块后，进入练习模块
+* 点击”进入“练习模块后，进入练习模块 [diggzhang-0201-Android2.1:触发了startMaster，需要更名？]
 	- `enterMaster`
 	- `course`
 	- `{topic: String}`
 
-* 进入专题介绍页
+* 进入专题介绍页  [diggzhang-0201-Android2.1:未触发]
 	- `enterProblemSet`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 专题介绍页，点击”开始专题“
+* 专题介绍页，点击”开始专题“ [diggzhang-0201-Android2.1:未触发]
 	- `clickStartProblemSet`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 点击”开始专题“后，进入第一道题
+* 点击”开始专题“后，进入第一道题 [diggzhang-0201-Android2.1:tested]
 	- `startProblemSet`
 	- `course`
 	- `{topic: String, problemSet: String}`’
 
 * `problemSetFailure`是在进入专题失败页面时发送吗？
 
-* 专题失败页面，点击”讲解“
+* 专题失败页面，点击”讲解“ [diggzhang-0201-Android2.1:未触发]
 	- `clickExplanationFromFailure`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 专题失败页面，点击”重来“
+* 专题失败页面，点击”重来“ [diggzhang-0201-Android2.1:未触发]
 	- `clickStartProblemSetAgain`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 进入专题完成页面
+* 进入专题完成页面 [diggzhang-0201-Android2.1:未测试到]
 	- `finishProblemSet`
 	- `course`
 	- `{topic: String, problemSet: String, stars: Number, points: Number}`
 
-* 专题/挑战完成页面，点击”返回“，若是挑战，problemSetId发topic id
+* 专题/挑战完成页面，点击”返回“，若是挑战，problemSetId发topic id [diggzhang-0201-Android2.1:未触发]
 	- `quitProblemSet` -> `clickQuitMaster`
 	- `course` -> `site`
 	- `{topicId: String, problemSetId: String}`
 
-* 专题/挑战完成页面，点击”下一专题“，若是挑战，problemSetId发topic id
+* 专题/挑战完成页面，点击”下一专题“，若是挑战，problemSetId发topic id [diggzhang-0201-Android2.1:未触发]
 	- `clickContinueNextProblemSet`
 	- `site`
 	- `{topicId: String, problemSetId: String}`
 
-* 进入挑战介绍页
+* 进入挑战介绍页 [diggzhang-0201-Android2.1:未测试到]
 	- `enterChallenge`
 	- `site`
 	- `{topicId: String}`
 
-* 挑战页面，点击”开始挑战“
+* 挑战页面，点击”开始挑战“ [diggzhang-0201-Android2.1:应该改名]
 	- `startChallenge` -> `clickStartChallenge`
 	- `course` -> `site`
 	- `{topicId: String}`
 
-* 点击”开始挑战“后，进入第一道题
+* 点击”开始挑战“后，进入第一道题[diggzhang-0201-Android2.1:未测试到]
 	- `startChallenge`
 	- `{topicId: String}`
 
