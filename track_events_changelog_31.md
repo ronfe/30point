@@ -6,7 +6,7 @@ Track Events Changelog (iOS/Android App v2.1)
 增补
 --
 
-* 学习模块完成页，点击“休息一下”
+* 学习模块完成页，点击“休息一下”  [diggzhang-0201-Android2.1:未触发]
 	- `quitLearning` -> `clickHaveARest`
 	- `site`
 	- `{topicId: String, videoId: String}`
