@@ -166,56 +166,56 @@ Tips:Android 暂时没有提示功能
 外循环 - 知识点详情页
 --
 
-* 进入知识点详情页【i】[diggzhang-0201-Android2.1:clickEnterTopic后未触发]
+* 进入知识点详情页【i】[diggzhang-0201-Android2.1:clickEnterTopic后未触发] **checked**
  	- `enterTopic`
  	- `{topic: String}`
  	- `course`
  
-* 点击“返回”【i】[diggzhang-0201-Android2.1:未触发]
+* 点击“返回”【i】[diggzhang-0201-Android2.1:未触发]**checked**
 	- `clickReturnFromTopicPage`
 	- `{topic: String}`
 
-* (未缓存视频知识点) 点击下载图标【i】[diggzhang-0201-Android2.1:未触发]
+* (未缓存视频知识点) 点击下载图标【i】[diggzhang-0201-Android2.1:未触发]**checked**
 	- `clickDownloadTopicVideo`
 	- `{topic: String}`
 
-* (正在缓存视频知识点) 点击暂停图标【i】[diggzhang-0201-Android2.1:未触发]
+* (正在缓存视频知识点) 点击暂停图标【i】[diggzhang-0201-Android2.1:未触发]**checked**
 	- `clickPauseDownloadTopicVideo`
 	- `{topic: String}`
 
-* 点击“进入”视频讲解【i】[diggzhang-0201-Android2.1:触发startLearning，应该改名， course应该改为site类埋点]
+* 点击“进入”视频讲解【i】[diggzhang-0201-Android2.1:触发startLearning，应该改名， course应该改为site类埋点]**checked**
 
 	- `startLearning` -> `clickEnterLearning`
 	- `course` -> `site`
 
-* 点击“进入”专题训练“【i】[diggzhang-0201-Android2.1:改名，未进入course应该改为site类埋点，未传入topic名]
+* 点击“进入”专题训练“【i】[diggzhang-0201-Android2.1:改名，未进入course应该改为site类埋点，未传入topic名]**checked**
 	- `startMaster` -> `clickEnterMaster`
 	- `course` -> `site`
 	- `{topic: String}`
 
-* 点击”继续“专题训练后，选择”想进入的专题“ [diggzhang-0201-Android2.1:做了一半练习后退出，点击“继续”再回到专题，该点未触发]
+* 点击”继续“专题训练后，选择”想进入的专题“ [diggzhang-0201-Android2.1:做了一半练习后退出，点击“继续”再回到专题，该点未触发]**不明**
 	- `clickEnterReviewProblemSet`
 	- `site`
 	- `{topic: String, problemSet: String}`
 
-* 网络连接不正常时，点击“点击刷新” [diggzhang-0201-Android2.1:未测到]
+* 网络连接不正常时，点击“点击刷新” [diggzhang-0201-Android2.1:未测到]**checked**
 	- `clickRefreshTopic`
 
 
 内循环 - 学习模块
 --
 
-* 1. 首次进入视频讲解，学习第一个视频（一个signed用户一辈子一个知识点只发一次enterLearning）【i】[diggzhang-0201-Android2.1:首次打开某一个视频为触发]
+* 1. 首次进入视频讲解，学习第一个视频（一个signed用户一辈子一个知识点只发一次enterLearning）【i】[diggzhang-0201-Android2.1:首次打开某一个视频为触发]**checked登录用户只会发一次，未登录用户会无数次**
 	- `enterLearning`
 	- `course`
 	- `{topic: String}`
 
-* 进入一个交互视频【i】[diggzhang-0201-Android2.1:未触发]
+* 进入一个交互视频【i】[diggzhang-0201-Android2.1:未触发]**checked**
 	- `enterHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
 
-* 视频完成，页面跳转之前【i】[diggzhang-0201-Android2.1:未触发]
+* 视频完成，页面跳转之前【i】[diggzhang-0201-Android2.1:未触发]**checked**
 	- `finishHyperVideo`
 	- `course`
 	- `{topic: String, video: String}`
@@ -225,24 +225,14 @@ Tips:Android 暂时没有提示功能
 	- `course` -> `site`
 	- `{topic: String, video: String}`
 
-* 视频完成页, 点击右上角分享按钮 注：安卓app埋点```sharePlatform```值为```"unknown"```。
-   - ```eventKey: shareVideo```
-   - ```category: site```
-   -  `必传字段：`
-   - 视频ID videoId: ObjectId
-   - (未载于埋点文档）用户分享平台 ```sharePlatform: String enum: ["qq", "qzone", "weibo", "wechatIM", "wechatShare", 'tencent']```
-
 * (多视频学习模块) 视频完成页,点击”继续学习“ [diggzhang-0201-Android2.1:未触发]
 	- `clickContinueLearning`
 	- `{topic: String, video: String}`
-
 
 * 修改 - 按我们check过的走【i】[diggzhang-0201-Android2.1:你们check过什么？？？]
 	- `finishLearning`
 	- `course`
 	- `{topic: String, video: String, stars: Number, points: Number}`
-
-
 
 内循环 - 练习模块
 --
