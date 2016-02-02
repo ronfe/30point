@@ -120,3 +120,17 @@ Tacking Events Changelog (PC/Web v3.1.5) 待续
 * 解绑成功弹窗  [**tested**]
 	- `unBindQQSuccessAlert`
 
+## 应用商店
+
+* 单击购买 [**tested**]
+	- 购买按钮 `buyProfileAvatar`
+* 购买弹窗 [**tested**]
+	- `cancelBuyProfileAvatar`
+	- `confirmBuyProfileAvatar`
+		- `{eventValue:avatar/coions}`
+
+## 知识点页APP引流按钮
+- `ycApp`
+
+
+
