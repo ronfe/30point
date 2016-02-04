@@ -179,11 +179,12 @@ def print_topic_scene(topics, start, end):
                 print('完成按照预习,课后模式完成用户中完成练习人数 ', res['completeCountLater'], file=f)
                 print('完成学习立即进入练习用户完成练习比 ', res['completeCountNow'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
                 print('完成按照预习,课后模式完成用户完成练习比 ', res['completeCountLater'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
-                print('----------------------------------------', file=f)
                 print(topic['_id'], topic['name'], p, 'done')
         else:
             print('没有专题模块', file=f)
             print(topic['_id'], topic['name'], '没有专题模块')
+        print('----------------------------------------', file=f)
+
 
 
     # for p in platforms:
