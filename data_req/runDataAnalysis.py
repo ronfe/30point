@@ -52,7 +52,7 @@ def run(start):
     # print "---------- 新用户次周行为 ----------"
     # nw.next_week(start, end)
 
-    print "---------- scene ----------"
+    print "---------- scene,", start.date(),  "----------"
     sc.print_topic_scene(topic_list, start, end)
 
     # print "--------- 时间分析 ----------"
