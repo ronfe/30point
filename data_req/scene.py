@@ -167,12 +167,10 @@ def print_topic_scene(topics, start, end):
     print('---------- 周前十知识点模块情景设定', (start + datetime.timedelta(days=1)).date(), '-', end.date(), '----------', file=f)
     for topic in topics:
         print('知识点 ', topic['_id'], topic['name'].encode('UTF-8'), file=f)
-        for p in platforms:
-            print('----------', p, '----------', file=f)
-            res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
-            if res['startMaster'] == 0:
-                print('没有专题模块', file=f)
-            else:
+        if topic['master']:
+            for p in platforms:
+                print('----------', p, '----------', file=f)
+                res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
                 print('完成视频,且进入练习人数 ', res['startMaster'], res['startMasterNow']+res['startMasterLater'],file=f)
                 print('完成视频, 且完成练习人数 ', res['completeMaster'], res['completeCountNow']+res['completeCountLater'],file=f)
                 print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterNow'], file=f)
@@ -182,6 +180,9 @@ def print_topic_scene(topics, start, end):
                 print('完成学习立即进入练习用户完成练习比 ', res['completeCountNow'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
                 print('完成按照预习,课后模式完成用户完成练习比 ', res['completeCountLater'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
                 print('----------------------------------------', file=f)
+        else:
+            print('没有专题模块', file=f)
+
             print(topic['_id'], topic['name'], p, 'done')
 
     # for p in platforms:

@@ -41,8 +41,10 @@ def run(start):
     topicIds = weeklyTopicsEnterTop10(start, end)
     topic_list = []
     for t in topicIds:
-        to = topics.find_one({"_id": ObjectId(t)}, {'name': 1})
-        topic_list.append({"_id": str(to['_id']), "name": to['name']})
+        to = topics.find_one({"_id": ObjectId(t)}, {'name': 1, 'master': 1, "learning": 1})
+        master = 1 if to['master']['status'] == 'published' else 0
+        learning = 1 if to['learning']['status'] == 'published' else 0
+        topic_list.append({"_id": str(to['_id']), "name": to['name'], 'master': master, 'learning': learning})
 
     print "---------- 新用户当天行为 ----------"
     # td.data_by_day(start, end)
