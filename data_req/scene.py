@@ -15,7 +15,7 @@ def arr_2_dict(arr, key1, key2):
 
 
 def topic_scene(start, end, topicId, platform):
-    res = {"startMaster": 0, "completeMaster": 0, "startMasterImmediately": 0, "startMasterLater": 0, "immediatelyCompleteCount": 0, "laterCompleteCount": 0}
+    res = {"startMaster": 0, "completeMaster": 0, "startMasterNow": 0, "startMasterLater": 0, "completeCountNow": 0, "completeCountLater": 0}
     users1 = list(events.find({
         "eventKey": "completeLearning",
         "user": {"$exists": True},
@@ -104,11 +104,6 @@ def topic_scene(start, end, topicId, platform):
     ]
 
     users_points = list(events.aggregate(pipeline, allowDiskUse=True))
-    print(users_points)
-    f1 = open('keysiOS.txt', 'w')
-    for p in users_points:
-        print(p['_id'], p['keys'], file=f1)
-    f1.close()
 
     print('points: ', len(users_points))
 
@@ -116,19 +111,56 @@ def topic_scene(start, end, topicId, platform):
         inds1 = [p['points'].index(i) for i in u1[p['_id']]]
         inds2 = [p['points'].index(i) for i in u2[p['_id']]]
         inds3 = [p['points'].index(i) for i in u3[p['_id']]] if p['_id'] in u3 else []
-        for i in inds1:
-            j = inds2.index(i+1) if (i+1) in inds2 else -1
-            if platform is not 'PC' and (i+2) in inds2:
-                j = inds2.index(i+2)
-            if j > -1:
-                res['startMasterImmediately'] += 1
-                i1 = inds2[j]
-                i2 = inds2[j+1] if j+1 < len(inds2) else 100000000
-                if any([i1 < k < i2 for k in inds3]):
-                    res['immediatelyCompleteCount'] += 1
-                break
-    res['startMasterLater'] = res['startMaster'] - res['startMasterImmediately']
-    res['laterCompleteCount'] = res['completeMaster'] - res['immediatelyCompleteCount']
+        # for i in inds1:
+        #     j = inds2.index(i+1) if (i+1) in inds2 else -1
+        #     if platform is not 'PC' and (i+2) in inds2:
+        #         j = inds2.index(i+2)
+        #     if j > -1:
+        #         res['startMasterNow'] += 1
+        #         i1 = inds2[j]
+        #         i2 = inds2[j+1] if j+1 < len(inds2) else 100000000
+        #         if any([i1 < k < i2 for k in inds3]):
+        #             res['immediatelyCompleteCount'] += 1
+        #         break
+        # i = inds1[0]
+        # j = inds2.index(i+1) if (i+1) in inds2 else -1
+        # if platform is not 'PC' and (i+2) in inds2:
+        #     j = inds2.index(i+2)
+        # if j > -1:
+        #     res['startMasterNow'] += 1
+        #     i1 = inds2[j]
+        #     i2 = inds2[j+1] if j+1 < len(inds2) else 100000000
+        #     if any([i1 < k < i2 for k in inds3]):
+        #         res['immediatelyCompleteCount'] += 1
+        # else:
+        #     res['startMasterLater'] += 1
+        #     i1 = inds2[1]
+
+        i = inds1[0]
+        j = inds2.index(i+1) if (i+1) in inds2 else -1
+        if j > -1:
+            res['startMasterNow'] += 1
+            i1 = inds2[j]
+            i2 = inds2[j+1] if j+1 < len(inds2) else 1000000
+            if any([i1 < k < i2 for k in inds3]):
+                res['completeCountNow'] += 1
+        else:
+            res['startMasterLater'] += 1
+            inds22 = [ii for ii in inds2 if ii > i]
+            i1 = inds22[0]
+            i2 = inds22[1] if 1 < len(inds22) else 1000000
+            if any([i1 < k < i2 for k in inds3]):
+                res['completeCountLater'] += 1
+
+
+
+
+
+
+
+
+    # res['startMasterLater'] = res['startMaster'] - res['startMasterNow']
+    # res['laterCompleteCount'] = res['completeMaster'] - res['immediatelyCompleteCount']
     return res
 
 # top 10 topics list
@@ -152,7 +184,7 @@ def print_topic_scene(topics, start, end):
     end_timestamp = calendar.timegm(end.utctimetuple()) * 1000
     s = time.time()
     # platforms = ['PC', 'android', 'iOS']
-    platforms = ['iOS']
+    platforms = ['PC']
     f = open('../data/周前十知识点模块情景设定'+str((start + datetime.timedelta(days=1)).date())+'-'+str(end.date())+'.txt', 'w')
     print('---------- 周前十知识点模块情景设定', (start + datetime.timedelta(days=1)).date(), '-', end.date(), '----------', file=f)
     for topic in topics:
@@ -162,12 +194,12 @@ def print_topic_scene(topics, start, end):
             res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
             print('完成视频,且进入练习人数 ', res['startMaster'], file=f)
             print('完成视频, 且完成练习人数 ', res['completeMaster'], file=f)
-            print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterImmediately'], file=f)
+            print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterNow'], file=f)
             print('完成视频用户中, 按照预习,课后模式进入练习用户数 ', res['startMasterLater'], file=f)
-            print('完成学习立即进入练习用户中完成练习人数 ', res['immediatelyCompleteCount'], file=f)
-            print('完成按照预习,课后模式完成用户中完成练习人数 ', res['laterCompleteCount'], file=f)
-            print('完成学习立即进入练习用户完成练习比 ', res['immediatelyCompleteCount'] * 1.0 / res['startMasterImmediately'] if res['startMasterImmediately'] != 0 else 0, file=f)
-            print('完成按照预习,课后模式完成用户完成练习比 ', res['laterCompleteCount'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
+            print('完成学习立即进入练习用户中完成练习人数 ', res['completeCountNow'], file=f)
+            print('完成按照预习,课后模式完成用户中完成练习人数 ', res['completeCountLater'], file=f)
+            print('完成学习立即进入练习用户完成练习比 ', res['completeCountNow'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
+            print('完成按照预习,课后模式完成用户完成练习比 ', res['completeCountLater'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
             print('----------------------------------------', file=f)
             print(topic['_id'], topic['name'], p, 'done')
 
@@ -179,11 +211,11 @@ def print_topic_scene(topics, start, end):
     #         res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
     #         print('完成视频,且进入练习人数 ', res['startMaster'], file=f)
     #         print('完成视频, 且完成练习人数 ', res['completeMaster'], file=f)
-    #         print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterImmediately'], file=f)
+    #         print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterNow'], file=f)
     #         print('完成视频用户中, 按照预习,课后模式进入练习用户数 ', res['startMasterLater'], file=f)
     #         print('完成学习立即进入练习用户中完成练习人数 ', res['immediatelyCompleteCount'], file=f)
     #         print('完成按照预习,课后模式完成用户中完成练习人数 ', res['laterCompleteCount'], file=f)
-    #         print('完成学习立即进入练习用户完成练习比 ', res['immediatelyCompleteCount'] * 1.0 / res['startMasterImmediately'] if res['startMasterImmediately'] != 0 else 0, file=f)
+    #         print('完成学习立即进入练习用户完成练习比 ', res['immediatelyCompleteCount'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
     #         print('完成按照预习,课后模式完成用户完成练习比 ', res['laterCompleteCount'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
     #         print('----------------------------------------', file=f)
     #         print('知识点', topic['name'], p, 'done')
@@ -192,3 +224,5 @@ def print_topic_scene(topics, start, end):
     e = time.time()
     print('新用户周前十知识点情景设定 运行用时: ',(e-s)/60, 'min')
 
+
+print_topic_scene([{"_id": "564ed38c2e05ec030b0ad3c3", 'name': 'topic'}], datetime.datetime(2016, 1, 9, 16), datetime.datetime(2016, 1, 16, 16))

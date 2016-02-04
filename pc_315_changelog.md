@@ -132,5 +132,24 @@ Tacking Events Changelog (PC/Web v3.1.5) 待续
 ## 知识点页APP引流按钮
 - `ycApp`
 
+## 新增和修改 [tao]
+
+* 专题失败
+    - problemSetFailed -> problemSetFailure
+
+* 挑战失败
+    - challengeFailed -> challengeFailure
+
+* 挑战成功
+    - finishChallenge -> challengeSuccess
+
+* 进入专题介绍页
+    - enterProblemSet
+    - {topic:String, problemSet: String}
+
+* 进入挑战介绍页
+    - enterChallenge
+    - {topic:String}
+
 
 

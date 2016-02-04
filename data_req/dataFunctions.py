@@ -1,4 +1,5 @@
 # _*_ coding:utf-8 _*_
+from __future__ import print_function
 from pymongo import MongoClient, DESCENDING
 import datetime
 import time
@@ -52,6 +53,19 @@ def calc_user_device(start, end, platforms):
     output['notUsers'] = [each['device'] for each in no_user_devices]
 
     return output
+# d = calc_user_device(datetime.datetime(2016, 1, 13, 16), datetime.datetime(2016, 1, 14, 16), ['android', ])
+# print(len(d['hasUsers']))
+# print(len(d['notUsers']))
+# ff = open('devices14.txt', 'w')
+# dd = sum(d['hasUsers'].values(), [])
+#
+# ddd = d['notUsers']
+# for m in dd:
+#     print(m, file=ff)
+# for m in ddd:
+#     print(m, file=ff)
+# ff.close()
+#
 
 
 def collect_event(start, end, users_dict, platforms):

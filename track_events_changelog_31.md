@@ -318,7 +318,7 @@ Android 暂时没有提示功能
 	- `{topicId: String}`
 
 
-* 新增 注册用户完成所有专题(不包括挑战) 每次完成发 重复完成星星积分为0 [tao]
+* ~~新增 注册用户完成所有专题(不包括挑战) 每次完成发 重复完成星星积分为0~~ [tao]
     - `finishAllProblemSet`
     - `course`
     - `{topic: String, stars: Number, points: Number}`
@@ -347,21 +347,21 @@ Android 暂时没有提示功能
 	- eK: videoLoadFailed
 	- eV: {video: String, errorCode: String}
 
-* 首次加载失败，请求七牛API成功返回(如果拿不到返回时间，把resTime蠲掉) **七牛问题,暂时无法埋点**
+* ~~首次~~加载失败，请求七牛API成功返回(如果拿不到返回时间，把resTime蠲掉) **暂未测试*
 
 	- eK: getQiniuResSuccess
 	- eV: {video: String, resTime: Number}
 
-* 首次加载失败，请求七牛API返回失败  **tested**??
+* ~~首次~~加载失败，请求七牛API返回失败
 
 	- eK: getQiniuResFailure
 	- eV: {video: String, error: String}
 
-* 视频播放过程中出现卡顿(bufferSpeed待定)  **暂时无法实现**
+* ~~视频播放过程中出现卡顿(bufferSpeed待定)~~  **暂时无法实现**
 	- eK: videoLagged
 	- eV: {video: String, timeStamp: Number, bufferSpeed: Number}
 
-* 视频播放卡顿后再次play  **暂时无法实现**
+* ~~视频播放卡顿后再次play~~  **暂时无法实现**
 
 	- eK: resumePlaying
 	- eV: {video: String, timeStamp: Number}
