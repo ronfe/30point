@@ -183,6 +183,7 @@ def print_topic_scene(topics, start, end):
                 print(topic['_id'], topic['name'], p, 'done')
         else:
             print('没有专题模块', file=f)
+            print(topic['_id'], topic['name'], '没有专题模块')
 
 
     # for p in platforms:
