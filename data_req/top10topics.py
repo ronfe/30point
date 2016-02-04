@@ -13,6 +13,7 @@ topics = db['topics']
 START_DATE = datetime.datetime(2015, 12, 21)
 END_DATE = datetime.datetime(2015, 12, 28)
 
+
 # calculate weekly top 10 topics
 def weeklyTopicsEnterTop10(startDate, endDate):
     pipeLine = [
@@ -37,6 +38,8 @@ def weeklyTopicsEnterTop10(startDate, endDate):
 
 # top 10 topics list
 weeklyEnterTopicsTopTenList = weeklyTopicsEnterTop10(START_DATE, END_DATE)
+print weeklyEnterTopicsTopTenList
+
 
 # rate of startLearning/completeLearning in weekly top 10 topics
 # pass start/end date as timerange
@@ -60,6 +63,7 @@ def uvOfStartOrCompleteLearning(startDate, endDate, weeklyTopTenTopics, event, p
     ]
     return len(list(events.aggregate(pipeLine)))
 
+
 def perNum(molecule, denominator):
     if molecule == 0 or denominator == 0:
         return str("比率不成立")
@@ -68,17 +72,20 @@ def perNum(molecule, denominator):
     num = ("%.2f")%(m/d*100)
     return num
 
+
 def changeObjectId(changeList):
     returnList = []
     for doc in changeList:
         returnList.append(ObjectId(doc))
     return returnList
 
+
 def removeObjectId(changeList):
     returnList = []
     for doc in changeList:
         returnList.append(doc)
     return returnList
+
 
 def weeklyTopTenVideoId(weeklyEnterTopicsTopTenList):
     topic_id = ObjectId(weeklyEnterTopicsTopTenList[0])

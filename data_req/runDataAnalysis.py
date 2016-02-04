@@ -45,13 +45,13 @@ def run(start):
         topic_list.append({"_id": str(to['_id']), "name": to['name']})
 
     print "---------- 新用户当天行为 ----------"
-    td.data_by_day(start, end)
+    # td.data_by_day(start, end)
 
     print "---------- 新用户次周行为 ----------"
-    nw.next_week(start, end)
+    # nw.next_week(start, end)
 
     print "---------- 情景设定 ----------"
-    # sc.print_topic_scene(topic_list, start, end)
+    sc.print_topic_scene(topic_list, start, end)
 
     print "--------- 时间分析 ----------"
     # ta.print_time_analysis(topic_list, start, end)
