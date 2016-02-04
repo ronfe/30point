@@ -64,11 +64,13 @@ s = time.time()
 START_DATE = datetime.datetime(2015, 12, 20) - datetime.timedelta(hours=8)
 # END_DATE = datetime.datetime(2016, 1, 17, 0) - datetime.timedelta(hours=8)
 
-run(START_DATE)
+# run(START_DATE)
 run(START_DATE+datetime.timedelta(days=7))
 run(START_DATE+datetime.timedelta(days=14))
 run(START_DATE+datetime.timedelta(days=21))
 run(START_DATE+datetime.timedelta(days=28))
+run(START_DATE+datetime.timedelta(days=35))
+run(START_DATE+datetime.timedelta(days=42))
 
 
 e = time.time()
