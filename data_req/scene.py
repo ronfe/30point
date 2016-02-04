@@ -167,7 +167,7 @@ def print_topic_scene(topics, start, end):
     print('---------- 周前十知识点模块情景设定', (start + datetime.timedelta(days=1)).date(), '-', end.date(), '----------', file=f)
     for topic in topics:
         print('知识点 ', topic['_id'], topic['name'].encode('UTF-8'), file=f)
-        if topic['master'] or topic['learning']:
+        if topic['master'] and topic['learning']:
             for p in platforms:
                 print('----------', p, '----------', file=f)
                 res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
