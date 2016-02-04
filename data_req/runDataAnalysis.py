@@ -42,21 +42,20 @@ def run(start):
     topic_list = []
     for t in topicIds:
         to = topics.find_one({"_id": ObjectId(t)},  {'name': 1, 'master': 1, "learning": 1})
-        print to
         master = 1 if 'status' in to['master'] and to['master']['status'] == 'published' else 0
         learning = 1 if 'status' in to['learning'] and to['learning']['status'] == 'published' else 0
         topic_list.append({"_id": str(to['_id']), "name": to['name'], 'master': master, 'learning': learning})
-
-    print "---------- 新用户当天行为 ----------"
+    print topic_list
+    # print "---------- 新用户当天行为 ----------"
     # td.data_by_day(start, end)
 
-    print "---------- 新用户次周行为 ----------"
+    # print "---------- 新用户次周行为 ----------"
     # nw.next_week(start, end)
 
-    print "---------- 情景设定 ----------"
+    print "---------- scene ----------"
     sc.print_topic_scene(topic_list, start, end)
 
-    print "--------- 时间分析 ----------"
+    # print "--------- 时间分析 ----------"
     # ta.print_time_analysis(topic_list, start, end)
 
 s = time.time()
@@ -75,5 +74,5 @@ run(START_DATE+datetime.timedelta(days=42))
 
 
 e = time.time()
-print '总用时: ', (e-s)/ 60, 'min'
+print 'total time: ', (e-s)/ 60, 'min'
 
