@@ -179,37 +179,18 @@ def print_topic_scene(topics, start, end):
                 print('完成按照预习,课后模式完成用户中完成练习人数 ', res['completeCountLater'], file=f)
                 print('完成学习立即进入练习用户完成练习比 ', res['completeCountNow'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
                 print('完成按照预习,课后模式完成用户完成练习比 ', res['completeCountLater'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
-                print(topic['_id'], topic['name'], p, 'done')
+                print('one topic done')
         else:
             if not topic['master']:
                 print('没有专题模块', file=f)
             if not topic['learning']:
                 print('没有学习模块', file=f)
-            print(topic['_id'], topic['name'], '没有专题模块')
+            print('no learning or master')
         print('----------------------------------------', file=f)
-
-
-
-    # for p in platforms:
-    #     print('----------', p, '----------', file=f)
-    #     for topic in topics:
-    #         # print('知识点名称 ', topic['name'])
-    #         print('知识点 ', topic['_id'], topic['name'].encode('UTF-8'), file=f)
-    #         res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
-    #         print('完成视频,且进入练习人数 ', res['startMaster'], file=f)
-    #         print('完成视频, 且完成练习人数 ', res['completeMaster'], file=f)
-    #         print('完成视频用户中, 完成学习立即进入练习模块用户数 ', res['startMasterNow'], file=f)
-    #         print('完成视频用户中, 按照预习,课后模式进入练习用户数 ', res['startMasterLater'], file=f)
-    #         print('完成学习立即进入练习用户中完成练习人数 ', res['immediatelyCompleteCount'], file=f)
-    #         print('完成按照预习,课后模式完成用户中完成练习人数 ', res['laterCompleteCount'], file=f)
-    #         print('完成学习立即进入练习用户完成练习比 ', res['immediatelyCompleteCount'] * 1.0 / res['startMasterNow'] if res['startMasterNow'] != 0 else 0, file=f)
-    #         print('完成按照预习,课后模式完成用户完成练习比 ', res['laterCompleteCount'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
-    #         print('----------------------------------------', file=f)
-    #         print('知识点', topic['name'], p, 'done')
 
     f.close()
     e = time.time()
-    print('新用户周前十知识点情景设定 运行用时: ',(e-s)/60, 'min')
+    print('Time : ',(e-s)/60, 'min')
 
 
 # print_topic_scene([{"_id": "564ed38c2e05ec030b0ad3c3", 'name': 'topic'}], datetime.datetime(2016, 1, 9, 16), datetime.datetime(2016, 1, 16, 16))
