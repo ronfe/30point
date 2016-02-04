@@ -167,7 +167,7 @@ def print_topic_scene(topics, start, end):
     print('---------- 周前十知识点模块情景设定', (start + datetime.timedelta(days=1)).date(), '-', end.date(), '----------', file=f)
     for topic in topics:
         print('知识点 ', topic['_id'], topic['name'].encode('UTF-8'), file=f)
-        if topic['master']:
+        if topic['master'] or topic['learning']:
             for p in platforms:
                 print('----------', p, '----------', file=f)
                 res = topic_scene(start_timestamp, end_timestamp, topic['_id'], p)
@@ -181,7 +181,10 @@ def print_topic_scene(topics, start, end):
                 print('完成按照预习,课后模式完成用户完成练习比 ', res['completeCountLater'] * 1.0 / res['startMasterLater'] if res['startMasterLater'] != 0 else 0, file=f)
                 print(topic['_id'], topic['name'], p, 'done')
         else:
-            print('没有专题模块', file=f)
+            if not topic['master']:
+                print('没有专题模块', file=f)
+            if not topic['learning']:
+                print('没有学习模块', file=f)
             print(topic['_id'], topic['name'], '没有专题模块')
         print('----------------------------------------', file=f)
 

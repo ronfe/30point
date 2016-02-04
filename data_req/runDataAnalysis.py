@@ -41,9 +41,10 @@ def run(start):
     topicIds = weeklyTopicsEnterTop10(start, end)
     topic_list = []
     for t in topicIds:
-        to = topics.find_one({"_id": ObjectId(t)}, {'name': 1, 'master': 1, "learning": 1})
-        master = 1 if to['master']['status'] == 'published' else 0
-        learning = 1 if to['learning']['status'] == 'published' else 0
+        to = topics.find_one({"_id": ObjectId(t)},  {'name': 1, 'master': 1, "learning": 1})
+        print to
+        master = 1 if 'status' in to['master'] and to['master']['status'] == 'published' else 0
+        learning = 1 if 'status' in to['learning'] and to['learning']['status'] == 'published' else 0
         topic_list.append({"_id": str(to['_id']), "name": to['name'], 'master': master, 'learning': learning})
 
     print "---------- 新用户当天行为 ----------"
