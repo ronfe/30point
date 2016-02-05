@@ -5,7 +5,7 @@ import newUserNextWeek as nw
 import scene as sc
 import timeAnalysis as ta
 from bson.objectid import ObjectId
-
+import multiprocessing
 
 # calculate weekly top 10 topics
 def weeklyTopicsEnterTop10(startDate, endDate):
@@ -61,27 +61,34 @@ def run(start):
     # print "--------- 时间分析 ----------"
     # ta.print_time_analysis(topic_list, start, end)
 
-s = time.time()
 
 
-START_DATE = datetime.datetime(2015, 12, 20) - datetime.timedelta(hours=8)
 # END_DATE = datetime.datetime(2016, 1, 17, 0) - datetime.timedelta(hours=8)
 
-run(START_DATE)
-print datetime.datetime.now()
-run(START_DATE+datetime.timedelta(days=7))
-print datetime.datetime.now()
-run(START_DATE+datetime.timedelta(days=14))
-print datetime.datetime.now()
-run(START_DATE+datetime.timedelta(days=21))
-print datetime.datetime.now()
-run(START_DATE+datetime.timedelta(days=28))
-print datetime.datetime.now()
-run(START_DATE+datetime.timedelta(days=35))
-print datetime.datetime.now()
-# run(START_DATE+datetime.timedelta(days=42))
+# run(START_DATE)
+# print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=7))
+# print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=14))
+# print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=21))
+# print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=28))
+# print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=35))
+# print datetime.datetime.now()
 
-
-e = time.time()
-print 'total time: ', (e-s)/ 60, 'min'
+if __name__ == '__main__':
+    s = time.time()
+    START_DATE = datetime.datetime(2015, 12, 20) - datetime.timedelta(hours=8)
+    print datetime.datetime.now()
+    pool = multiprocessing.Pool(processes=4)
+    pool.apply_async(run, (START_DATE+datetime.timedelta(days=7), ))
+    pool.apply_async(run, (START_DATE+datetime.timedelta(days=14), ))
+    pool.apply_async(run, (START_DATE+datetime.timedelta(days=21), ))
+    pool.apply_async(run, (START_DATE+datetime.timedelta(days=28), ))
+    pool.close()
+    pool.join()
+    e = time.time()
+    print 'total time: ', (e-s)/ 60, 'min'
 
