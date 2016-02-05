@@ -13,6 +13,7 @@ def weeklyTopicsEnterTop10(startDate, endDate):
         {
             "$match": {
                 "eventKey": "enterTopic",
+                # "eventValue.topicId": {"$exists": True, "$ne": None},
                 "serverTime": {
                     "$gte": startDate,
                     "$lt": endDate
@@ -21,7 +22,7 @@ def weeklyTopicsEnterTop10(startDate, endDate):
         },
         {
             "$group": {
-                "_id": "$eventValue.topicId",
+                "_id": {"$ifNull": ["$eventValue.topicId", "$eventValue.topic"]},
                 "count": {"$sum": 1}
             }
         },
@@ -39,11 +40,13 @@ def weeklyTopicsEnterTop10(startDate, endDate):
 def run(start):
     end = start + datetime.timedelta(days=7)
     topicIds = weeklyTopicsEnterTop10(start, end)
+    print topicIds
     topic_list = []
     for t in topicIds:
         to = topics.find_one({"_id": ObjectId(t)},  {'name': 1, 'master': 1, "learning": 1})
-        master = 1 if 'status' in to['master'] and to['master']['status'] == 'published' else 0
-        learning = 1 if 'status' in to['learning'] and to['learning']['status'] == 'published' else 0
+        print to
+        master = 1 if 'master' in to and 'status' in to['master'] and to['master']['status'] == 'published' else 0
+        learning = 1 if 'learning' in to and 'status' in to['learning'] and to['learning']['status'] == 'published' else 0
         topic_list.append({"_id": str(to['_id']), "name": to['name'], 'master': master, 'learning': learning})
     print topic_list
     # print "---------- 新用户当天行为 ----------"
@@ -64,13 +67,19 @@ s = time.time()
 START_DATE = datetime.datetime(2015, 12, 20) - datetime.timedelta(hours=8)
 # END_DATE = datetime.datetime(2016, 1, 17, 0) - datetime.timedelta(hours=8)
 
-# run(START_DATE)
+run(START_DATE)
+print datetime.datetime.now()
 run(START_DATE+datetime.timedelta(days=7))
+print datetime.datetime.now()
 run(START_DATE+datetime.timedelta(days=14))
+print datetime.datetime.now()
 run(START_DATE+datetime.timedelta(days=21))
+print datetime.datetime.now()
 run(START_DATE+datetime.timedelta(days=28))
+print datetime.datetime.now()
 run(START_DATE+datetime.timedelta(days=35))
-run(START_DATE+datetime.timedelta(days=42))
+print datetime.datetime.now()
+# run(START_DATE+datetime.timedelta(days=42))
 
 
 e = time.time()

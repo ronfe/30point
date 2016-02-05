@@ -20,21 +20,27 @@ def topic_scene(start, end, topicId, platform):
         "eventKey": "completeLearning",
         "user": {"$exists": True},
         "platform2": platform,
-        "eventValue.topicId": topicId,
+        "$or": [
+            {"eventValue.topicId": topicId},
+            {"eventValue.topic": topicId}],
         "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1}))
     users2 = list(events.find({
         "eventKey": "startMaster",
         "user": {"$exists": True},
         "platform2": platform,
-        "eventValue.topicId": topicId,
+        "$or": [
+            {"eventValue.topicId": topicId},
+            {"eventValue.topic": topicId}],
         "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1}))
     users3 = list(events.find({
         "eventKey": "completeMaster",
         "user": {"$exists": True},
         "platform2": platform,
-        "eventValue.topicId": topicId,
+        "$or": [
+            {"eventValue.topicId": topicId},
+            {"eventValue.topic": topicId}],
         "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1}))
 
@@ -107,7 +113,7 @@ def topic_scene(start, end, topicId, platform):
         inds1 = [p['points'].index(i) for i in u1[p['_id']]]
         inds2 = [p['points'].index(i) for i in u2[p['_id']]]
         inds3 = [p['points'].index(i) for i in u3[p['_id']]] if p['_id'] in u3 else []
-        i = get_ind(inds1, inds2)
+        i = get_ind(inds1, inds2, inds3)
         if i > -1:
             # print(i)
             j = inds2.index(i+1) if (i+1) in inds2 else -1
@@ -130,13 +136,15 @@ def topic_scene(start, end, topicId, platform):
     return res
 
 
-def get_ind(inds1, inds2):
+def get_ind(inds1, inds2, inds3):
     i = inds1[0]
     inds22 = [ii for ii in inds2 if ii > i]
     if len(inds22) > 0:
         j = inds22[0]
         inds11 = [ii for ii in inds1 if ii < j]
-        k = inds11[-1]
+        kk = inds11[-1]
+        k = kk if (len(inds3) == 0 or kk < inds3[0]) else -1
+        return k
     else:
         k = -1
     return k
