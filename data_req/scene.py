@@ -16,15 +16,6 @@ def arr_2_dict(arr, key1, key2):
 
 def topic_scene(start, end, topicId, platform):
     res = {"startMaster": 0, "completeMaster": 0, "startMasterNow": 0, "startMasterLater": 0, "completeCountNow": 0, "completeCountLater": 0}
-    users1 = list(events.find({
-        "eventKey": "completeLearning",
-        "user": {"$exists": True},
-        "platform2": platform,
-        "$or": [
-            {"eventValue.topicId": topicId},
-            {"eventValue.topic": topicId}],
-        "eventTime": {"$gte": start, "$lt": end}
-    }, {'user': 1}))
     users2 = list(events.find({
         "eventKey": "startMaster",
         "user": {"$exists": True},
@@ -34,6 +25,25 @@ def topic_scene(start, end, topicId, platform):
             {"eventValue.topic": topicId}],
         "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1}))
+    if len(users2) == 0:
+        return res
+    users1 = list(events.find({
+        "eventKey": "completeLearning",
+        "user": {"$exists": True},
+        "platform2": platform,
+        "$or": [
+            {"eventValue.topicId": topicId},
+            {"eventValue.topic": topicId}],
+        "eventTime": {"$gte": start, "$lt": end}
+    }, {'user': 1}))
+
+    userIds1 = [u['user'] for u in users1]
+    userIds2 = [u['user'] for u in users2]
+    userIds = list(set(userIds1).intersection(set(userIds2)))
+    res['startMaster'] = len(userIds)
+    if res['startMaster'] == 0:
+        return res
+
     users3 = list(events.find({
         "eventKey": "completeMaster",
         "user": {"$exists": True},
@@ -44,26 +54,16 @@ def topic_scene(start, end, topicId, platform):
         "eventTime": {"$gte": start, "$lt": end}
     }, {'user': 1}))
 
-    print(len(users1), len(users2), len(users3))
-    userIds1 = [u['user'] for u in users1]
-    userIds2 = [u['user'] for u in users2]
     userIds3 = [u['user'] for u in users3]
 
     # get user ids that both have completeLearning and startMaster points
-    userIds = list(set(userIds1).intersection(set(userIds2)))
     userIds2 = list(set(userIds).intersection(set(userIds3)))
 
-    res['startMaster'] = len(userIds)
     res['completeMaster'] = len(userIds2)
-    print('number of users:', res['startMaster'])
 
-    if res['startMaster'] == 0:
-        return res
     users1 = [u for u in users1 if u['user'] in userIds]
     users2 = [u for u in users2 if u['user'] in userIds]
     users3 = [u for u in users3 if u['user'] in userIds2]
-
-    print(len(users1), len(users2), len(users3))
 
     u1 = {}
     u2 = {}
@@ -198,7 +198,7 @@ def print_topic_scene(topics, start, end):
 
     f.close()
     e = time.time()
-    print('Time : ',(e-s)/60, 'min')
+    print('Time : ', (e-s)/60, 'min')
 
 
 # print_topic_scene([{"_id": "564ed38c2e05ec030b0ad3c3", 'name': 'topic'}], datetime.datetime(2016, 1, 9, 16), datetime.datetime(2016, 1, 16, 16))

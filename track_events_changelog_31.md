@@ -12,7 +12,7 @@
 	- `{topicId: String, videoId: String}`
 
 * 新增 学习模块完成页, 点击"专题训练" [Tao]
-    - `clickStartMasterNow`
+    - `clickContinueMaster`
     - `site`
     -`{topicId: String}`
 

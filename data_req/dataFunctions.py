@@ -6,8 +6,8 @@ import time
 import calendar
 import math
 
-db = MongoClient('10.8.8.111:27017')['onionsBackupOnline']
-cache = MongoClient('10.8.8.111:27017')['cache']
+db = MongoClient('10.8.8.111', 27017, connect=False)['onionsBackupOnline']
+cache = MongoClient('10.8.8.111', 27017, connect=False)['cache']
 deviceAttr = cache['deviceAttr']
 userAttr = cache['userAttr']
 eventFlow = cache['eventFlow']
