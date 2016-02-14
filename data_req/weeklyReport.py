@@ -9,7 +9,7 @@ s = time.time()
 
 
 ONLINE_30 = datetime.datetime(2015, 12, 18, 16)
-START_DATE = datetime.datetime(2016, 1, 17) - datetime.timedelta(hours=8)
+START_DATE = datetime.datetime(2016, 1, 31) - datetime.timedelta(hours=8)
 END_DATE = START_DATE + datetime.timedelta(days=7)
 
 LAST_WEEK_START_DATE = START_DATE - datetime.timedelta(days=7)
