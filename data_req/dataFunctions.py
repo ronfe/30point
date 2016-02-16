@@ -16,7 +16,7 @@ events = db['events']
 users25 = cache['users25']
 topics = db['topics']
 
-ONLINE_30 = datetime.datetime(2015, 12, 18, 16)
+ONLINE_30 = datetime.datetime(2015, 12, 18, 16)-0
 
 
 def calc_user_device(start, end, platforms):
