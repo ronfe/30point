@@ -5,7 +5,7 @@ Note: 新增埋点如无说明，默认`category`为`site`
 
 ### Web
 
-* ```enterOuterPage``` 的```eventValue```加上```subject```。若用户进入物理外循环页，则```subject: "physics"```，否则```subject: null```
+* ```enterOuterPage``` 的```eventValue```加上```subject```。若用户进入物理外循环页，则```subject: "physics"```，如果是数学外循环页```subject: "math"```
 
 * 数学外循环页的物理Banner，点击右上角关闭图标
   - `eventKey: clickClosePhysicsBanner`
@@ -32,7 +32,7 @@ Note: 新增埋点如无说明，默认`category`为`site`
 
 ### App
 
-* ```enterChapterListPage``` 的```eventValue```加上```subject```。若用户进入物理外循环页，则```subject: "physics"```，否则```subject: null```
+* ```enterChapterListPage``` 的```eventValue```加上```subject```。若用户进入物理外循环页，则```subject: "physics"```，如果是数学外循环页```subject: "math"```
 
 * 数学外循环页的物理Banner，点击“立即观看”  
   - `eventKey: clickGoPhysics`
