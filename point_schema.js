@@ -39,7 +39,7 @@ var point = new Schema({
             "region0": String, //provincal
             "region1": String //municipal
         },
-        "school": ObjectId //only for users who registered his/her school
+        "school": ObjectId, //only for users who registered his/her school
         "schoolInfo": {"type": Mixed} //school object
     },
     "url": String, //only for pc, the full url
