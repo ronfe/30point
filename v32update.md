@@ -58,7 +58,7 @@ app
 * `videoLoadFailed`
  - `category: video`
  - 视频首次报错或加载时长超过10s
- - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean, errorCode: String}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['none', 'wifi', '3G', '4G', ..]}, cache: Boolean, errorCode: String}` duration加载时长in毫秒
 
 * `getQiniuResSuccess`
  - `category: video`
