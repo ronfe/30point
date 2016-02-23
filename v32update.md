@@ -75,7 +75,7 @@ app
  - 视频首次播放
  - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
 
-* `userHaltLoading`
+* `userQuitLoading`
  - `category: video`
  - 视频首次加载过程中，用户在既未`videoLoadFailed`亦未`startVideo`时退出视频播放器
  - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
