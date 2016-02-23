@@ -15,7 +15,7 @@ web
  - 视频首次`onError`事件时
  - `{video: String, videoUrl: String, error: String}`
 
-* `videoLoadDeffered`
+* `videoLoadDeferred`
  - `category: video`
  - 视频首次加载超过6s时
  - `{video: String, videoUrl: String}`
