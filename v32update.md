@@ -22,12 +22,12 @@ web
 
 * `getQiniuResSuccess`
  - `category: video`
- - videoLoadFailed或videoLoadDeffered后，请求七牛API成功返回(如果拿不到返回时间，把resTime蠲掉)
+ - videoLoadFailed或videoLoadDeferred后，请求七牛API成功返回(如果拿不到返回时间，把resTime蠲掉)
  - `{video: String, videoUrl: String, resTime: Number}`
 
 * `getQiniuResFailure`
  - `category: video`
- - videoLoadFailed或videoLoadDeffered后，请求七牛API返回失败
+ - videoLoadFailed或videoLoadDeferred后，请求七牛API返回失败
  - `{video: String, videoUrl: String, error: String}`
 
 * `startVideo`
