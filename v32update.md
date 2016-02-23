@@ -13,7 +13,7 @@ web
 * `videoLoadFailed`
  - `category: video`
  - 视频首次`onError`事件时
- - `{video: String, videoUrl: String, error: String}`
+ - `{video: String, videoUrl: String, errorCode: String}`
 
 * `videoLoadDeferred`
  - `category: video`
@@ -58,7 +58,7 @@ app
 * `videoLoadFailed`
  - `category: video`
  - 视频首次报错或加载时长超过10s
- - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
+ - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean, errorCode: String}` duration加载时长in毫秒
 
 * `getQiniuResSuccess`
  - `category: video`
