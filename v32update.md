@@ -73,17 +73,17 @@ app
 * `startVideo`
  - `category: video`
  - 视频首次播放
- - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['none', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
 
 * `userQuitLoading`
  - `category: video`
  - 视频首次加载过程中，用户在既未`videoLoadFailed`亦未`startVideo`时退出视频播放器
- - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['none', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
 
 * `videoLagged`
  - `category: video`
  - 视频开始播放后，自然中断播放（非用户暂停、停止、退出播放器等行为引起的中断播放）时长超过3s
- - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration中断时长in毫秒，如没有可蠲掉
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['none', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration中断时长in毫秒，如没有可蠲掉
 
 
 ### Web
