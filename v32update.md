@@ -37,7 +37,7 @@ web
 
 * `videoLagged`
  - `category: video`
- - 视频开始播放后，在`onStall`/`onWaiting`/`onSuspend` 事件内计时超过3s
+ - 视频开始播放后，在`onStall`/`onWaiting`/`onSuspend` 事件内计时超过3s, 或者视频开始播放后，触发`onError`事件
  - `{video: String, videoUrl: String, errorEvent: {type: String, enum: ['stall', 'waiting', 'suspend']}}`
 
 以下埋点详参《PC网速测试逻辑&埋点》  
@@ -58,32 +58,32 @@ app
 * `videoLoadFailed`
  - `category: video`
  - 视频首次报错或加载时长超过10s
- - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean, errorCode: String}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean, errorCode: String}` duration加载时长in毫秒
 
 * `getQiniuResSuccess`
  - `category: video`
  - videoLoadFailed后，请求七牛API成功返回(如果拿不到返回时间，把resTime蠲掉)
- - `{video: String, videoUrl: String, resTime: Number}`
+ - `{videoId: String, videoUrl: String, resTime: Number}`
 
 * `getQiniuResFailure`
  - `category: video`
  - videoLoadFailed后，请求七牛API返回失败
- - `{video: String, videoUrl: String, error: String}`
+ - `{videoId: String, videoUrl: String, error: String}`
 
 * `startVideo`
  - `category: video`
  - 视频首次播放
- - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
 
 * `userQuitLoading`
  - `category: video`
  - 视频首次加载过程中，用户在既未`videoLoadFailed`亦未`startVideo`时退出视频播放器
- - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration加载时长in毫秒
 
 * `videoLagged`
  - `category: video`
  - 视频开始播放后，自然中断播放（非用户暂停、停止、退出播放器等行为引起的中断播放）时长超过3s
- - `{video: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration中断时长in毫秒，如没有可蠲掉
+ - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['na', 'wifi', '3G', '4G', ..]}, cache: Boolean}` duration中断时长in毫秒，如没有可蠲掉
 
 
 ### Web
