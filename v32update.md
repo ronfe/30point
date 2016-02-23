@@ -38,7 +38,7 @@ web
 * `videoLagged`
  - `category: video`
  - 视频开始播放后，在`onStall`/`onWaiting`/`onSuspend` 事件内计时超过3s, 或者视频开始播放后，触发`onError`事件
- - `{video: String, videoUrl: String, errorEvent: {type: String, enum: ['stall', 'waiting', 'suspend']}}`
+ - `{video: String, videoUrl: String, errorEvent: {type: String, enum: ['stall', 'waiting', 'suspend', 'error']}}`
 
 以下埋点详参《PC网速测试逻辑&埋点》  
 * `testUserSpeedSuccess`
