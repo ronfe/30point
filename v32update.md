@@ -37,7 +37,7 @@ web
 
 * `videoLagged`
  - `category: video`
- - 视频开始播放后，在`onStall`/`onWaiting`/`onSuspend` 事件内计时超过3s, 或者视频开始播放后，触发`onError`事件
+ - 视频开始播放后，在`onStall`/`onWaiting`/`onSuspend` 事件内计时超过4s, 或者视频开始播放后，触发`onError`事件
  - `{video: String, videoUrl: String, errorEvent: {type: String, enum: ['stall', 'waiting', 'suspend', 'error']}}`
 
 以下埋点详参《PC网速测试逻辑&埋点》  
@@ -82,7 +82,7 @@ app
 
 * `videoLagged`
  - `category: video`
- - 视频开始播放后，自然中断播放（非用户暂停、停止、退出播放器等行为引起的中断播放）时长超过3s
+ - 视频开始播放后，自然中断播放（非用户暂停、停止、退出播放器等行为引起的中断播放）时长超过4s
  - `{videoId: String, videoUrl: String, duration: Number, netConfig: {type: String, enum: ['none', 'wifi', 'cellular']}, cache: Boolean}` duration中断时长in毫秒，如没有可蠲掉
 
 
