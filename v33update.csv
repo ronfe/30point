@@ -1,16 +1,4 @@
 平台,页面,定义,Tag,eventKey,eventValue,category,Version,Active,Remark
-web,首页,进入首页,首页,enterHome,,site,v3.0,,3.0版本，无论进入学生版或教师版首页均发送此埋点，3.1只在进入学生首页时发送
-web,首页,首页，点击“切换教师版”按钮,首页,switchTeacherHome,,site,v3.0,,
-web,首页,首页，点击“切换学生版”按钮,首页,switchStudentHome,,site,v3.0,,
-web,首页,首页，点击“登录”按钮,首页,clickLoginBtn,,site,v3.0,,
-web,首页,首页，点击“注册”按钮,首页,clickSignupBtn,,site,v3.0,,
-web,首页-学生,学生首页第一屏，点击“免费使用”,首页,clickFreeForUseSS,,site,v3.0,,
-web,首页-学生,学生首页第一屏，点击“应用下载”,首页,clickDownloadApp,,site,v3.0,,
-web,首页-学生,学生首页第二屏，点击“点击观看”,首页,clickWatchingVideoSample,,site,v3.0,,
-web,首页-学生,学生首页末屏，点击“下载iOS版”,首页,clickDownloadIosSS,,site,v3.0,,
-web,首页-学生,学生首页末屏，点击“下载Android版”,首页,clickDownloadAndoridSS,,site,v3.0,,
-web,首页-学生,学生首页末屏，点击“下载Windows版”,首页,clickDownloadWindowsSS,,site,v3.0,,
-web,首页-教师,教师首页第一屏，点击“看看微课”,首页,clickHaveALook,,site,v3.0,,
 web,首页-学生,首页右侧，hover“下载手机应用”,首页,hoverHomeQRCode,,site,v3.3,Future,
 web,首页-学生,首页右侧，点击“登录”tab,登录,clickHomeLoginTab,,site,v3.3,Future,
 web,首页-学生,首页右侧，点击“注册”tab,注册,clickHomeSignupTab,,site,v3.3,Future,
