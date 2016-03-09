@@ -20,7 +20,7 @@ app,题目页,填空题题目页，调起软键盘后，点击“草稿本”图
 ,,,,,problemType: ‘blank’，埋点发送时所在的题目类型（填空题） ,,,,选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’choice’
 ,,,,,leaveEmpty: Boolean，埋点发送时text中是否含有文本,,,,
 app,题目页,选择题题目页，点击“草稿本”,草稿本,clickCallDraftBtn,problemId: ObjectId，埋点发送时所在的题目ID,site,v3.3,Future,
-,,,,,problemType: ‘single’，埋点发送时所在的题目类型（选择题）,,,,非选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’input’
+,,,,,problemType: ‘single’，埋点发送时所在的题目类型（选择题）,,,,非选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’blank’
 app,草稿本页,草稿本页，点击左上角“关闭”,草稿本,clickCloseDraft,"problemId: ObjectId, 埋点发送时所在的题目ID",site,v3.3,Future,
 app,草稿本页,草稿本页，点击右上角“清除”,草稿本,clickClearDraft,"problemId: ObjectId, 埋点发送时所在的题目ID",site,v3.3,Future,
 app,视频播放页,视频播放器，进入“视频加载失败，请刷新重试”页面,视频异常,enterVideoLoadingCheck,"videoId: String, 埋点发送时所在的视频ID",video,v3.3,Future,
