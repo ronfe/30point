@@ -17,7 +17,7 @@ web,班级用户进入页,班级用户进入页，班级编号界面，点击“
 web,外循环页,展示物理Banner,物理Banner,showPhysicsBanner,,site,v3.3,Future,
 app,外循环页,展示物理Banner,物理Banner,showPhysicsBanner,,site,v3.3,Future,
 app,题目页,填空题题目页，调起软键盘后，点击“草稿本”图标,草稿本,clickCallDraftBtn,problemId: ObjectId，埋点发送时所在的题目ID,site,v3.3,Future,
-,,,,,problemType: ‘blank’，埋点发送时所在的题目类型（填空题） ,,,,选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’choice’
+,,,,,problemType: ‘blank’，埋点发送时所在的题目类型（填空题） ,,,,选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’single’
 ,,,,,leaveEmpty: Boolean，埋点发送时text中是否含有文本,,,,
 app,题目页,选择题题目页，点击“草稿本”,草稿本,clickCallDraftBtn,problemId: ObjectId，埋点发送时所在的题目ID,site,v3.3,Future,
 ,,,,,problemType: ‘single’，埋点发送时所在的题目类型（选择题）,,,,非选择题下，用户点击打开草稿本时发送的埋点eventKey相同，但该字段值为’blank’
